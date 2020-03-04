@@ -5,10 +5,7 @@ def getDB():
   output = ""
   # Obtain connection string information from the portal
   config = {
-    'host':'barbosascrew.mysql.database.azure.com',
-    'user':'BarbosasCrew@barbosascrew',
-    'password':'Glendale2020',
-    'database':'application database'
+    
   }
 
   # Construct connection string
