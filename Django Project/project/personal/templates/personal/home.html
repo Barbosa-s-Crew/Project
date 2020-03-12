@@ -1,0 +1,18 @@
+{% extends 'base_outer.html' %}
+
+{% block content_personal_home %}
+
+<div style="border: 2px solid #000;">
+  <h1>This is the body</h1>
+  <p>Here is the body of our website, inside templates/personal/home.html</p>
+  <!-- {{some_string}} -->
+   <!-- {{some_number}} -->
+  <!-- {{table}} -->
+
+  {% for question in questions %}
+    {% include 'personal/snippets/body.snippet.html' with value=question %}
+  {% endfor %}
+
+<div>
+
+{% endblock content_personal_home %}

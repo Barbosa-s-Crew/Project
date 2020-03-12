@@ -1,0 +1,125 @@
+{
+  "id": "1bEFouiXiNo3I6vslUdZKA",
+  "alias": "sushi-sasabune-glendale",
+  "name": "Sushi Sasabune",
+  "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/bEkAyoGx-7O0jzbfVXs2ZA/o.jpg",
+  "is_claimed": true,
+  "is_closed": false,
+  "url": "https://www.yelp.com/biz/sushi-sasabune-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18186961124",
+  "display_phone": "(818) 696-1124",
+  "review_count": 283,
+  "categories": [
+    {
+      "alias": "sushi",
+      "title": "Sushi Bars"
+    },
+    {
+      "alias": "japanese",
+      "title": "Japanese"
+    }
+  ],
+  "rating": 4.5,
+  "location": {
+    "address1": "101 N Brand Blvd",
+    "address2": "Ste 220",
+    "address3": "",
+    "city": "Glendale",
+    "zip_code": "91203",
+    "country": "US",
+    "state": "CA",
+    "display_address": [
+      "101 N Brand Blvd",
+      "Ste 220",
+      "Glendale, CA 91203"
+    ],
+    "cross_streets": ""
+  },
+  "coordinates": {
+    "latitude": 34.1467089188584,
+    "longitude": -118.255266031214
+  },
+  "photos": [
+    "https://s3-media1.fl.yelpcdn.com/bphoto/bEkAyoGx-7O0jzbfVXs2ZA/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/G6q_w5L4oiaGkWfE_o-GAA/o.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/RaeN5Gn1jJFn9e9sZVekkg/o.jpg"
+  ],
+  "price": "$$$$",
+  "hours": [
+    {
+      "open": [
+        {
+          "is_overnight": false,
+          "start": "1200",
+          "end": "1400",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "1730",
+          "end": "2130",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "1200",
+          "end": "1400",
+          "day": 1
+        },
+        {
+          "is_overnight": false,
+          "start": "1730",
+          "end": "2130",
+          "day": 1
+        },
+        {
+          "is_overnight": false,
+          "start": "1200",
+          "end": "1400",
+          "day": 2
+        },
+        {
+          "is_overnight": false,
+          "start": "1730",
+          "end": "2130",
+          "day": 2
+        },
+        {
+          "is_overnight": false,
+          "start": "1200",
+          "end": "1400",
+          "day": 3
+        },
+        {
+          "is_overnight": false,
+          "start": "1730",
+          "end": "2130",
+          "day": 3
+        },
+        {
+          "is_overnight": false,
+          "start": "1200",
+          "end": "1400",
+          "day": 4
+        },
+        {
+          "is_overnight": false,
+          "start": "1730",
+          "end": "2130",
+          "day": 4
+        },
+        {
+          "is_overnight": false,
+          "start": "1730",
+          "end": "2130",
+          "day": 5
+        }
+      ],
+      "hours_type": "REGULAR",
+      "is_open_now": true
+    }
+  ],
+  "transactions": [
+    "delivery"
+  ]
+}

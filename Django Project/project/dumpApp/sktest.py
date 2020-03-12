@@ -5,7 +5,10 @@ def getDB():
   output = ""
   # Obtain connection string information from the portal
   config = {
-    
+    'host':'barbosascrew.mysql.database.azure.com',
+    'user':'BarbosasCrew@barbosascrew',
+    'password':'Glendale2020',
+    'database':'application database'
   }
 
   # Construct connection string
@@ -19,7 +22,7 @@ def getDB():
       print("Database does not exist")
     else:
       print(err)
-  else: 
+  else:
       cursor = conn.cursor()
       #conn.commit()
       cursor.execute("SHOW TABLES")
@@ -42,7 +45,7 @@ def getDB():
                   output += ('{:20}'.format(str(element)))
               print("")
               output += '\n'
-              
+
       cursor.close()
       conn.close()
       return output

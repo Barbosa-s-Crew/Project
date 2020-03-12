@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#Base directory is the project (outer)
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,7 +32,13 @@ ALLOWED_HOSTS = ['23.96.62.101', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    # my apps
     'dumpApp.apps.DumpappConfig',
+    'personal',
+    'deals',
+    'account',
+
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +55,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #ADDED
+    #'django.contrib.auth.middleware.RemoteUserMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -55,7 +65,9 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #changed
+        #join base directory with the folder named 'templates'
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +79,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'account.User'
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
@@ -81,6 +95,11 @@ DATABASES = {
     }
 }
 
+# start --- ADDED
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.RemoteUserBackend',
+]
+# start --- ADDED 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

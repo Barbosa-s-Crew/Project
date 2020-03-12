@@ -6,14 +6,14 @@
   <!-- ADDED -->
   <style>
     .search-bar{
-      max-width: 250px;
+      max-width: 500px;
       width: 100%;
     }
   </style>
 
   <!-- ADDED -->
 
-
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,12 +25,15 @@
 
 
     {% if title %}
-        <title>Barbosa's Delivery new- {{ title }}</title>
+        <title>Barbosa's Delivery - {{ title }}</title>
     {% else %}
         <title>Barbosa's Delivery</title>
     {% endif %}
 </head>
 <body>
+  {% block content_personal_home %}
+
+  {% endblock content_personal_home %}
 
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
@@ -42,26 +45,19 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'blog-browse' %}">Browse</a>
-              <a class="nav-item nav-link" href="{% url 'blog-search' %}">Search</a>
-              <a class="nav-item nav-link" href="{% url 'blog-order' %}">Order</a>
-              <a class="nav-item nav-link" href="{% url 'blog-deals' %}">Deals</a>
-              <a class="nav-item nav-link" href="{% url 'blog-about' %}">Profile</a>
               <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-
             </div>
             <!-- Navbar Right Side -->
             <!-- ADDED-->
                 <div class="search-bar mt-sm-2 mr-2">
                   <form method="get">
-                      <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
+                      <input type="text" class="form-control" name="q" id="id_q" placeholder="Search...">
                   </form>
                 </div>
             <!-- ADDED-->
             <div class="navbar-nav">
               <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Sign Up</a>
-              <!--if logged in = true, no need for login tab and register, just log out and manage account -->
+              <a class="nav-item nav-link" href="#">Register</a>
             </div>
           </div>
         </div>
@@ -75,7 +71,7 @@
         </div>
         <div class="col-md-4">
           <div class="content-section">
-            <!-- <h3>Our Sidebar</h3>
+            <h3>Our Sidebar</h3>
             <p class='text-muted'>You can put any information here you'd like.
               <ul class="list-group">
                 <li class="list-group-item list-group-item-light">Latest Posts</li>
@@ -83,7 +79,7 @@
                 <li class="list-group-item list-group-item-light">Calendars</li>
                 <li class="list-group-item list-group-item-light">etc</li>
               </ul>
-            </p> -->
+            </p>
           </div>
         </div>
       </div>
