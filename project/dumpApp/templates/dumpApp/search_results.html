@@ -1,0 +1,16 @@
+{% extends "dumpApp/base.html" %}
+{% block content %}
+    <h1>Search_Results</h1>
+      {% for restaurant in search_results %}
+      <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ restaurant.rating }}</a>
+                    <small class="text-muted">{{ restaurant.display_phone }}</small>
+                  </div>
+                  <h2><a class="article-title" href="#">{{ restaurant.name }}</a></h2>
+                  <p class="article-content">{{ restaurant.price }}</p>
+                </div>
+              </article>
+      {% endfor %}
+{% endblock content %}
