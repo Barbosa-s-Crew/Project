@@ -146,11 +146,11 @@ def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', 
     params = {}
     #term
     if term != '':
-        params['term'] = term
+        params['term'] = term.replace(' ', '+')
 
     #location
     if location != '':
-        params['location'] = location
+        params['location'] = location.replace(' ', '+')
 
     #latitude
     if latitude != 0:
@@ -162,22 +162,22 @@ def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', 
 
     #radius
     if radius != '':
-        params['radius'] = radius
+        params['radius'] = radius.replace(' ', '+')
 
     #categories
     if categories != '':
-        params['categories'] = categories
+        params['categories'] = categories.replace(' ', '+')
     #start --- ADDED
 
     #end --- ADDED
 
     #locale
     if locale != '':
-        params['locale'] = locale
+        params['locale'] = locale.replace(' ', '+')
 
     #limit
     #always set to 20, but for testing purposes set to 3. Max of 50
-    params['limit'] = limit
+    params['limit'] = limit.replace(' ', '+')
 
     #offset
     if offset != 0:
@@ -185,11 +185,11 @@ def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', 
 
     #sort_by
     if sort_by != '':
-        params['sort_by'] = sort_by
+        params['sort_by'] = sort_by.replace(' ', '+')
 
     #price
     if price != '':
-        params['price'] = price
+        params['price'] = price.replace(' ', '+')
 
     #open_now
     params['open_now'] = open_now
@@ -200,7 +200,7 @@ def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', 
 
     #attributes
     if attributes != '':
-        params['attributes'] = attributes
+        params['attributes'] = attributes.replace(' ', '+')
 
     try:
         ret = query_api(params)

@@ -1,0 +1,102 @@
+{
+  "id": "N4sbDFWKIPkZKgNs-A6BCg",
+  "alias": "pizza-boy-glendale",
+  "name": "Pizza Boy",
+  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
+  "is_claimed": true,
+  "is_closed": false,
+  "url": "https://www.yelp.com/biz/pizza-boy-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18182475555",
+  "display_phone": "(818) 247-5555",
+  "review_count": 616,
+  "categories": [
+    {
+      "alias": "pizza",
+      "title": "Pizza"
+    },
+    {
+      "alias": "gluten_free",
+      "title": "Gluten-Free"
+    }
+  ],
+  "rating": 4.5,
+  "location": {
+    "address1": "1321 E Colorado St",
+    "address2": "Ste C",
+    "address3": "",
+    "city": "Glendale",
+    "zip_code": "91205",
+    "country": "US",
+    "state": "CA",
+    "display_address": [
+      "1321 E Colorado St",
+      "Ste C",
+      "Glendale, CA 91205"
+    ],
+    "cross_streets": ""
+  },
+  "coordinates": {
+    "latitude": 34.1428476,
+    "longitude": -118.2366086
+  },
+  "photos": [
+    "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/vhSYf-mXeNmX4NjKgXRbCQ/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/Ns84cb6QuGcBHBoKWZAUwA/o.jpg"
+  ],
+  "price": "$$",
+  "hours": [
+    {
+      "open": [
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
+          "day": 1
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
+          "day": 2
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
+          "day": 3
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2330",
+          "day": 4
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2230",
+          "day": 5
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2230",
+          "day": 6
+        }
+      ],
+      "hours_type": "REGULAR",
+      "is_open_now": true
+    }
+  ],
+  "transactions": [
+    "pickup",
+    "delivery"
+  ]
+}
