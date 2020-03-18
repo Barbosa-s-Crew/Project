@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
+import DBSetup
 
 class userC:
 	ID = ''
@@ -9,6 +10,7 @@ class userC:
 	password = ''
 	cell = ''
 	other_info = ''
+	is_authenticated = False
 
 	def __init__(self, tup):
 		self.ID = tup[0]
@@ -17,17 +19,27 @@ class userC:
 		self.email = tup[3]
 		self.password = tup[4]
 		self.cell = tup[5]
-	#other_info = tup[6]
+		self.other_info = tup[6]
+		
+		#tup is not empty
+		if tup[0] != '':
+			self.is_authenticated = True
+
+	def logout():
+		self.ID = ''
+		self.payment_option = ''
+		self.username = ''
+		self.email = ''
+		self.password = ''
+		self.cell = ''
+		self.other_info = ''
+		self.is_authenticated = False
+	
 
 def authenticate_user(username='', password = ''):
 	output = ""
 	# Obtain connection string information from the portal
-	config = {
-	'host':'barbosascrew.mysql.database.azure.com',
-	'user':'BarbosasCrew@barbosascrew',
-	'password':'Glendale2020',
-	'database':'application database'
-	}
+	config = DBSetup.setup_config()
 
 	# Construct connection string
 	try:
