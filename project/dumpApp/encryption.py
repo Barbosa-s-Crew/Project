@@ -19,6 +19,7 @@ def encrypt(password):
 
 def verify(password, oldStorage):
 	oldSalt = oldStorage[:32]
+	print(oldSalt)
 	key = hashlib.pbkdf2_hmac(
 		'sha256',
 		password.encode('utf-8'),

@@ -1,15 +1,11 @@
 import mysql.connector
 from mysql.connector import errorcode
+import DBSetup
 
 def getDB():
   output = ""
   # Obtain connection string information from the portal
-  config = {
-    'host':'barbosascrew.mysql.database.azure.com',
-    'user':'BarbosasCrew@barbosascrew',
-    'password':'Glendale2020',
-    'database':'application database'
-  }
+  config = DBSetup.setup_config()
 
   # Construct connection string
   try:

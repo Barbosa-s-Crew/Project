@@ -42,37 +42,60 @@ def authenticate_user(username='', password = ''):
 	# Obtain connection string information from the portal
 	config = DBSetup.setup_config()
 
-        # Construct connection string
-        try:
-                conn = mysql.connector.connect(**config)
-                print("Connection established")
-        except mysql.connector.Error as err:
-                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                        print("Something is wrong with the user name or password")
-                elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                        print("Database does not exist")
-                else:
-                        print(err)
-        else: 
-                cursor = conn.cursor()
-                cursor.execute("SELECT * FROM users WHERE User_Email='"+username+"'")
-                tupleC = cursor.fetchall()
-                #print(tupleC[0])
-                fetchedUser = userC(tupleC[0])
-                cursor.close()
-                conn.close()
-                print(fetchedUser.password)
-                newKey = encryption.verify(password, fetchedUser.password)
-                print(newKey)
-                if newKey == fetchedUser.password:
-                        print("Valid email/password combination.")
-                        return fetchedUser
-                else:
-                        print("No valid email/password combination found.")
-                        #return userC()
-                
+		# Construct connection string
+	try:
+		conn = mysql.connector.connect(**config)
+		print("Connection established")
+	except mysql.connector.Error as err:
+		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+			print("Something is wrong with the user name or password")
+		elif err.errno == errorcode.ER_BAD_DB_ERROR:
+			print("Database does not exist")
+		else:
+			print(err)
+	else: 
+		cursor = conn.cursor()
+		cursor.execute("SELECT * FROM users WHERE User_Email='"+username+"'")
+		tupleC = cursor.fetchall()
+		#print(tupleC[0])
+		fetchedUser = userC(tupleC[0])
+		cursor.close()
+		conn.close()
+		print(fetchedUser.password)
+		newKey = encryption.verify(password, fetchedUser.password)
+		print(newKey)
+		if newKey == fetchedUser.password:
+			print("Valid email/password combination.")
+			return fetchedUser
+		else:
+			print("No valid email/password combination found.")
+			#return userC()
+				
+def create_user(email = '', password = ''):
+	config = DBSetup.setup_config()
 
+	# Construct connection string
+	try:
+		conn = mysql.connector.connect(**config)
+		print("Connection established")
+	except mysql.connector.Error as err:
+		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+			print("Something is wrong with the user name or password")
+		elif err.errno == errorcode.ER_BAD_DB_ERROR:
+			print("Database does not exist")
+		else:
+			print(err)
+	else: 
+		cursor = conn.cursor()
+		#cursor.execute("INSERT INTO users (User_ID, Payment_Option_ID, User_name, User_Email, User_Password, User_Cell, Other_Information) VALUES ('"+user.ID+"', '"+user.payment_option+"',  '"+user.username+"', '"+user.password+"', '"+user.Cell+"', '"+user.other_info+"')")
+		cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
+		#cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+password+"');")
+		print("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
+		conn.commit()
+		cursor.close()
+		conn.close()
 
-u = authenticate_user(username = 'thomas97@gmail.com', password = 'thomaspassword')
+#create_user(email = 'GGG', password = '123')
+u = authenticate_user(username = 'GGG', password = '123')
 
 #print(u.ID)
