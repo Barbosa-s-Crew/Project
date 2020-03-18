@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
-import DBSetup
+from . import DBSetup
 
 def getDB():
   output = ""

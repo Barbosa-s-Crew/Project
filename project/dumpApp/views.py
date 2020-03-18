@@ -129,12 +129,19 @@ def contact(request):
 
 
 def login(request):
+	context = {}
 	return render(request, 'dumpApp/login.html', context)
 
 
 def register(request):
+	context = {}
 	return render(request, 'dumpApp/register.html', context)
 
 
 def login_error(request):
+	context = {}
 	return render(request, 'dumpApp/login_error.html', context)
+
+def profile(request):
+	context = {}
+	return render(request, 'dumpApp/profile.html', context)
