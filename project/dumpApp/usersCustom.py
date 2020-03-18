@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
+import encryption
 import DBSetup
 
 class userC:
@@ -41,28 +42,37 @@ def authenticate_user(username='', password = ''):
 	# Obtain connection string information from the portal
 	config = DBSetup.setup_config()
 
-	# Construct connection string
-	try:
-		conn = mysql.connector.connect(**config)
-		print("Connection established")
-	except mysql.connector.Error as err:
-		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-			print("Something is wrong with the user name or password")
-		elif err.errno == errorcode.ER_BAD_DB_ERROR:
-			print("Database does not exist")
-		else:
-			print(err)
-	else: 
-		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM users WHERE User_Email='"+username+"' AND User_Password='"+password+"'")
-		tupleC = cursor.fetchall()
-		#print(tupleC[0])
-
-		cursor.close()
-		conn.close()
-		return userC(tupleC[0])
+        # Construct connection string
+        try:
+                conn = mysql.connector.connect(**config)
+                print("Connection established")
+        except mysql.connector.Error as err:
+                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                        print("Something is wrong with the user name or password")
+                elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                        print("Database does not exist")
+                else:
+                        print(err)
+        else: 
+                cursor = conn.cursor()
+                cursor.execute("SELECT * FROM users WHERE User_Email='"+username+"'")
+                tupleC = cursor.fetchall()
+                #print(tupleC[0])
+                fetchedUser = userC(tupleC[0])
+                cursor.close()
+                conn.close()
+                print(fetchedUser.password)
+                newKey = encryption.verify(password, fetchedUser.password)
+                print(newKey)
+                if newKey == fetchedUser.password:
+                        print("Valid email/password combination.")
+                        return fetchedUser
+                else:
+                        print("No valid email/password combination found.")
+                        #return userC()
+                
 
 
 u = authenticate_user(username = 'thomas97@gmail.com', password = 'thomaspassword')
 
-print(u.ID)
+#print(u.ID)
