@@ -177,7 +177,7 @@ def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', 
 
     #limit
     #always set to 20, but for testing purposes set to 3. Max of 50
-    params['limit'] = limit.replace(' ', '+')
+    #params['limit'] = limit.replace(' ', '+')
 
     #offset
     if offset != 0:
