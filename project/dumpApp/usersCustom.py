@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
-import encryption
+#import encryption
 import DBSetup
 
 class userC:
@@ -62,9 +62,10 @@ def authenticate_user(username='', password = ''):
 		cursor.close()
 		conn.close()
 		print(fetchedUser.password)
-		newKey = encryption.verify(password, fetchedUser.password)
-		print(newKey)
-		if newKey == fetchedUser.password:
+		#newKey = encryption.verify(password, fetchedUser.password)
+		#print(newKey)
+		#if newKey == fetchedUser.password:
+		if password == fetchedUser.password:
 			print("Valid email/password combination.")
 			return fetchedUser
 		else:
@@ -88,14 +89,16 @@ def create_user(email = '', password = ''):
 	else: 
 		cursor = conn.cursor()
 		#cursor.execute("INSERT INTO users (User_ID, Payment_Option_ID, User_name, User_Email, User_Password, User_Cell, Other_Information) VALUES ('"+user.ID+"', '"+user.payment_option+"',  '"+user.username+"', '"+user.password+"', '"+user.Cell+"', '"+user.other_info+"')")
-		cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
-		#cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+password+"');")
-		print("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
+		#cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
+		cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+password+"');")
+		#print("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
 		conn.commit()
 		cursor.close()
 		conn.close()
 
 #create_user(email = 'GGG', password = '123')
-u = authenticate_user(username = 'GGG', password = '123')
+
+u = authenticate_user(username = 'thomas97@gmail.com', password = 'thomaspassword')
+
 
 #print(u.ID)
