@@ -8,7 +8,7 @@ from django.db.models import Q
 
 posts =  sktest.getDB()
 
-active_user = usersCustom.userC
+active_user = usersCustom.userC([''])
 
 deals = [
 	{
@@ -139,6 +139,9 @@ def register(request):
 	context = {}
 	return render(request, 'dumpApp/register.html', context)
 
+def logout(request):
+	context = {}
+	return render(request, 'dumpApp/logout.html', context)
 
 def login_error(request):
 	context = {}
@@ -154,7 +157,11 @@ def profile(request):
 		active_user = usersCustom.authenticate_user(username, password)
 		context['email'] = active_user.email
 		context['phone'] = active_user.cell
+		print(active_user.is_authenticated)
+		context['user_authenticated'] = active_user.is_authenticated
+		return render(request, 'dumpApp/profile.html', context)
 	except:
 		context['error'] = "Invalid username or password. Please Try Again"
-
-	return render(request, 'dumpApp/profile.html', context)
+		print(active_user.is_authenticated)
+		context['user_authenticated'] = active_user.is_authenticated
+		return render(request, 'dumpApp/login.html', context)

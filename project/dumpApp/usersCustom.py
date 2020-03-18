@@ -14,17 +14,27 @@ class userC:
 	is_authenticated = False
 
 	def __init__(self, tup):
-		self.ID = tup[0]
-		self.payment_option = tup[1]
-		self.username = tup[2]
-		self.email = tup[3]
-		self.password = tup[4]
-		self.cell = tup[5]
-		self.other_info = tup[6]
+		try:
+			self.ID = tup[0]
+			self.payment_option = tup[1]
+			self.username = tup[2]
+			self.email = tup[3]
+			self.password = tup[4]
+			self.cell = tup[5]
+			self.other_info = tup[6]
 		
-		#tup is not empty
-		if tup[0] != '':
-			self.is_authenticated = True
+			#tup is not empty
+			if tup[0] != '':
+				self.is_authenticated = True
+		except:
+			self.ID = ''
+			self.payment_option = ''
+			self.username = ''
+			self.email = ''
+			self.password = ''
+			self.cell = ''
+			self.other_info = ''
+			self.is_authenticated = False
 
 	def logout():
 		self.ID = ''
