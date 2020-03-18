@@ -11,13 +11,13 @@ class userC:
 	other_info = ''
 
 	def __init__(self, tup):
-		ID = tup['User_ID']
-		payment_option = tup['Payment_Option_ID']
-		username = tup['User_name']
-		email = tup['User_Email']
-		password = tup['User_Password']
-		cell = tup['User_Cell']
-		other_info = tup['Other_Information']
+		self.ID = tup[0]
+		self.payment_option = tup[1]
+		self.username = tup[2]
+		self.email = tup[3]
+		self.password = tup[4]
+		self.cell = tup[5]
+	#other_info = tup[6]
 
 def authenticate_user(username='', password = ''):
 	output = ""
@@ -43,13 +43,14 @@ def authenticate_user(username='', password = ''):
 	else: 
 		cursor = conn.cursor()
 		cursor.execute("SELECT * FROM users WHERE User_Email='"+username+"' AND User_Password='"+password+"'")
-		tuple = cursor.fetchall()
-		for field in tuple:
-			print(field)
+		tupleC = cursor.fetchall()
+		#print(tupleC[0])
 
 		cursor.close()
 		conn.close()
-		return tuple
+		return userC(tupleC[0])
 
 
-authenticate_user(username = 'thomas97@gmail.com', password = 'thomaspassword')
+u = authenticate_user(username = 'thomas97@gmail.com', password = 'thomaspassword')
+
+print(u.ID)
