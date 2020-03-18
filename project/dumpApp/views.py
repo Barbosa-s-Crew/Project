@@ -124,3 +124,17 @@ def get_query_results(query=None):
 def contact(request):
 	#the dictionary context is the database query
 	return render(request, 'dumpApp/base.html', {})
+
+
+
+
+def login(request):
+	return render(request, 'dumpApp/login.html', context)
+
+
+def register(request):
+	return render(request, 'dumpApp/register.html', context)
+
+
+def login_error(request):
+	return render(request, 'dumpApp/login_error.html', context)

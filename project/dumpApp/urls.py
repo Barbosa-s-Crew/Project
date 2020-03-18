@@ -10,5 +10,7 @@ urlpatterns = [
     path('order/', views.order, name='blog-order'),
     path('search/', views.search, name='blog-search'),
     path('search_results/', views.search_results, name='blog-search_results'),
-
+ 	path('login/', views.login, name='login'),
+    path('register/', views.register, name='register'),
+    path('login_error/', views.login_error, name='login_error'),
 ]

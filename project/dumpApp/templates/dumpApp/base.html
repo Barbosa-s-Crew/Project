@@ -59,8 +59,10 @@
                 </div>
             <!-- ADDED-->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Sign Up</a>
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+              <!-- if don't have an account -->
+              <a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>
               <!--if logged in = true, no need for login tab and register, just log out and manage account -->
             </div>
           </div>
