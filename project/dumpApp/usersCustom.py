@@ -36,7 +36,7 @@ class userC:
 			self.other_info = ''
 			self.is_authenticated = False
 
-	def logout():
+	def logout(self):
 		self.ID = ''
 		self.payment_option = ''
 		self.username = ''

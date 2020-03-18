@@ -141,6 +141,7 @@ def register(request):
 
 def logout(request):
 	context = {}
+	active_user.logout()
 	return render(request, 'dumpApp/logout.html', context)
 
 def login_error(request):
