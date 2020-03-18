@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 #import encryption
-import DBSetup
+from . import DBSetup
 
 class userC:
 	ID = ''

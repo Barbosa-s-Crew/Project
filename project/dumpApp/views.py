@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . import sktest
 from . import YelpFusion
+from . import usersCustom
 
 from django.db.models import Q
 
 posts =  sktest.getDB()
 
-
+active_user = usersCustom.userC
 
 deals = [
 	{
@@ -123,6 +124,7 @@ def get_query_results(query=None):
 
 def contact(request):
 	#the dictionary context is the database query
+
 	return render(request, 'dumpApp/base.html', {})
 
 
@@ -144,4 +146,15 @@ def login_error(request):
 
 def profile(request):
 	context = {}
+	if request.method == "POST":
+		#sktest.
+		username = request.POST['username']
+		password = request.POST['password']
+	try:
+		active_user = usersCustom.authenticate_user(username, password)
+		context['email'] = active_user.email
+		context['phone'] = active_user.cell
+	except:
+		context['error'] = "Invalid username or password. Please Try Again"
+
 	return render(request, 'dumpApp/profile.html', context)
