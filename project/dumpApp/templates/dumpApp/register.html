@@ -3,9 +3,9 @@
     <h1>Register</h1>
       <!-- <input type="text" name="" value="myvalue"> -->
       <!-- search inside url not recognized -->
-      <form method="POST" action="{% url 'blog-home' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
+      <form method="POST" action="{% url 'home' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-          <input type="text" class="form-control" name="password" id="password" placeholder="Password">
-          <input type="submit" value="submit">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+          <input type="submit" value="Sign Up">
       </form>
 {% endblock content %}

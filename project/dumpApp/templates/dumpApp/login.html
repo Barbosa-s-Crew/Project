@@ -5,16 +5,16 @@
       <!-- search inside url not recognized -->
       {% if error %}
       {{error}}
-      <form method="POST" action="{% url 'profile' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
+      <form method="POST" action="{% url 'login' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-          <input type="text" class="form-control" name="password" id="password" placeholder="Password">
-          <input type="submit" value="submit">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+          <input type="submit" value="Sign In">
       </form>
       {% else %}
-      <form method="POST" action="{% url 'profile' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
+      <form method="POST" action="{% url 'login' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-          <input type="text" class="form-control" name="password" id="password" placeholder="Password">
-          <input type="submit" value="submit">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+          <input type="submit" value="Sign In">
       </form>
       {% endif %}
       

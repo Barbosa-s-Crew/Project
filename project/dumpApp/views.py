@@ -10,62 +10,73 @@ posts =  sktest.getDB()
 
 active_user = usersCustom.userC([''])
 
-deals = [
-	{
-		'name': 'Deal 1',
-		'food_type': 'Deal Type 1',
-		'restaurant': 'Restaurant 1',
-		'price': '$11',
-		'rating': '4.5 Stars',
-		'is_saved': 'false',
-		'duration': '20-30 min',
-		'items': 'item_1'
-	},
-	{
-		'name': 'Deal 2',
-		'food_type': 'Deal Type 2',
-		'restaurant': 'Restaurant 2',
-		'price': '$22',
-		'rating': '3 Stars',
-		'ss_saved': 'true',
-		'duration': '30-35 min',
-		'items': 'item_2'
-		}
-]
-
 def home(request):
-	context_deals = {
-		'deals': deals
+	global active_user
+	context = {
+		'deals': deals,
+		'user_authenticated': active_user.is_authenticated
 	}
-	return render(request, 'dumpApp/home.html', context_deals)
+	try:
+		print(active_user['username'])
+	except:
+		print("Not there")
+	return render(request, 'dumpApp/home.html', context)
 
 def dump(request):
+	global active_user
 	context = {
 		'table': posts
 	}
 	return render(request, 'dumpApp/dump.html', context)
 
 def about(request):
-	return render(request, 'dumpApp/about.html', {'title': 'About'})
+	global active_user
+	context = {
+		'title': 'About',
+		'user_authenticated': active_user.is_authenticated
+	}
+	return render(request, 'dumpApp/about.html', context)
 
 def browse(request):
-	return render(request, 'dumpApp/browse.html', {'title': 'Browse'})
+	global active_user
+	context = {
+		'title': 'Browse',
+		'user_authenticated': active_user.is_authenticated
+	}
+	return render(request, 'dumpApp/browse.html', context)
 
 def deals(request):
-	return render(request, 'dumpApp/deals.html', {'title': 'Deals'})
+	global active_user
+	context = {
+		'title': 'Deals',
+		'user_authenticated': active_user.is_authenticated
+	}
+	return render(request, 'dumpApp/deals.html', context)
 
 def order(request):
-	return render(request, 'dumpApp/order.html', {'title': 'Order'})
+	global active_user
+	context = {
+		'title': 'Order',
+		'user_authenticated': active_user.is_authenticated
+	}
+	return render(request, 'dumpApp/order.html', context)
 
 def search(request):
+	global active_user
+	context = {
+		'table': posts,
+		'user_authenticated': active_user.is_authenticated
+	}
 	if request.method == "POST":
 		name = request.POST['myvalue']
 		print(name)
 	return render(request, 'dumpApp/search.html', {'title': 'Search'})
 
 def search_results(request):
+	global active_user
 	context = {
-		'name': "Narek Zamanyan"
+		'name': "Narek Zamanyan",
+		'user_authenticated': active_user.is_authenticated
 	}
 
 	if request.method == "POST":
@@ -103,6 +114,7 @@ def search_results(request):
 
 #ADDED (Mitch)
 def get_query_results(query=None):
+	global active_user
 #def search(request)
 	queryset = []
 	#creating a list out of all the query phrases
@@ -127,33 +139,15 @@ def contact(request):
 
 	return render(request, 'dumpApp/base.html', {})
 
-
-
-
 def login(request):
-	context = {}
-	return render(request, 'dumpApp/login.html', context)
-
-
-def register(request):
-	context = {}
-	return render(request, 'dumpApp/register.html', context)
-
-def logout(request):
-	context = {}
-	active_user.logout()
-	return render(request, 'dumpApp/logout.html', context)
-
-def login_error(request):
-	context = {}
-	return render(request, 'dumpApp/login_error.html', context)
-
-def profile(request):
+	global active_user
 	context = {}
 	if request.method == "POST":
-		#sktest.
 		username = request.POST['username']
 		password = request.POST['password']
+	else:
+		return render(request, 'dumpApp/login.html', context)
+
 	try:
 		active_user = usersCustom.authenticate_user(username, password)
 		context['email'] = active_user.email
@@ -162,7 +156,32 @@ def profile(request):
 		context['user_authenticated'] = active_user.is_authenticated
 		return render(request, 'dumpApp/profile.html', context)
 	except:
-		context['error'] = "Invalid username or password. Please Try Again"
-		print(active_user.is_authenticated)
-		context['user_authenticated'] = active_user.is_authenticated
+		print("Error is true")
+		context['error'] = "Invalid username or password"
 		return render(request, 'dumpApp/login.html', context)
+
+def register(request):
+	global active_user
+	context = {}
+	return render(request, 'dumpApp/register.html', context)
+
+def logout(request):
+	global active_user
+	context = {}
+	active_user.logout()
+	return render(request, 'dumpApp/logout.html', context)
+
+def login_error(request):
+	global active_user
+	context = {}
+	return render(request, 'dumpApp/login_error.html', context)
+
+def profile(request):
+	global active_user
+	context = {
+		'user_authenticated': active_user.is_authenticated
+	}
+	if active_user['is_authenticated']:
+		return render(request, 'dumpApp/profile.html', context)
+	else:
+		login(request)

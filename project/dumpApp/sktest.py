@@ -24,22 +24,22 @@ def getDB():
       cursor.execute("SHOW TABLES")
       tables = cursor.fetchall()
       for table in tables:
-          print("TABLE_NAME:"+table[0])
+          #print("TABLE_NAME:"+table[0])
           output += ("TABLE_NAME:"+table[0]+'\n')
           cursor.execute("DESCRIBE "+table[0])
           descriptions = cursor.fetchall()
           for description in descriptions:
-              print('{:20}'.format(description[0]),end="")
+              #print('{:20}'.format(description[0]),end="")
               output += ('{:20}'.format(description[0]))
-          print("")
+          #print("")
           output += '\n'
           cursor.execute("SELECT * FROM "+table[0])
           rows = cursor.fetchall()
           for row in rows:
               for element in row:
-                  print('{:20}'.format(str(element)),end="")
+                  #print('{:20}'.format(str(element)),end="")
                   output += ('{:20}'.format(str(element)))
-              print("")
+              #print("")
               output += '\n'
 
       cursor.close()
