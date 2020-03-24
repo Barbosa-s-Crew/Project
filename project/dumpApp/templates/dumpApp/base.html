@@ -9,6 +9,10 @@
       max-width: 250px;
       width: 100%;
     }
+    .text-input{
+      max-width:300px;
+      width: 100%;
+    }
   </style>
 
   <!-- ADDED -->
@@ -63,7 +67,7 @@
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
                 {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-              <a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>
+              <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
                 {% endif %}
               <!--if logged in = true, no need for login tab and register, just log out and manage account -->
             </div>
