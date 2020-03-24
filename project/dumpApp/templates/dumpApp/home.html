@@ -1,7 +1,7 @@
 
 {% extends "dumpApp/base.html" %}
 {% block content %}
-	  <a class="navbar-brand mr-4" href="dump/">Dump</a>
+	  
 		{% for deal in deals %}
 			<h2>{{deal.name}} </h2>
 			<p>{{deal.items}} for only {{deal.price}}</p>
