@@ -10,7 +10,7 @@
       <form method="POST" action="{% url 'login' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control text-input" name="username" id="username" placeholder="Username">
           <br>
-          <input type="text" class="form-control text-input" name="password" id="password" placeholder="Password">
+          <input type="password" class="form-control text-input" name="password" id="password" placeholder="Password">
           <br>
           <input type="submit" value="Log In">
       </form>
@@ -18,7 +18,7 @@
       <form method="POST" action="{% url 'login' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control text-input" name="username" id="username" placeholder="Username">
           <br>
-          <input type="text" class="form-control text-input" name="password" id="password" placeholder="Password">
+          <input type="password" class="form-control text-input" name="password" id="password" placeholder="Password">
           <br>
           <input type="submit" value="Log In" style="float:center">
       </form>

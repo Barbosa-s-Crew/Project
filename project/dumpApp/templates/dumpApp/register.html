@@ -5,7 +5,7 @@
     <br>
       <!-- <input type="text" name="" value="myvalue"> -->
       <!-- search inside url not recognized -->
-      <form method="POST" action="{% url 'blog-home' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
+      <form method="POST" action="{% url 'home' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control text-input" name="username" id="username" placeholder="Username">
           <br>
           <input type="text" class="form-control text-input" name="password" id="password" placeholder="Password">
