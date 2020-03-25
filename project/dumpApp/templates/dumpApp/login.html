@@ -7,7 +7,7 @@
       <!-- search inside url not recognized -->
       {% if error %}
       {{error}}
-      <form method="POST" action="{% url 'profile' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
+      <form method="POST" action="{% url 'login' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control text-input" name="username" id="username" placeholder="Username">
           <br>
           <input type="text" class="form-control text-input" name="password" id="password" placeholder="Password">
@@ -15,7 +15,7 @@
           <input type="submit" value="Log In">
       </form>
       {% else %}
-      <form method="POST" action="{% url 'profile' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
+      <form method="POST" action="{% url 'login' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control text-input" name="username" id="username" placeholder="Username">
           <br>
           <input type="text" class="form-control text-input" name="password" id="password" placeholder="Password">

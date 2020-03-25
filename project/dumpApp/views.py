@@ -14,12 +14,8 @@ def home(request):
 	global active_user
 	context = {
 		'deals': deals,
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': active_user.is_authenticated,
 	}
-	try:
-		print(active_user['username'])
-	except:
-		print("Not there")
 	return render(request, 'dumpApp/home.html', context)
 
 def dump(request):
@@ -65,12 +61,13 @@ def search(request):
 	global active_user
 	context = {
 		'table': posts,
+		'title': 'Search',
 		'user_authenticated': active_user.is_authenticated
 	}
 	if request.method == "POST":
 		name = request.POST['myvalue']
 		print(name)
-	return render(request, 'dumpApp/search.html', {'title': 'Search'})
+	return render(request, 'dumpApp/search.html', context)
 
 def search_results(request):
 	global active_user
@@ -179,9 +176,14 @@ def login_error(request):
 def profile(request):
 	global active_user
 	context = {
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': active_user.is_authenticated,
+		'email': active_user.email,
+		'phone': active_user.cell
 	}
-	if active_user['is_authenticated']:
-		return render(request, 'dumpApp/profile.html', context)
-	else:
-		login(request)
+	try:
+		if active_user.is_authenticated:
+			return render(request, 'dumpApp/profile.html', context)
+		else:
+			return login(request)
+	except:
+		return login(request)
