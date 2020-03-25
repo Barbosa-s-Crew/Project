@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import errorcode
 #import encryption
 from . import DBSetup
+from django.contrib.auth.hashers import check_password, make_password
 
 class userC:
 	ID = ''
@@ -75,7 +76,7 @@ def authenticate_user(username='', password = ''):
 		#newKey = encryption.verify(password, fetchedUser.password)
 		#print(newKey)
 		#if newKey == fetchedUser.password:
-		if password == fetchedUser.password:
+		if check_password(password, 'pbkdf2_sha256$180000$SxBrTW41W1Ju$/CBjEyl/AjDyVVBceoX8SGl8rmO7wzjrtW2tlRQx71Y='):
 			print("Valid email/password combination.")
 			return fetchedUser
 		else:
@@ -100,7 +101,7 @@ def create_user(email = '', password = ''):
 		cursor = conn.cursor()
 		#cursor.execute("INSERT INTO users (User_ID, Payment_Option_ID, User_name, User_Email, User_Password, User_Cell, Other_Information) VALUES ('"+user.ID+"', '"+user.payment_option+"',  '"+user.username+"', '"+user.password+"', '"+user.Cell+"', '"+user.other_info+"')")
 		#cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
-		cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+password+"');")
+		cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+make_password(password)+"');")
 		#print("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+str(encryption.encrypt(password)).replace('\\', '\\\\').replace('\'','\\\'').replace('\"','\\\"') +"');")
 		conn.commit()
 		cursor.close()
@@ -108,7 +109,7 @@ def create_user(email = '', password = ''):
 
 #create_user(email = 'GGG', password = '123')
 
-u = authenticate_user(username = 'thomas97@gmail.com', password = 'thomaspassword')
+u=authenticate_user(username='abc',password= '123')
 
 
-#print(u.ID)
+print(u.email)
