@@ -8,61 +8,69 @@ from django.db.models import Q
 
 posts =  sktest.getDB()
 
-active_user = usersCustom.userC([''])
+#request.session['active_user'] = usersCustom.userC([''])
+def check_user(request):
+	try:
+		if not request.session['is_authenticated']:
+			request.session['is_authenticated'] = False
+		else:
+			request.session['is_authenticated'] = True
+	except:
+		request.session['is_authenticated'] = False
 
 def home(request):
-	global active_user
+	check_user(request)
 	context = {
 		'deals': deals,
-		'user_authenticated': active_user.is_authenticated,
+		'user_authenticated': request.session['is_authenticated']
 	}
 	return render(request, 'dumpApp/home.html', context)
 
 def dump(request):
-	global active_user
+	check_user(request)
 	context = {
 		'table': posts
 	}
 	return render(request, 'dumpApp/dump.html', context)
 
 def about(request):
-	global active_user
+	check_user(request)
 	context = {
 		'title': 'About',
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': request.session['is_authenticated']
 	}
 	return render(request, 'dumpApp/about.html', context)
 
 def browse(request):
-	global active_user
+	check_user(request)
 	context = {
 		'title': 'Browse',
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': request.session['is_authenticated']
 	}
 	return render(request, 'dumpApp/browse.html', context)
 
 def deals(request):
-	global active_user
+	check_user(request)
 	context = {
 		'title': 'Deals',
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': request.session['is_authenticated']
 	}
 	return render(request, 'dumpApp/deals.html', context)
 
 def order(request):
-	global active_user
+	check_user(request)
 	context = {
 		'title': 'Order',
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': request.session['is_authenticated']
 	}
 	return render(request, 'dumpApp/order.html', context)
 
 def search(request):
-	global active_user
+	check_user(request)
 	context = {
 		'table': posts,
 		'title': 'Search',
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': request.session['is_authenticated']
 	}
 	if request.method == "POST":
 		name = request.POST['myvalue']
@@ -70,10 +78,10 @@ def search(request):
 	return render(request, 'dumpApp/search.html', context)
 
 def search_results(request):
-	global active_user
+	check_user(request)
 	context = {
 		'name': "Narek Zamanyan",
-		'user_authenticated': active_user.is_authenticated
+		'user_authenticated': request.session['is_authenticated']
 	}
 
 	if request.method == "POST":
@@ -111,7 +119,6 @@ def search_results(request):
 
 #ADDED (Mitch)
 def get_query_results(query=None):
-	global active_user
 #def search(request)
 	queryset = []
 	#creating a list out of all the query phrases
@@ -132,12 +139,13 @@ def get_query_results(query=None):
 #ADDED (Mitch)
 
 def contact(request):
+	check_user(request)
 	#the dictionary context is the database query
 
 	return render(request, 'dumpApp/base.html', {})
 
 def login(request):
-	global active_user
+	check_user(request)
 	context = {}
 	if request.method == "POST":
 		username = request.POST['username']
@@ -146,11 +154,12 @@ def login(request):
 		return render(request, 'dumpApp/login.html', context)
 
 	try:
-		active_user = usersCustom.authenticate_user(username, password)
-		context['email'] = active_user.email
-		context['phone'] = active_user.cell
-		print(active_user.is_authenticated)
-		context['user_authenticated'] = active_user.is_authenticated
+		user = usersCustom.authenticate_user(username, password)
+		request.session['email'] = user.email
+		request.session['cell'] = user.cell
+		request.session['is_authenticated'] = user.is_authenticated
+		print(request.session['is_authenticated'])
+		context['user_authenticated'] = request.session['is_authenticated']
 		return render(request, 'dumpApp/profile.html', context)
 	except:
 		print("Error is true")
@@ -158,30 +167,30 @@ def login(request):
 		return render(request, 'dumpApp/login.html', context)
 
 def register(request):
-	global active_user
+	check_user(request)
 	context = {}
 	return render(request, 'dumpApp/register.html', context)
 
 def logout(request):
-	global active_user
+	check_user(request)
 	context = {}
-	active_user.logout()
+	request.session.flush()
 	return render(request, 'dumpApp/logout.html', context)
 
 def login_error(request):
-	global active_user
+	check_user(request)
 	context = {}
 	return render(request, 'dumpApp/login_error.html', context)
 
 def profile(request):
-	global active_user
+	check_user(request)
 	context = {
-		'user_authenticated': active_user.is_authenticated,
-		'email': active_user.email,
-		'phone': active_user.cell
+		'user_authenticated': request.session['is_authenticated'],
+		'email': request.session['email'],
+		'phone': request.session['cell']
 	}
 	try:
-		if active_user.is_authenticated:
+		if request.session['is_authenticated']:
 			return render(request, 'dumpApp/profile.html', context)
 		else:
 			return login(request)
