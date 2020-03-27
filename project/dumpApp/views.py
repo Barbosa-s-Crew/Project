@@ -224,13 +224,50 @@ def restaurants(request):
 
 	if request.method == "POST":
 	# 	#sktest.
-	 	context['photos'] = request.POST['photos']
-	 	context['phone'] = request.POST['phone']
-	 	photos_array = request.POST['photos']
-	 	context['array'] = photos_array
-	 	context['location'] = request.POST['location']
-	 	context['hours'] = request.POST['hours']
-	 	context['is_closed'] = request.POST['is_closed']
+		restaurant = YelpFusion.search_restaurant(request.POST['id'])
+		context['everything'] = restaurant
+		schedule = {}
+		#context['formatted_schedule']
+		#for i in range(5):
+		#if i == 0:
+		schedule['Monday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+		schedule['Monday'] = schedule['Monday'] + ' - '
+		schedule['Monday'] = schedule['Monday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Monday'] = 'Monday   ' + schedule['Monday']
+
+		schedule['Tuesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+		schedule['Tuesday'] = schedule['Tuesday'] + ' - '
+		schedule['Tuesday'] = schedule['Tuesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Tuesday'] = 'Tuesday   ' + schedule['Tuesday']
+
+		schedule['Wednesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+		schedule['Wednesday'] = schedule['Wednesday'] + ' - '
+		schedule['Wednesday'] = schedule['Wednesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Wednesday'] = 'Wednesday   ' + schedule['Wednesday']
+
+		schedule['Thursday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+		schedule['Thursday'] = schedule['Thursday'] + ' - '
+		schedule['Thursday'] = schedule['Thursday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Thursday'] = 'Thursday   ' + schedule['Thursday']
+
+		schedule['Friday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+		schedule['Friday'] = schedule['Friday'] + ' - '
+		schedule['Friday'] = schedule['Friday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Friday'] = 'Friday   ' + schedule['Friday']
+
+		print(restaurant['hours'])
+		#schedule['Monday'] += "-"
+		#schedule['Monday'] += restaurant.hours
+		context['schedule'] = schedule
+	 	# context['photos'] = restaurant.photos
+	 	# context['image_url'] = request.POST['image_url']
+	 	# context['phone'] = request.POST['phone']
+	 	# photos_array = request.POST['photos']
+	 	# context['array'] = photos_array
+	 	# context['location'] = request.POST['location']
+	 	# context['hours'] = request.POST['hours']
+	 	# context['is_closed'] = request.POST['is_closed']
+	 	# print(request.POST['photos'])
 	# 	#context['name'] = name
 	# 	#print(name)
 	# #list = (YelpFusion.search_yelp(request.POST['myvalue'])).split(" ")

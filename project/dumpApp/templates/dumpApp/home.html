@@ -1,20 +1,20 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
-	  
-		{% for deal in deals %}
-			<h2>{{deal.name}} </h2>
-			<p>{{deal.items}} for only {{deal.price}}</p>
+    
+    {% for deal in deals %}
+      <h2>{{deal.name}} </h2>
+      <p>{{deal.items}} for only {{deal.price}}</p>
 
-		{% endfor %}
+    {% endfor %}
 
-	
+  
 
-		<div class="bg-image"> 
+    <div class="bg-image"> 
        
 
 
 
-		<h2 align="center" style="color: white; font-size: 35px; text-align: center;">Barbosa's Crew will deliver it to you!
+    <h2 align="center" style="color: white; font-size: 35px; text-align: center;">Barbosa's Crew will deliver it to you!
         </h2>
         <form method="POST" align="center"  method="POST" action="{% url 'search_results' %}"> {% csrf_token %}
           <!-- <input style="width: 180px; border: 3px solid green; text-align: center;" type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}> -->
@@ -22,8 +22,6 @@
            <input style="width: 80px; border: 3px solid green; text-align: center;" type="submit" value="Search">
 
         </form>
-      
-
       </div>
       <br>
       <div style="background-color: #52C1F0; height: 1px; width: 100%"></div>
@@ -38,9 +36,9 @@
 <!-- -->
 <div class="horizontal-scroll-wrapper squares">
   <div >
-  	<a href="add_link">
-  		<img style="background-size: 10px; width: 300px; height: 300px; border: 0px solid; color: #beeeef" src="https://static.toiimg.com/photo/72023714.cms">
-  	</a>
+    <a href="add_link">
+      <img style="background-size: 10px; width: 300px; height: 300px; border: 0px solid; color: #beeeef" src="https://static.toiimg.com/photo/72023714.cms">
+    </a>
   </div>
   <div>item 2</div>
   <div>item 3</div>

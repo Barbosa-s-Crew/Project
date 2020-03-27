@@ -138,6 +138,8 @@ def query_api(params):
     pprint.pprint(response, indent=2)
     return businesses
 
+def search_restaurant(restaurant_ID):
+    return get_business(API_KEY, restaurant_ID)
 
 def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', categories='restaurants', locale='', limit = 3, offset =0, sort_by='', price='', open_now= True, open_at = 0, attributes ='',):
     # documentation on what each term means at
@@ -213,6 +215,5 @@ def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', 
                 error.read(),
             )
         )
-
 #if __name__ == '__main__':
     #search_yelp(term = 'sushi', location = 'Pomona')

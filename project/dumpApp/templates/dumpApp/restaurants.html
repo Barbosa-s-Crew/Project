@@ -1,36 +1,77 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
-    {% if is_closed %}
+    <!-- {% if is_closed %}
       <h3 style="color: red">Now Closed</h3>
     {% else %}
       <h3 style="color: green">Now Open</h3>
-    {% endif %}
+    {% endif %} -->
     <!--<img src="{{ image }}" height="400" width="400"> -->
 
    <!--  <h3>{{ phone }}</h3>
     <h3>{{ photos }}<br></h3>
     <h3>{{ location }}</h3> -->
     <!-- Photo Gallery -->
-    <div class="gallery">
+    
+
+    <!-- <div class="gallery">
       <a target="_blank" href="img_5terre.jpg">
-      <img src="{{ photos }}" alt="Cinque Terre" width="600" height="400">
+      <img src="{{ image_url }}" alt="Cinque Terre" width="600" height="400">
       </a>
       <div class="desc">Add a description of the image here</div>
-    </div>
+    </div> -->
+<!-- 
+    <img src="{{ image_url }}" width="600" height="400">
+    
     {% for photo in photos %} 
     <div class="gallery">
       <a target="_blank" href="img_5terre.jpg">
-      <img src="{{ photos }}" alt="Cinque Terre" width="600" height="400">
+      <img src="{{ photo }}" alt="Cinque Terre" width="600" height="400">
       </a>
       <div class="desc">Add a description of the image here</div>
     </div>
-   <!--  <h3>{{ photo }}</h3> -->
+     <h3>{{ photo }}</h3> 
     {% empty %}
-      <h3>Sorry, no photos for this restaurant</h3>
-    {% endfor %}
+      <h3>Sorry, no photos for this restaurant</h3> -->
+    <!-- {% endfor %} -->
+
+<!--     <h1>{{ everything }}</h1> -->
     
+    <h2><a href="{{ everything.url }}">{{ everything.name }}</a></h2>
+    <h3 style="color: green">Address</h3>
+    <h3>{{ everything.location.address1 }} {{ everything.location.city }} {{ everything.location.zip_code }},
+      {{ everything.location.state }}
+    </h3>
+    <br>
+    <h3 style="color: green">Schedule</h3>
+    <h3>{{ schedule.Monday }}</h3>
+    <h3>{{ schedule.Tuesday }}</h3>
+    <h3>{{ schedule.Wednesday }}</h3>
+    <h3>{{ schedule.Thursday }}</h3>
+    <h3>{{ schedule.Friday }}</h3>
+    <br>
+    <br>
+    <h4 style="color: green">Phone: </h4>
+    <h4>{{ everything.display_phone }}</h4>
+    <h4 style="color: green">Rating: </h4>
+    <h4>{{ everything.rating }}</h4>
+    <!-- <p>{{ schedule.Monday }}</p> -->
+    <!-- {% for days in schedule %}
+        <p>{{ days }}</p>
+        {% for day in days %}
+          <p>{{ day }}</p>
+        {% endfor %}
+    {% endfor %} -->
+
+    {% for photo in everything.photos %} 
+    <div class="gallery">
+      <a target="_blank" href="{{ photo }}">
+      <img src="{{ photo }}" alt="Cinque Terre" width="600" height="400">
+      </a>
+      <!-- <div class="desc">Add a description of the image here</div> -->
+    </div>
+    {% empty %}
+      <h3>Sorry, no photos for this restaurant</h3> 
+    {% endfor %}
 
 
-
-    <h1>In {{ location.city }}</h1>   
 {% endblock content %}

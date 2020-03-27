@@ -1,118 +1,97 @@
 {
-  "id": "1bEFouiXiNo3I6vslUdZKA",
-  "alias": "sushi-sasabune-glendale",
-  "name": "Sushi Sasabune",
-  "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/oh7hMaLOG7tGbwPtW5xNcQ/o.jpg",
+  "id": "jIu7TUg3cDAmK07KbwAOKw",
+  "alias": "cafe-sierra-universal-city",
+  "name": "Cafe Sierra",
+  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/-I0rFYfLPc_7z8UygI-cDw/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/sushi-sasabune-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18186961124",
-  "display_phone": "(818) 696-1124",
-  "review_count": 284,
+  "url": "https://www.yelp.com/biz/cafe-sierra-universal-city?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18185092030",
+  "display_phone": "(818) 509-2030",
+  "review_count": 962,
   "categories": [
     {
-      "alias": "sushi",
-      "title": "Sushi Bars"
+      "alias": "newamerican",
+      "title": "American (New)"
     },
     {
-      "alias": "japanese",
-      "title": "Japanese"
+      "alias": "chinese",
+      "title": "Chinese"
+    },
+    {
+      "alias": "buffets",
+      "title": "Buffets"
     }
   ],
-  "rating": 4.5,
+  "rating": 3.5,
   "location": {
-    "address1": "101 N Brand Blvd",
-    "address2": "Ste 220",
+    "address1": "555 Universal Hollywood Dr",
+    "address2": "",
     "address3": "",
-    "city": "Glendale",
-    "zip_code": "91203",
+    "city": "Universal City",
+    "zip_code": "91608",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "101 N Brand Blvd",
-      "Ste 220",
-      "Glendale, CA 91203"
+      "555 Universal Hollywood Dr",
+      "Universal City, CA 91608"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-    "latitude": 34.1467089188584,
-    "longitude": -118.255266031214
+    "latitude": 34.137063,
+    "longitude": -118.358529
   },
   "photos": [
-    "https://s3-media3.fl.yelpcdn.com/bphoto/oh7hMaLOG7tGbwPtW5xNcQ/o.jpg",
-    "https://s3-media3.fl.yelpcdn.com/bphoto/S4BoN55j4IeUBYg51cc15w/o.jpg",
-    "https://s3-media4.fl.yelpcdn.com/bphoto/Fey9j-4k9vmDhtgFD-Uxdw/o.jpg"
+    "https://s3-media4.fl.yelpcdn.com/bphoto/-I0rFYfLPc_7z8UygI-cDw/o.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/61D4MVTHpcUZkQQSdusluw/o.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/rKKGnfnrm0C9OZ6Mew2AuA/o.jpg"
   ],
-  "price": "$$$$",
+  "price": "$$$",
   "hours": [
     {
       "open": [
         {
           "is_overnight": false,
-          "start": "1200",
-          "end": "1400",
+          "start": "0630",
+          "end": "2100",
           "day": 0
         },
         {
           "is_overnight": false,
-          "start": "1730",
-          "end": "2130",
-          "day": 0
-        },
-        {
-          "is_overnight": false,
-          "start": "1200",
-          "end": "1400",
+          "start": "0630",
+          "end": "2100",
           "day": 1
         },
         {
           "is_overnight": false,
-          "start": "1730",
-          "end": "2130",
-          "day": 1
-        },
-        {
-          "is_overnight": false,
-          "start": "1200",
-          "end": "1400",
+          "start": "0630",
+          "end": "2100",
           "day": 2
         },
         {
           "is_overnight": false,
-          "start": "1730",
-          "end": "2130",
-          "day": 2
-        },
-        {
-          "is_overnight": false,
-          "start": "1200",
-          "end": "1400",
+          "start": "0630",
+          "end": "2100",
           "day": 3
         },
         {
           "is_overnight": false,
-          "start": "1730",
-          "end": "2130",
-          "day": 3
-        },
-        {
-          "is_overnight": false,
-          "start": "1200",
-          "end": "1400",
+          "start": "0630",
+          "end": "2200",
           "day": 4
         },
         {
           "is_overnight": false,
-          "start": "1730",
-          "end": "2130",
-          "day": 4
-        },
-        {
-          "is_overnight": false,
-          "start": "1730",
-          "end": "2130",
+          "start": "0630",
+          "end": "2200",
           "day": 5
+        },
+        {
+          "is_overnight": false,
+          "start": "0630",
+          "end": "2100",
+          "day": 6
         }
       ],
       "hours_type": "REGULAR",
