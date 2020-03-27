@@ -32,7 +32,7 @@ def dump(request):
 		'table': posts
 	}
 	return render(request, 'dumpApp/dump.html', context)
-
+	
 def about(request):
 	check_user(request)
 	context = {
