@@ -169,7 +169,23 @@ def login(request):
 def register(request):
 	check_user(request)
 	context = {}
-	return render(request, 'dumpApp/register.html', context)
+
+	if request.method == "POST":
+		email = request.POST['email']
+		password = request.POST['password']
+	else:
+		return render(request, 'dumpApp/register.html', context)
+	try:
+		user_created = usersCustom.create_user(email, password)
+		if(user_created == True):
+			return render(request, 'dumpApp/login.html', context)
+		else:
+			context['error'] = "User Already Exist with that email"
+			return render(request, 'dumpApp/register.html', context)
+	except:
+		context['error_1'] = "Database failure"
+		return render(request, 'dumpApp/register.html', context)
+
 
 def logout(request):
 	check_user(request)
@@ -196,3 +212,31 @@ def profile(request):
 			return login(request)
 	except:
 		return login(request)
+
+def restaurants(request):
+	check_user(request)
+
+	#the dictionary context is the database query
+	context = {}
+	# 	'name': "Narek Zamanyan",
+	# 	'user_authenticated': request.session['is_authenticated']
+	# }
+
+	if request.method == "POST":
+	# 	#sktest.
+	 	context['photos'] = request.POST['photos']
+	 	context['phone'] = request.POST['phone']
+	 	photos_array = request.POST['photos']
+	 	context['array'] = photos_array
+	 	context['location'] = request.POST['location']
+	 	context['hours'] = request.POST['hours']
+	 	context['is_closed'] = request.POST['is_closed']
+	# 	#context['name'] = name
+	# 	#print(name)
+	# #list = (YelpFusion.search_yelp(request.POST['myvalue'])).split(" ")
+	# list = (request.POST['myvalue']).split(' ')
+	# context['search_results'] = YelpFusion.search_yelp('term = ' + list[0], 'location = ' + list[1])
+
+
+	return render(request, 'dumpApp/restaurants.html', context)
+

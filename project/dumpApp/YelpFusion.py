@@ -139,7 +139,7 @@ def query_api(params):
     return businesses
 
 
-def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', categories='restaurants', locale='', limit = 3, offset =0, sort_by='', price='', open_now= True, open_at = 0, attributes ='', ):
+def search_yelp(term = '', location ='', latitude =0, longitude =0, radius ='', categories='restaurants', locale='', limit = 3, offset =0, sort_by='', price='', open_now= True, open_at = 0, attributes ='',):
     # documentation on what each term means at
     # https://www.yelp.com/developers/documentation/v3/business_search
     # dont be lazy :)

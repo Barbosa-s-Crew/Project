@@ -1,0 +1,36 @@
+{% extends "dumpApp/base.html" %}
+{% block content %}
+    {% if is_closed %}
+      <h3 style="color: red">Now Closed</h3>
+    {% else %}
+      <h3 style="color: green">Now Open</h3>
+    {% endif %}
+    <!--<img src="{{ image }}" height="400" width="400"> -->
+
+   <!--  <h3>{{ phone }}</h3>
+    <h3>{{ photos }}<br></h3>
+    <h3>{{ location }}</h3> -->
+    <!-- Photo Gallery -->
+    <div class="gallery">
+      <a target="_blank" href="img_5terre.jpg">
+      <img src="{{ photos }}" alt="Cinque Terre" width="600" height="400">
+      </a>
+      <div class="desc">Add a description of the image here</div>
+    </div>
+    {% for photo in photos %} 
+    <div class="gallery">
+      <a target="_blank" href="img_5terre.jpg">
+      <img src="{{ photos }}" alt="Cinque Terre" width="600" height="400">
+      </a>
+      <div class="desc">Add a description of the image here</div>
+    </div>
+   <!--  <h3>{{ photo }}</h3> -->
+    {% empty %}
+      <h3>Sorry, no photos for this restaurant</h3>
+    {% endfor %}
+    
+
+
+
+    <h1>In {{ location.city }}</h1>   
+{% endblock content %}

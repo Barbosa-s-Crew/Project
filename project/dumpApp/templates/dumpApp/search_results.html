@@ -2,15 +2,37 @@
 {% block content %}
     <h1>Search_Results</h1>
       {% for restaurant in search_results %}
+      <p>{{ search_results }}</p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <article class="media content-section">
                 <div class="media-body">
                   <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ restaurant.rating }}</a>
-                    <small class="text-muted">{{ restaurant.display_phone }}</small>
+                    <a class="mr-2" href="restaurants">{{ restaurant.rating }}</a>
+                    <small class="text-muted">{{ restaurant.phone }}</small>
                   </div>
-                  <h2><a class="article-title" href="#">{{ restaurant.name }}</a></h2>
-                  <p class="article-content">{{ restaurant.price }}</p>
+
+<!-- onclick="this.closest('form').submit(); return false;" -->
+          <form method="POST" action="{% url 'restaurants' %}"> {% csrf_token %}
+                  <input type="hidden" name="photos" id="photos" value="{{ restaurant.image_url }}"> 
+                  <input type="hidden" name="location" id="location" value="{{ restaurant.location.display_address }}"> 
+                  <input type="hidden" name="hours" id="hours" value="{{ restaurant.hours }}">
+                  <input type="hidden" name="is_closed" id="is_closed" value="{{ restaurant.is_closed }}">
+                  <input type="hidden" name="phone" id="phone" value="{{ restaurant.phone }}">
+                  <h2><button type="submit" onclick="this.closest('form').submit(); return false;">{{ restaurant.name }}</button></h2>
+           </form>  
+                 
+                  <p class="article-content">{{ restaurant.price }}</p> 
+                  <p>{{ restaurant.photos|safe }}</p>             
+
                 </div>
               </article>
-      {% endfor %}
+
+              
+
+            {% endfor %}
 {% endblock content %}

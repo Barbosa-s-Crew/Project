@@ -1,190 +1,118 @@
 {
-<<<<<<< HEAD
-  "id": "ZOsSEoPK8iGwLnxBetNL4A",
-  "alias": "moto-sushi-glendale",
-  "name": "Moto Sushi",
-  "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/8v5rRF98tqI3kR2mwqrPTw/o.jpg",
+  "id": "1bEFouiXiNo3I6vslUdZKA",
+  "alias": "sushi-sasabune-glendale",
+  "name": "Sushi Sasabune",
+  "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/oh7hMaLOG7tGbwPtW5xNcQ/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/moto-sushi-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182653070",
-  "display_phone": "(818) 265-3070",
-  "review_count": 468,
-=======
-  "id": "BR2s3Yr7uXRNIwg0U_ip6Q",
-  "alias": "toro-sushi-poke-house-burbank-2",
-  "name": "Toro Sushi Poke House",
-  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/8742PCJsGtVpeqdinZ5VtA/o.jpg",
-  "is_claimed": true,
-  "is_closed": false,
-  "url": "https://www.yelp.com/biz/toro-sushi-poke-house-burbank-2?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182389568",
-  "display_phone": "(818) 238-9568",
-  "review_count": 409,
->>>>>>> master
+  "url": "https://www.yelp.com/biz/sushi-sasabune-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18186961124",
+  "display_phone": "(818) 696-1124",
+  "review_count": 284,
   "categories": [
     {
-      "alias": "japanese",
-      "title": "Japanese"
-    },
-    {
-<<<<<<< HEAD
       "alias": "sushi",
       "title": "Sushi Bars"
-=======
-      "alias": "japanese",
-      "title": "Japanese"
     },
     {
-      "alias": "poke",
-      "title": "Poke"
->>>>>>> master
+      "alias": "japanese",
+      "title": "Japanese"
     }
   ],
-  "rating": 4.0,
+  "rating": 4.5,
   "location": {
-<<<<<<< HEAD
-    "address1": "1120 N Pacific Ave",
-    "address2": "Ste 1",
+    "address1": "101 N Brand Blvd",
+    "address2": "Ste 220",
     "address3": "",
     "city": "Glendale",
-    "zip_code": "91202",
+    "zip_code": "91203",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "1120 N Pacific Ave",
-      "Ste 1",
-      "Glendale, CA 91202"
-=======
-    "address1": "144 N San Fernando Blvd",
-    "address2": "",
-    "address3": "",
-    "city": "Burbank",
-    "zip_code": "91502",
-    "country": "US",
-    "state": "CA",
-    "display_address": [
-      "144 N San Fernando Blvd",
-      "Burbank, CA 91502"
->>>>>>> master
+      "101 N Brand Blvd",
+      "Ste 220",
+      "Glendale, CA 91203"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-<<<<<<< HEAD
-    "latitude": 34.16148,
-    "longitude": -118.2642
+    "latitude": 34.1467089188584,
+    "longitude": -118.255266031214
   },
   "photos": [
-    "https://s3-media3.fl.yelpcdn.com/bphoto/8v5rRF98tqI3kR2mwqrPTw/o.jpg",
-    "https://s3-media3.fl.yelpcdn.com/bphoto/AqLbCxzTQLiz829HnM6b2Q/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/wIVpQhGOwCbS1pI7MbpZ0Q/o.jpg"
-=======
-    "latitude": 34.1815858,
-    "longitude": -118.3094427
-  },
-  "photos": [
-    "https://s3-media4.fl.yelpcdn.com/bphoto/8742PCJsGtVpeqdinZ5VtA/o.jpg",
-    "https://s3-media2.fl.yelpcdn.com/bphoto/wYg3uKkZM2ngu2jCPwNAvw/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/NIiVkC5OZ8sKR98HGRt14Q/o.jpg"
->>>>>>> master
+    "https://s3-media3.fl.yelpcdn.com/bphoto/oh7hMaLOG7tGbwPtW5xNcQ/o.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/S4BoN55j4IeUBYg51cc15w/o.jpg",
+    "https://s3-media4.fl.yelpcdn.com/bphoto/Fey9j-4k9vmDhtgFD-Uxdw/o.jpg"
   ],
-  "price": "$$",
+  "price": "$$$$",
   "hours": [
     {
       "open": [
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1130",
-          "end": "1500",
-          "day": 1
-        },
-        {
-          "is_overnight": false,
-          "start": "1630",
-=======
-          "start": "1100",
-          "end": "2200",
+          "start": "1200",
+          "end": "1400",
           "day": 0
         },
         {
           "is_overnight": false,
-          "start": "1100",
->>>>>>> master
-          "end": "2200",
+          "start": "1730",
+          "end": "2130",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "1200",
+          "end": "1400",
           "day": 1
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1130",
-          "end": "1500",
-=======
-          "start": "1100",
-          "end": "2200",
->>>>>>> master
+          "start": "1730",
+          "end": "2130",
+          "day": 1
+        },
+        {
+          "is_overnight": false,
+          "start": "1200",
+          "end": "1400",
           "day": 2
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1630",
-          "end": "2200",
+          "start": "1730",
+          "end": "2130",
           "day": 2
         },
         {
           "is_overnight": false,
-          "start": "1130",
-          "end": "1500",
+          "start": "1200",
+          "end": "1400",
           "day": 3
         },
         {
           "is_overnight": false,
-          "start": "1630",
-=======
-          "start": "1100",
->>>>>>> master
-          "end": "2200",
+          "start": "1730",
+          "end": "2130",
           "day": 3
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1130",
-          "end": "1500",
-=======
-          "start": "1100",
-          "end": "2300",
->>>>>>> master
+          "start": "1200",
+          "end": "1400",
           "day": 4
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1630",
-          "end": "2230",
+          "start": "1730",
+          "end": "2130",
           "day": 4
         },
         {
           "is_overnight": false,
-          "start": "1600",
-          "end": "2230",
-=======
-          "start": "1100",
-          "end": "2300",
->>>>>>> master
+          "start": "1730",
+          "end": "2130",
           "day": 5
-        },
-        {
-          "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1600",
-=======
-          "start": "1100",
->>>>>>> master
-          "end": "2200",
-          "day": 6
         }
       ],
       "hours_type": "REGULAR",
@@ -192,120 +120,6 @@
     }
   ],
   "transactions": [
-<<<<<<< HEAD
     "delivery"
-  ],
-  "messaging": {
-    "url": "https://www.yelp.com/raq/ZOsSEoPK8iGwLnxBetNL4A?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA#popup%3Araq",
-    "use_case_text": "Message the Business"
-  },
-  "special_hours": [
-    {
-      "date": "2020-03-24",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-25",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-25",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-26",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-26",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-27",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-27",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-28",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-28",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-29",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-29",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-30",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-30",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    },
-    {
-      "date": "2020-03-31",
-      "is_closed": true,
-      "start": null,
-      "end": null,
-      "is_overnight": null
-    }
   ]
-=======
-    "delivery",
-    "pickup"
-  ],
-  "messaging": {
-    "url": "https://www.yelp.com/raq/BR2s3Yr7uXRNIwg0U_ip6Q?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA#popup%3Araq",
-    "use_case_text": "Message the Business"
-  }
->>>>>>> master
 }
