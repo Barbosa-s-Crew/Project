@@ -2,13 +2,7 @@
 {% block content %}
     <h1>Search_Results</h1>
       {% for restaurant in search_results %}
-      <p>{{ search_results }}</p>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+     <!--  <p>{{ search_results }}</p> -->
       <article class="media content-section">
                 <div class="media-body">
                   <div class="article-metadata">
@@ -18,11 +12,13 @@
 
 <!-- onclick="this.closest('form').submit(); return false;" -->
           <form method="POST" action="{% url 'restaurants' %}"> {% csrf_token %}
-                  <input type="hidden" name="photos" id="photos" value="{{ restaurant.image_url }}"> 
+                  <input type="hidden" name="id" id="id" value="{{ restaurant.id }}"> 
+                  <!-- <input type="hidden" name="image_url" id="image_url" value="{{ restaurant.image_url }}"> 
+                  <input type="hidden" name="photos" id="photos" value="{{ restaurant.photos }}"> 
                   <input type="hidden" name="location" id="location" value="{{ restaurant.location.display_address }}"> 
                   <input type="hidden" name="hours" id="hours" value="{{ restaurant.hours }}">
                   <input type="hidden" name="is_closed" id="is_closed" value="{{ restaurant.is_closed }}">
-                  <input type="hidden" name="phone" id="phone" value="{{ restaurant.phone }}">
+                  <input type="hidden" name="phone" id="phone" value="{{ restaurant.phone }}"> -->
                   <h2><button type="submit" onclick="this.closest('form').submit(); return false;">{{ restaurant.name }}</button></h2>
            </form>  
                  
