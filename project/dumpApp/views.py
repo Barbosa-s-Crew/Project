@@ -7,6 +7,7 @@ from . import usersCustom
 from django.db.models import Q
 
 posts =  sktest.getDB()
+#--------------------------------------Helper Functions -----------------------------
 
 #request.session['active_user'] = usersCustom.userC([''])
 def check_user(request):
@@ -17,6 +18,8 @@ def check_user(request):
 			request.session['is_authenticated'] = True
 	except:
 		request.session['is_authenticated'] = False
+
+#-------------------------------------- Views ------------------------------------
 
 def home(request):
 	check_user(request)
