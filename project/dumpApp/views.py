@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from . import sktest
 from . import YelpFusion
 from . import usersCustom
+from . import deals as dealsmodule
 
 from django.db.models import Q
 
@@ -24,9 +25,23 @@ def check_user(request):
 def home(request):
 	check_user(request)
 	context = {
-		'deals': deals,
+		'deals': dealsmodule.get_deals(),
 		'user_authenticated': request.session['is_authenticated']
 	}
+	if context['user_authenticated'] == True:
+		return render(request, 'dumpApp/dashboard.html', context)
+	# If not logged in, go to home page instead
+	return render(request, 'dumpApp/home.html', context)
+
+def dashboard(request):
+	check_user(request)
+	context = {
+		'deals': dealsmodule.get_deals(),
+		'user_authenticated': request.session['is_authenticated']
+	}
+	if content['user_authenticated'] == True:
+		return render(request, 'dumpApp/dashboard.html', context)
+	# If not logged in, go to home page instead
 	return render(request, 'dumpApp/home.html', context)
 
 def dump(request):
@@ -35,7 +50,7 @@ def dump(request):
 		'table': posts
 	}
 	return render(request, 'dumpApp/dump.html', context)
-	
+
 def about(request):
 	check_user(request)
 	context = {
@@ -235,27 +250,27 @@ def restaurants(request):
 		#if i == 0:
 		schedule['Monday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
 		schedule['Monday'] = schedule['Monday'] + ' - '
-		schedule['Monday'] = schedule['Monday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Monday'] = schedule['Monday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
 		schedule['Monday'] = 'Monday   ' + schedule['Monday']
 
 		schedule['Tuesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
 		schedule['Tuesday'] = schedule['Tuesday'] + ' - '
-		schedule['Tuesday'] = schedule['Tuesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Tuesday'] = schedule['Tuesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
 		schedule['Tuesday'] = 'Tuesday   ' + schedule['Tuesday']
 
 		schedule['Wednesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
 		schedule['Wednesday'] = schedule['Wednesday'] + ' - '
-		schedule['Wednesday'] = schedule['Wednesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Wednesday'] = schedule['Wednesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
 		schedule['Wednesday'] = 'Wednesday   ' + schedule['Wednesday']
 
 		schedule['Thursday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
 		schedule['Thursday'] = schedule['Thursday'] + ' - '
-		schedule['Thursday'] = schedule['Thursday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Thursday'] = schedule['Thursday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
 		schedule['Thursday'] = 'Thursday   ' + schedule['Thursday']
 
 		schedule['Friday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
 		schedule['Friday'] = schedule['Friday'] + ' - '
-		schedule['Friday'] = schedule['Friday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:] 
+		schedule['Friday'] = schedule['Friday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
 		schedule['Friday'] = 'Friday   ' + schedule['Friday']
 
 		print(restaurant['hours'])
@@ -279,4 +294,3 @@ def restaurants(request):
 
 
 	return render(request, 'dumpApp/restaurants.html', context)
-

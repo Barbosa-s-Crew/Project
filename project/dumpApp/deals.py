@@ -1,7 +1,7 @@
 import time
 import mysql.connector
 from mysql.connector import errorcode
-import DBSetup
+from . import DBSetup
 
 deals = list()
 time_count = time.perf_counter()
