@@ -3,6 +3,15 @@ from mysql.connector import errorcode
 from . import DBSetup
 from django.contrib.auth.hashers import check_password, make_password
 
+#User_ID int not null identity,
+#    Location_ID int,
+#   Payment_Option_ID int,
+#    User_name varchar(40) not null,
+#    User_Email varchar(60),
+#    User_Password varchar(255) not null,
+#    User_Cell varchar(14),
+#    Other_Information text,
+
 class userC:
 	ID = ''
 	payment_option = ''
@@ -11,6 +20,8 @@ class userC:
 	password = ''
 	cell = ''
 	other_info = ''
+	photoURL = ''
+	gender = ''
 	is_authenticated = False
 
 	def __init__(self, tup):
@@ -45,7 +56,22 @@ class userC:
 		self.cell = ''
 		self.other_info = ''
 		self.is_authenticated = False
-	
+
+	def get_dictionary(self):
+		this_dict = dict(username = self.username, email=self.email, password = self.password, cellPhoneNumber = self.cell, preferences = self.other_info, photo=self.photoURL, gender=self.gender)
+		return this_dict
+
+	def save_preferences(self, that_dict):
+		self.username = that_dict.get("username")
+		self.email = that_dict.get("email")
+		self.password = that_dict.get("password")
+		self.cell = that_dict.get("cellPhoneNumber")
+		self.other_info = that_dict.get("preferences")
+		self.photoURL = that_dict.get("photo")
+		self.gender = that_dict.get("gender")
+
+def make_password(password = ''):
+	return make_password(password)
 
 def authenticate_user(email='', password = ''):
 	output = ""
@@ -76,10 +102,10 @@ def authenticate_user(email='', password = ''):
 		else:
 			print("No valid email/password combination found.")
 				
-def create_user(email = '', password = ''):		#will return true if an account can be made, otherwise will return false
+def create_user(email = '', password = '',username='',cellPhoneNum=''):		#will return true if an account can be made, otherwise will return false
 	config = DBSetup.setup_config()
 	result = False
-	# Construct connection string
+
 	try:
 		conn = mysql.connector.connect(**config)
 		print("Connection established")
@@ -95,14 +121,17 @@ def create_user(email = '', password = ''):		#will return true if an account can
 		cursor.execute("SELECT * FROM users WHERE User_Email='"+email+"'")
 		tupleC = cursor.fetchall()
 		if len(tupleC)==0:
-			cursor.execute("INSERT INTO users (User_Email, User_Password) VALUES ('"+email+"', '"+make_password(password)+"');")
+			cursor.execute("INSERT INTO users (User_name, User_Email, User_Password, User_Cell) VALUES ('"+username+"', '"+email+"', '"+make_password(password)+"', '"+cellPhoneNum+"');")
 			conn.commit()
 			result = True
 		else: 
 			print("A user with that email already exists.")
-		cursor.close()
-		conn.close()
-		return result
+			cursor.close()
+			conn.close()
+			return result
+
+
+
 
 #create_user(email = 'GGG', password = '123')	#this one probably doesn't work anymore.
 
