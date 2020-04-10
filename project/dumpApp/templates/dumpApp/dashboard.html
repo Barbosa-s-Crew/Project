@@ -60,14 +60,14 @@
       {% for recommendation in recommendations %}
         <div class="container-horizontal-scroll-item">
           <a href="#">
-            {% if recommendation.Restaurant_photo != "" %}
-              <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="{{recommendation.Restaurant_photo}}">
+            {% if recommendation.Image != "" %}
+              <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="{{recommendation.Image}}">
             {% else %}
               <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="https://cdn.vox-cdn.com/thumbor/PKuCLfWaj5H1RiUEOlvt7LoCUUQ=/14x0:245x173/1200x800/filters:focal(14x0:245x173)/cdn.vox-cdn.com/uploads/chorus_image/image/39195560/In-N-Out-Survey.0.jpg">
             {% endif %}
           </a>
           <div class="centered">
-            <h2 style="color:white;" align="center">{{recommendation.Restaurant_name}}</h2>
+            <h2 style="color:white;" align="center">{{recommendation.Name}}</h2>
           </div>
         </div>
       {% endfor %}
@@ -92,17 +92,27 @@
     <!--Recent Orders-->
     <h3 align="left" style="color:black;">Recent Orders</h3>
     <div class="horizontal-scroll-wrapper squares">
-      {% for order in recent_orders %}
+      {% if recent_orders|length == 0 %}
         <div class="container-horizontal-scroll-item">
           <a href="#">
             <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="https://i.insider.com/57d961d5077dcc3d018b5b9c?width=412&format=jpeg">
           </a>
           <div class="centered">
-            <h2 style="color:white;" align="center">{{order.Restaurant_name}}</h2>
-            <p style="color:white;" align="center">{{order.Start_time}} </p>
+            <p style="color:white;" align="center">You have no orders!</p>
           </div>
         </div>
-      {% endfor %}
+      {% else %}
+        {% for order in recent_orders %}
+          <div class="container-horizontal-scroll-item">
+            <a href="#">
+              <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="https://i.insider.com/57d961d5077dcc3d018b5b9c?width=412&format=jpeg">
+            </a>
+            <div class="centered">
+              <h1 style="color:white;" align="center">{{order.Order_start_time}} </h1>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
 
 

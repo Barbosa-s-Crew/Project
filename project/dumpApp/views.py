@@ -26,20 +26,25 @@ def check_user(request):
 def home(request):
 	check_user(request)
 	context = {
-		'deals': dealsmodule.get_deals(),
-		'user_authenticated': request.session['is_authenticated']
+		'user_authenticated': request.session['is_authenticated'],
+		'deals': dealsmodule.get_deals()
 	}
-	if context['user_authenticated'] == True:
-		return render(request, 'dumpApp/dashboard.html', context)
-	# If not logged in, go to home page instead
-	return render(request, 'dumpApp/home.html', context)
+	if context['user_authenticated'] == False:
+		return render(request, 'dumpApp/home.html', context)
+	context['recommendations'] = restaurant_module.get_favorites_using_user_ID()
+	context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
+	# If logged in, go to dashboard instead
+	return render(request, 'dumpApp/dashboard.html', context)
 
 def dashboard(request):
 	check_user(request)
 	context = {
 		'deals': dealsmodule.get_deals(),
+		'recommendations': restaurant_module.get_favorites_using_user_ID(),
+		'recent_orders': restaurant_module.get_recent_using_user_ID(request.session['ID']),
 		'user_authenticated': request.session['is_authenticated']
 	}
+	print("DEBUG" + str(context['recommendations']))
 	if content['user_authenticated'] == True:
 		return render(request, 'dumpApp/dashboard.html', context)
 	# If not logged in, go to home page instead
@@ -154,6 +159,8 @@ def login(request):
 
 	try:
 		user = usersCustom.authenticate_user(username, password)
+		request.session['ID'] = user.ID
+		request.session['username'] = user.username
 		request.session['email'] = user.email
 		request.session['cell'] = user.cell
 		request.session['is_authenticated'] = user.is_authenticated
@@ -258,7 +265,7 @@ def restaurants(request):
 			schedule['Friday'] = 'Friday   ' + schedule['Friday']
 
 			print(restaurant['hours'])
-			
+
 			context['schedule'] = schedule
 		else:
 			print("its working")
