@@ -1,90 +1,93 @@
 {
-  "id": "uIzdHpMiDYml1UJjtFxx9Q",
-  "alias": "lucys-pizza-and-burgers-glendale",
-  "name": "Lucy's Pizza & Burgers",
-  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/Aai3o1Q3Hofz5alOhUj8Gg/o.jpg",
-  "is_claimed": true,
+  "id": "IeEq0lQZ-ie39KeP91_07g",
+  "alias": "california-pizza-kitchen-los-angeles-21",
+  "name": "California Pizza Kitchen",
+  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/LZCIK0vxqL30T3wr7f254A/o.jpg",
+  "is_claimed": false,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/lucys-pizza-and-burgers-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182416336",
-  "display_phone": "(818) 241-6336",
-  "review_count": 348,
+  "url": "https://www.yelp.com/biz/california-pizza-kitchen-los-angeles-21?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18668201178",
+  "display_phone": "(866) 820-1178",
+  "review_count": 291,
   "categories": [
-    {
-      "alias": "burgers",
-      "title": "Burgers"
-    },
     {
       "alias": "pizza",
       "title": "Pizza"
     },
     {
-      "alias": "italian",
-      "title": "Italian"
+      "alias": "tradamerican",
+      "title": "American (Traditional)"
     }
   ],
-  "rating": 4.0,
+  "rating": 2.5,
   "location": {
-    "address1": "624 E Colorado St",
+    "address1": "1 World Way",
     "address2": "",
-    "address3": "",
-    "city": "Glendale",
-    "zip_code": "91205",
+    "address3": "Terminal 1",
+    "city": "Los Angeles",
+    "zip_code": "90045",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "624 E Colorado St",
-      "Glendale, CA 91205"
+      "1 World Way",
+      "Terminal 1",
+      "Los Angeles, CA 90045"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-    "latitude": 34.14238,
-    "longitude": -118.24721
+    "latitude": 33.946499,
+    "longitude": -118.401124
   },
   "photos": [
-    "https://s3-media4.fl.yelpcdn.com/bphoto/Aai3o1Q3Hofz5alOhUj8Gg/o.jpg",
-    "https://s3-media4.fl.yelpcdn.com/bphoto/5MDWTwsjuVKvZkF0R2UotQ/o.jpg",
-    "https://s3-media4.fl.yelpcdn.com/bphoto/b7vkEIdp_6ITImnayIMGkw/o.jpg"
+    "https://s3-media2.fl.yelpcdn.com/bphoto/LZCIK0vxqL30T3wr7f254A/o.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/KsgqGOmpIf2otQ4ZipfQSw/o.jpg",
+    "https://s3-media2.fl.yelpcdn.com/bphoto/qy7ZMkjp4b6JCD2VUlhksQ/o.jpg"
   ],
-  "price": "$",
+  "price": "$$",
   "hours": [
     {
       "open": [
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0400",
+          "end": "2300",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "0400",
+          "end": "2300",
           "day": 1
         },
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0400",
+          "end": "2300",
           "day": 2
         },
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0400",
+          "end": "2300",
           "day": 3
         },
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0400",
+          "end": "2300",
           "day": 4
         },
         {
-          "is_overnight": true,
-          "start": "1300",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0400",
+          "end": "2300",
           "day": 5
         },
         {
-          "is_overnight": true,
-          "start": "1300",
-          "end": "0100",
+          "is_overnight": false,
+          "start": "0400",
+          "end": "2300",
           "day": 6
         }
       ],
@@ -92,8 +95,5 @@
       "is_open_now": true
     }
   ],
-  "transactions": [
-    "pickup",
-    "delivery"
-  ]
+  "transactions": []
 }

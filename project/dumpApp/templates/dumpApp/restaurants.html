@@ -61,11 +61,29 @@
           <p>{{ day }}</p>
         {% endfor %}
     {% endfor %} -->
-    <h2> {{rest_items.Name}} </h2>
-    <h3>{{rest_items.Cost}}</h3>
-    <h3>{{rest_items.Notes}}</h3>
-    <h3><a href="{{rest_items.Image"}}> {{rest_items.Image}}</a></h3>
 
+    <h3 align="left" style="color:black;">Menu Items</h3>
+    <div class="horizontal-scroll-wrapper squares">
+      {% for items in rest_items %}
+        <div class="container-horizontal-scroll-item">
+          <div>
+            <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="{{items.Image}}">
+          </div>
+          <div class="centered">
+            <h2 style="color:white;" align="center">{{items.Name}}</h2>
+            <p style="color:white;" align="center">{{items.Cost}} </p>
+            <p style="color:white;" align="center">{{items.Notes}} </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     {% for photo in everything.photos %} 
     <div class="gallery">
       <a target="_blank" href="{{ photo }}">

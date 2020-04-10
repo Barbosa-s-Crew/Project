@@ -67,17 +67,19 @@ def get_menu_items_using_restaurant_ID(ID = 0):
 		else:
 			print(err)
 	else:
+		print(str(ID))
 		cursor = conn.cursor()
 		query = "SELECT Item_name, Item_cost, item_notes, item_image FROM Restaurant R INNER JOIN Menu M ON R.Restaurant_ID=M.Restaurant_ID "
 		query += "INNER JOIN Item I ON M.Menu_ID = I.Menu_ID " 
 		query += "WHERE R.Restaurant_ID = " + str(ID) + " ; "
 		cursor.execute(query)
 		output = cursor.fetchall()
-		cursor.close()
-		conn.close()
 		ret = list()
 		for rest in output:
 			ret.append(dict(Name=rest[0], Cost=rest[1], Notes=rest[2], Image=rest[3]))
+		print(ret)
+		cursor.close()
+		conn.close()
 		return ret
 
 
