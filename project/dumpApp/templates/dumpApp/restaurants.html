@@ -84,8 +84,8 @@
     <br>
     <br>
     <br>
-    <h>{{restaurants.Name}}</h>
-    <h>{{restaurants.Location_ID}}</h>
+    <h1>{{restaurants.Name}}</h1>
+    
     <img scr="{{restaurant_Image}}">
      <h3 align="left" style="color:black;">Menu Items</h3>
     
@@ -93,7 +93,7 @@
       {% for items in rest_items %}
         <div class="container-horizontal-scroll-item">
           <div>
-            <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="{{items.Image}}">
+            <img class = "centered" style="background-size: 10px; width: 800px; height: 250px; border: 0px solid;" src="{{items.Image}}">
           </div>
           <div class="centered">
             <h2 style="color:white;" align="center">{{items.Name}}</h2>

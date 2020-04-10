@@ -290,7 +290,7 @@ def restaurants(request):
 			print(request.POST['id'])
 
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
-			context['restaurants'] = restaurant
+			context['restaurants'] = restaurant[0] 
 
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items

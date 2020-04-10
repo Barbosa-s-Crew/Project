@@ -1,52 +1,43 @@
 {
-  "id": "N4sbDFWKIPkZKgNs-A6BCg",
-  "alias": "pizza-boy-glendale",
-  "name": "Pizza Boy",
-  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
+  "id": "AVBzqTzu5u8QdVaLni2Gpw",
+  "alias": "indias-flavor-glendale",
+  "name": "India's Flavor",
+  "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/uGUR78HDBsPk89kr7Nonow/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/pizza-boy-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182475555",
-  "display_phone": "(818) 247-5555",
-  "review_count": 626,
+  "url": "https://www.yelp.com/biz/indias-flavor-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18189575500",
+  "display_phone": "(818) 957-5500",
+  "review_count": 578,
   "categories": [
     {
-      "alias": "pizza",
-      "title": "Pizza"
-    },
-    {
-      "alias": "salad",
-      "title": "Salad"
-    },
-    {
-      "alias": "chicken_wings",
-      "title": "Chicken Wings"
+      "alias": "indpak",
+      "title": "Indian"
     }
   ],
-  "rating": 4.5,
+  "rating": 4.0,
   "location": {
-    "address1": "1321 E Colorado St",
-    "address2": "Ste C",
+    "address1": "3303 N Verdugo Rd",
+    "address2": null,
     "address3": "",
     "city": "Glendale",
-    "zip_code": "91205",
+    "zip_code": "91208",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "1321 E Colorado St",
-      "Ste C",
-      "Glendale, CA 91205"
+      "3303 N Verdugo Rd",
+      "Glendale, CA 91208"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-    "latitude": 34.1428476,
-    "longitude": -118.2366086
+    "latitude": 34.1988521,
+    "longitude": -118.229371
   },
   "photos": [
-    "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/vhSYf-mXeNmX4NjKgXRbCQ/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/Ns84cb6QuGcBHBoKWZAUwA/o.jpg"
+    "https://s3-media3.fl.yelpcdn.com/bphoto/uGUR78HDBsPk89kr7Nonow/o.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/hNYOLFcHBLtzfURu6fHeag/o.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/YaYp9W4MNnHs1JgLrt4fgw/o.jpg"
   ],
   "price": "$$",
   "hours": [
@@ -54,45 +45,75 @@
       "open": [
         {
           "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "start": "1130",
+          "end": "1430",
           "day": 0
         },
         {
           "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "start": "1700",
+          "end": "2130",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "1130",
+          "end": "1430",
           "day": 1
         },
         {
           "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "start": "1700",
+          "end": "2130",
+          "day": 1
+        },
+        {
+          "is_overnight": false,
+          "start": "1130",
+          "end": "1430",
           "day": 2
         },
         {
           "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "start": "1700",
+          "end": "2130",
+          "day": 2
+        },
+        {
+          "is_overnight": false,
+          "start": "1130",
+          "end": "1430",
           "day": 3
         },
         {
           "is_overnight": false,
-          "start": "0930",
-          "end": "2230",
+          "start": "1700",
+          "end": "2130",
+          "day": 3
+        },
+        {
+          "is_overnight": false,
+          "start": "1130",
+          "end": "1430",
           "day": 4
         },
         {
           "is_overnight": false,
-          "start": "0930",
-          "end": "2215",
+          "start": "1700",
+          "end": "2200",
+          "day": 4
+        },
+        {
+          "is_overnight": false,
+          "start": "1130",
+          "end": "1430",
           "day": 5
         },
         {
           "is_overnight": false,
-          "start": "0930",
-          "end": "2215",
-          "day": 6
+          "start": "1700",
+          "end": "2200",
+          "day": 5
         }
       ],
       "hours_type": "REGULAR",
