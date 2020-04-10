@@ -31,8 +31,8 @@ def home(request):
 	}
 	if context['user_authenticated'] == False:
 		return render(request, 'dumpApp/home.html', context)
-	context['recommendations'] = restaurant_module.get_favorites_using_user_ID()
-	context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
+	#context['recommendations'] = restaurant_module.get_favorites_using_user_ID()
+	#context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
 	# If logged in, go to dashboard instead
 	return render(request, 'dumpApp/dashboard.html', context)
 
@@ -163,7 +163,13 @@ def login(request):
 		request.session['username'] = user.username
 		request.session['email'] = user.email
 		request.session['cell'] = user.cell
+		request.session['payment_option'] = user.payment_option
+		request.session['photo'] = user.photoURL
+		#request.session['gender'] = user.gender
+		request.session['preferences'] = user.other_info
 		request.session['is_authenticated'] = user.is_authenticated
+
+
 		print(request.session['is_authenticated'])
 		context['user_authenticated'] = request.session['is_authenticated']
 		return render(request, 'dumpApp/profile.html', context)
@@ -179,10 +185,12 @@ def register(request):
 	if request.method == "POST":
 		email = request.POST['email']
 		password = request.POST['password']
+		username = request.POST['username']
+		phone = request.POST['phone']
 	else:
 		return render(request, 'dumpApp/register.html', context)
 	try:
-		user_created = usersCustom.create_user(email, password)
+		user_created = usersCustom.create_user(email, password, username, phone)
 		if(user_created == True):
 			return render(request, 'dumpApp/login.html', context)
 		else:
