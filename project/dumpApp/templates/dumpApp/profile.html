@@ -1,10 +1,9 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
-    	<p>{{username}}</p>
       <!-- <input type="text" name="" value="myvalue"> -->
       <!-- search inside url not recognized -->
 
-   <img src="https://www.kmtf.kz/content/uploads/2018/02/no-photo-icon-22.png" style="width:300px; height:300px">
+   <img src="{{photo}}" style="width:300px; height:300px">
 
 
   <form action="{% url 'register' %}">
@@ -12,21 +11,32 @@
     <h1>{{username}}'s Profile</h1>
     <hr>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="{{email}}" name="email" id="email" required>
 
-    <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="{{ username }}" name="username" required>
+    <label for="email"><b>Email: {{email}}</b></label>
+    <!-- <input type="text" placeholder="{{email}}" name="email" id="email" value="{{email}}" required> -->
+<br>
+<br>
+    <label for="username"><b>Username: {{username}}</b></label>
+    <!-- <input type="text" placeholder="{{ username }}" name="username" value="{{username}}" required>
+ -->
+ <br>
+ <br>
+    <label for="cell"><b>Phone {{phone}}</b></label>
+    <!-- <input type="text" placeholder="{{phone}}" name="cell" value="{{phone}}" required> -->
+<br>
+<br>
+     <label for="preferences"><b>Preferences: {{preferences}}</b></label>
+     <br>
+     <br>
+     <!-- <textarea rows="4" cols="60">{{preferences}}</textarea> -->
+     <br>
+     <br>
 
-    <label for="cell"><b>Phone Number</b></label>
-    <input type="text" placeholder="{{phone}}" name="cell" required>
-
-     <label for="preferences"><b>Preferences</b></label>
-    <input type="text" placeholder="{{preferences}}" name="preferences" required style="height:200px;">
+    <!-- <input type="text" placeholder="{{preferences}}" name="preferences" required style="height:200px;"> -->
 
  
 
-    <input type="submit" value="Update Profile">
+    <!-- <input type="submit" value="Update Profile"> -->
   </div>
 </form>
  

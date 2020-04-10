@@ -31,13 +31,10 @@ def home(request):
 	}
 	if context['user_authenticated'] == False:
 		return render(request, 'dumpApp/home.html', context)
-<<<<<<< HEAD
-	#context['recommendations'] = restaurant_module.get_favorites_using_user_ID()
-	#context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
-=======
+
 	context['recommendations'] = restaurant_module.get_favorites_using_user_ID(request.session['ID'])
 	context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
->>>>>>> master
+
 	# If logged in, go to dashboard instead
 	return render(request, 'dumpApp/dashboard.html', context)
 
@@ -174,10 +171,15 @@ def login(request):
 		request.session['preferences'] = user.other_info
 		request.session['is_authenticated'] = user.is_authenticated
 
+		print(user.username)
+
 
 		print(request.session['is_authenticated'])
 		context['user_authenticated'] = request.session['is_authenticated']
-		return render(request, 'dumpApp/profile.html', context)
+		context['recommendations'] = restaurant_module.get_favorites_using_user_ID()
+		context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
+		context['deals'] = dealsmodule.get_deals()
+		return render(request, 'dumpApp/dashboard.html', context)
 	except:
 		print("Error is true")
 		context['error'] = "Invalid username or password"
@@ -222,7 +224,11 @@ def profile(request):
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
 		'email': request.session['email'],
-		'phone': request.session['cell']
+		'phone': request.session['cell'],
+		'username': request.session['username'],
+		'payment_option': request.session['payment_option'],
+		'photo': request.session['photo'],
+		'preferences': request.session['preferences']
 	}
 	try:
 		if request.session['is_authenticated']:
@@ -281,29 +287,15 @@ def restaurants(request):
 
 			context['schedule'] = schedule
 		else:
-<<<<<<< HEAD
-
-			print("its working")
-
-			#print("its working")
-			restaurant_module.get_restaurant_using_ID(request.POST['id'])
-
-			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
-			context['rest_items'] = items
-
-			#print(request)
-=======
 			print(request.POST['id'])
 
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
->>>>>>> master
+			context['restaurants'] = restaurant
 
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items
-<<<<<<< HEAD
+			
 
-=======
->>>>>>> master
-
+			#ID=rest[0], Name=rest[1], Location_ID=rest[2], Category=rest[3], Cuisine=rest[4], Notes=rest[5], Image=rest[6])
 
 	return render(request, 'dumpApp/restaurants.html', context)

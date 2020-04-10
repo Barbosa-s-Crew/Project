@@ -154,12 +154,12 @@ def create_user(email = '', password = '',username='',cellPhoneNum=''):		#will r
 			conn.close()
 			result = True
 			print('User Created')
+
 		else: 
 			print("A user with that email already exists.")
 			cursor.close()
 			conn.close()
-			return result
-
+		return result
 
 
 
