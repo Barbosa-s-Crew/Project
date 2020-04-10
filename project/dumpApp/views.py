@@ -269,6 +269,7 @@ def restaurants(request):
 			context['schedule'] = schedule
 		else:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			print("its working")
 =======
 			#print("its working")
@@ -277,6 +278,14 @@ def restaurants(request):
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items
 >>>>>>> parent of dbc81c6... menu items horizontall scrolling bar for restaurant.html
+=======
+			#print(request)
+
+			restaurant = restaurant_module.get_restaurant_using_ID() #request.POST['id'])
+
+			items = restaurant_module.get_menu_items_using_restaurant_ID(11) #request.POST['id'])
+			context['rest_items'] = items
+>>>>>>> sarkis
 
 
 	return render(request, 'dumpApp/restaurants.html', context)
