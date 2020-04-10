@@ -31,8 +31,13 @@ def home(request):
 	}
 	if context['user_authenticated'] == False:
 		return render(request, 'dumpApp/home.html', context)
+<<<<<<< HEAD
 	#context['recommendations'] = restaurant_module.get_favorites_using_user_ID()
 	#context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
+=======
+	context['recommendations'] = restaurant_module.get_favorites_using_user_ID(request.session['ID'])
+	context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
+>>>>>>> master
 	# If logged in, go to dashboard instead
 	return render(request, 'dumpApp/dashboard.html', context)
 
@@ -276,6 +281,7 @@ def restaurants(request):
 
 			context['schedule'] = schedule
 		else:
+<<<<<<< HEAD
 
 			print("its working")
 
@@ -286,12 +292,18 @@ def restaurants(request):
 			context['rest_items'] = items
 
 			#print(request)
+=======
+			print(request.POST['id'])
 
-			restaurant = restaurant_module.get_restaurant_using_ID() #request.POST['id'])
+			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
+>>>>>>> master
 
-			items = restaurant_module.get_menu_items_using_restaurant_ID(11) #request.POST['id'])
+			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 
 	return render(request, 'dumpApp/restaurants.html', context)

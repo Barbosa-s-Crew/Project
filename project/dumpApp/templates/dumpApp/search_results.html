@@ -25,7 +25,7 @@
 
 <!-- onclick="this.closest('form').submit(); return false;" -->
           <form method="POST" action="{% url 'restaurants' %}"> {% csrf_token %}
-                  <input type="hidden" name="id" value="{{ restaurant.id }}">
+                  <input type="hidden" name="id" value="{{ restaurant.ID }}">
                   <input type="hidden" name="Yelp" value="False">
                   <!-- <input type="hidden" name="image_url" id="image_url" value="{{ restaurant.image_url }}">
                   <input type="hidden" name="photos" id="photos" value="{{ restaurant.photos }}">
