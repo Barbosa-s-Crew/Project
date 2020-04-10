@@ -1,48 +1,52 @@
 {
-  "id": "ZOsSEoPK8iGwLnxBetNL4A",
-  "alias": "moto-sushi-glendale",
-  "name": "Moto Sushi",
-  "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/8v5rRF98tqI3kR2mwqrPTw/o.jpg",
+  "id": "N4sbDFWKIPkZKgNs-A6BCg",
+  "alias": "pizza-boy-glendale",
+  "name": "Pizza Boy",
+  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/moto-sushi-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182653070",
-  "display_phone": "(818) 265-3070",
-  "review_count": 469,
+  "url": "https://www.yelp.com/biz/pizza-boy-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18182475555",
+  "display_phone": "(818) 247-5555",
+  "review_count": 626,
   "categories": [
     {
-      "alias": "japanese",
-      "title": "Japanese"
+      "alias": "pizza",
+      "title": "Pizza"
     },
     {
-      "alias": "sushi",
-      "title": "Sushi Bars"
+      "alias": "salad",
+      "title": "Salad"
+    },
+    {
+      "alias": "chicken_wings",
+      "title": "Chicken Wings"
     }
   ],
-  "rating": 4.0,
+  "rating": 4.5,
   "location": {
-    "address1": "1120 N Pacific Ave",
-    "address2": "Ste 1",
+    "address1": "1321 E Colorado St",
+    "address2": "Ste C",
     "address3": "",
     "city": "Glendale",
-    "zip_code": "91202",
+    "zip_code": "91205",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "1120 N Pacific Ave",
-      "Ste 1",
-      "Glendale, CA 91202"
+      "1321 E Colorado St",
+      "Ste C",
+      "Glendale, CA 91205"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-    "latitude": 34.16148,
-    "longitude": -118.2642
+    "latitude": 34.1428476,
+    "longitude": -118.2366086
   },
   "photos": [
-    "https://s3-media3.fl.yelpcdn.com/bphoto/8v5rRF98tqI3kR2mwqrPTw/o.jpg",
-    "https://s3-media3.fl.yelpcdn.com/bphoto/AqLbCxzTQLiz829HnM6b2Q/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/wIVpQhGOwCbS1pI7MbpZ0Q/o.jpg"
+    "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/vhSYf-mXeNmX4NjKgXRbCQ/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/Ns84cb6QuGcBHBoKWZAUwA/o.jpg"
   ],
   "price": "$$",
   "hours": [
@@ -50,62 +54,44 @@
       "open": [
         {
           "is_overnight": false,
-          "start": "1130",
-          "end": "1500",
+          "start": "0930",
+          "end": "2145",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
           "day": 1
         },
         {
           "is_overnight": false,
-          "start": "1630",
-          "end": "2200",
-          "day": 1
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1500",
+          "start": "0930",
+          "end": "2145",
           "day": 2
         },
         {
           "is_overnight": false,
-          "start": "1630",
-          "end": "2200",
-          "day": 2
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1500",
+          "start": "0930",
+          "end": "2145",
           "day": 3
         },
         {
           "is_overnight": false,
-          "start": "1630",
-          "end": "2200",
-          "day": 3
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1500",
+          "start": "0930",
+          "end": "2330",
           "day": 4
         },
         {
           "is_overnight": false,
-          "start": "1630",
-          "end": "2230",
-          "day": 4
-        },
-        {
-          "is_overnight": false,
-          "start": "1600",
+          "start": "0930",
           "end": "2230",
           "day": 5
         },
         {
           "is_overnight": false,
-          "start": "1600",
-          "end": "2200",
+          "start": "0930",
+          "end": "2230",
           "day": 6
         }
       ],
@@ -114,10 +100,7 @@
     }
   ],
   "transactions": [
-    "delivery"
-  ],
-  "messaging": {
-    "url": "https://www.yelp.com/raq/ZOsSEoPK8iGwLnxBetNL4A?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA#popup%3Araq",
-    "use_case_text": "Message the Business"
-  }
+    "delivery",
+    "pickup"
+  ]
 }

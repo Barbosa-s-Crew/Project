@@ -74,7 +74,7 @@ def request(host, path, api_key, url_params=None):
         'Authorization': 'Bearer %s' % api_key,
     }
 
-    print(u'Querying {0} ...'.format(url))
+    #print(u'Querying {0} ...'.format(url))
 
     response = requests.request('GET', url, headers=headers, params=url_params)
 
@@ -117,17 +117,17 @@ def query_api(params):
     businesses = response.get('businesses')
 
     if not businesses:
-        print(u'No businesses for {0} in {1} found.'.format(params['term'], params['location']))
+        #print(u'No businesses for {0} in {1} found.'.format(params['term'], params['location']))
         return
 
     business_id = businesses[0]['id']
 
-    print(u'{0} businesses found, querying business info ' \
-        'for the top result "{1}" ...'.format(
-            len(businesses), business_id))
+    #print(u'{0} businesses found, querying business info ' \
+        #'for the top result "{1}" ...'.format(
+            #len(businesses), business_id))
     response = get_business(API_KEY, business_id)
 
-    print(u'Result for business "{0}" found:'.format(business_id))
+    #print(u'Result for business "{0}" found:'.format(business_id))
 
     #this line
     file_name = DEFAULT_TERM + DEFAULT_LOCATION + ".json"
@@ -135,7 +135,7 @@ def query_api(params):
     n = text_file.write(json.dumps(response, indent=2))
     text_file.close()
 
-    pprint.pprint(response, indent=2)
+    #pprint.pprint(response, indent=2)
     return businesses
 
 def search_restaurant(restaurant_ID):

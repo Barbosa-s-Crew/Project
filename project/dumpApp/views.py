@@ -4,6 +4,7 @@ from . import sktest
 from . import YelpFusion
 from . import usersCustom
 from . import deals as dealsmodule
+from . import restaurant as restaurant_module
 
 from django.db.models import Q
 
@@ -109,31 +110,11 @@ def search_results(request):
 		#print(name)
 	#list = (YelpFusion.search_yelp(request.POST['myvalue'])).split(" ")
 	list = (request.POST['myvalue']).split(' ')
+	context['search_results_db'] = restaurant_module.get_restaurant_using_keyword(list[0])
+	print(context['search_results_db'])
 	context['search_results'] = YelpFusion.search_yelp('term = ' + list[0], 'location = ' + list[1])
 
 	return render(request, 'dumpApp/search_results.html', context)
-
-
-#ADDED (Master Code Online)
-# def search(request):
-# 	template = 'dumpApp/home.html'
-#
-# 	query = request.GET.get('g') #q = query variable
-#
-# 	#where is the table?
-# 	#Q encapsulates the query
-# 	#results = Post.objects.filter(Q(title__icontains=query) | Q(body__contains=query))
-#
-# 	#list is returned
-# 	#num=1 -- object per page
-# 	pages = pagination(request, results, num=1)
-#
-# 	context = {
-# 		'items': pages[0],
-# 		'page_range': pages[1],
-# 	}
-# 	return render(request, template, context)
-#ADDED (Master Code Online)
 
 #ADDED (Mitch)
 def get_query_results(query=None):
@@ -274,23 +255,9 @@ def restaurants(request):
 		schedule['Friday'] = 'Friday   ' + schedule['Friday']
 
 		print(restaurant['hours'])
-		#schedule['Monday'] += "-"
-		#schedule['Monday'] += restaurant.hours
+		
 		context['schedule'] = schedule
-	 	# context['photos'] = restaurant.photos
-	 	# context['image_url'] = request.POST['image_url']
-	 	# context['phone'] = request.POST['phone']
-	 	# photos_array = request.POST['photos']
-	 	# context['array'] = photos_array
-	 	# context['location'] = request.POST['location']
-	 	# context['hours'] = request.POST['hours']
-	 	# context['is_closed'] = request.POST['is_closed']
-	 	# print(request.POST['photos'])
-	# 	#context['name'] = name
-	# 	#print(name)
-	# #list = (YelpFusion.search_yelp(request.POST['myvalue'])).split(" ")
-	# list = (request.POST['myvalue']).split(' ')
-	# context['search_results'] = YelpFusion.search_yelp('term = ' + list[0], 'location = ' + list[1])
+	 	
 
 
 	return render(request, 'dumpApp/restaurants.html', context)

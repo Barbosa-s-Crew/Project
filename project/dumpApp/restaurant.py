@@ -22,7 +22,10 @@ def get_restaurant_using_ID(ID = 0):
 		output = cursor.fetchall()
 		cursor.close()
 		conn.close()
-		return output
+		ret = list()
+		for rest in output:
+			ret.append(dict(ID=rest[0], Name=rest[1], Location_ID=rest[2], Category=rest[3], Cuisine=rest[4], Notes=rest[5], Image=rest[6]))
+		return ret
 
 def get_restaurant_using_keyword(keyword = ''):
 	config = DBSetup.setup_config()
@@ -39,12 +42,15 @@ def get_restaurant_using_keyword(keyword = ''):
 			print(err)
 	else:
 		cursor = conn.cursor()
-		query = "SELECT * FROM Item_name, Item_cost, item_notes, item_image WHERE Menu_id LIKE '%" + str(keyword) + "%';"
+		query = "SELECT * FROM Restaurant WHERE Restaurant_name LIKE '%" + str(keyword) + "%';"
 		cursor.execute(query)
 		output = cursor.fetchall()
 		cursor.close()
 		conn.close()
-		return output
+		ret = list()
+		for rest in output:
+			ret.append(dict(ID=rest[0], Name=rest[1], Location_ID=rest[2], Category=rest[3], Cuisine=rest[4], Notes=rest[5], Image=rest[6]))
+		return ret
 
 
 def get_menu_items_using_restaurant_ID(ID = 0):
@@ -69,9 +75,12 @@ def get_menu_items_using_restaurant_ID(ID = 0):
 		output = cursor.fetchall()
 		cursor.close()
 		conn.close()
-		return output
+		ret = list()
+		for rest in output:
+			ret.append(dict(Name=rest[0], Cost=rest[1], Notes=rest[2], Image=rest[3]))
+		return ret
 
 
 #get_restaurant_using_ID(7)
-#get_restaurant_using_keyword('Restaurant')
+#get_restaurant_using_keyword('pizza')
 #get_menu_items_using_restaurant_ID(9)
