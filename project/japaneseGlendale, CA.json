@@ -1,110 +1,95 @@
 {
-  "id": "IeEq0lQZ-ie39KeP91_07g",
-  "alias": "california-pizza-kitchen-los-angeles-21",
-  "name": "California Pizza Kitchen",
-  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/LZCIK0vxqL30T3wr7f254A/o.jpg",
-  "is_claimed": false,
+  "id": "dKil1FUnzT5_0_GDiAmb2w",
+  "alias": "hot-spot-cafe-and-pizzeria-glendale-2",
+  "name": "Hot Spot Cafe & Pizzeria",
+  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/XjYAjYK5pwp6HnOHL6Vl7Q/o.jpg",
+  "is_claimed": true,
   "is_closed": false,
-<<<<<<< HEAD
-  "url": "https://www.yelp.com/biz/lucys-pizza-and-burgers-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182416336",
-  "display_phone": "(818) 241-6336",
-<<<<<<< HEAD
-  "review_count": 349,
-=======
-  "review_count": 348,
->>>>>>> parent of dbc81c6... menu items horizontall scrolling bar for restaurant.html
-=======
-  "url": "https://www.yelp.com/biz/california-pizza-kitchen-los-angeles-21?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18668201178",
-  "display_phone": "(866) 820-1178",
-  "review_count": 291,
->>>>>>> sarkis
+  "url": "https://www.yelp.com/biz/hot-spot-cafe-and-pizzeria-glendale-2?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18185488262",
+  "display_phone": "(818) 548-8262",
+  "review_count": 99,
   "categories": [
     {
       "alias": "pizza",
       "title": "Pizza"
     },
     {
-      "alias": "tradamerican",
-      "title": "American (Traditional)"
+      "alias": "cafes",
+      "title": "Cafes"
     }
   ],
-  "rating": 2.5,
+  "rating": 4.0,
   "location": {
-    "address1": "1 World Way",
+    "address1": "509 E Broadway Ave",
     "address2": "",
-    "address3": "Terminal 1",
-    "city": "Los Angeles",
-    "zip_code": "90045",
+    "address3": "",
+    "city": "Glendale",
+    "zip_code": "91205",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "1 World Way",
-      "Terminal 1",
-      "Los Angeles, CA 90045"
+      "509 E Broadway Ave",
+      "Glendale, CA 91205"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-    "latitude": 33.946499,
-    "longitude": -118.401124
+    "latitude": 34.1466064453125,
+    "longitude": -118.249588012695
   },
   "photos": [
-    "https://s3-media2.fl.yelpcdn.com/bphoto/LZCIK0vxqL30T3wr7f254A/o.jpg",
-    "https://s3-media3.fl.yelpcdn.com/bphoto/KsgqGOmpIf2otQ4ZipfQSw/o.jpg",
-    "https://s3-media2.fl.yelpcdn.com/bphoto/qy7ZMkjp4b6JCD2VUlhksQ/o.jpg"
+    "https://s3-media2.fl.yelpcdn.com/bphoto/XjYAjYK5pwp6HnOHL6Vl7Q/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/LCBrdhAfWKSLDhMnlkFd9g/o.jpg",
+    "https://s3-media2.fl.yelpcdn.com/bphoto/k2LYUOrslhCPrCeSLGuv8w/o.jpg"
   ],
-  "price": "$$",
+  "price": "$",
   "hours": [
     {
       "open": [
         {
           "is_overnight": false,
-          "start": "0400",
-          "end": "2300",
+          "start": "0800",
+          "end": "2100",
           "day": 0
         },
         {
           "is_overnight": false,
-          "start": "0400",
-          "end": "2300",
+          "start": "0800",
+          "end": "2100",
           "day": 1
         },
         {
           "is_overnight": false,
-          "start": "0400",
-          "end": "2300",
+          "start": "0800",
+          "end": "2100",
           "day": 2
         },
         {
           "is_overnight": false,
-          "start": "0400",
-          "end": "2300",
+          "start": "0800",
+          "end": "2100",
           "day": 3
         },
         {
           "is_overnight": false,
-          "start": "0400",
-          "end": "2300",
+          "start": "0800",
+          "end": "2100",
           "day": 4
         },
         {
           "is_overnight": false,
-          "start": "0400",
-          "end": "2300",
+          "start": "0900",
+          "end": "2100",
           "day": 5
-        },
-        {
-          "is_overnight": false,
-          "start": "0400",
-          "end": "2300",
-          "day": 6
         }
       ],
       "hours_type": "REGULAR",
       "is_open_now": true
     }
   ],
-  "transactions": []
+  "transactions": [
+    "delivery",
+    "pickup"
+  ]
 }
