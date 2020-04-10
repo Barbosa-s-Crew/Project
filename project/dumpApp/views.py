@@ -268,7 +268,15 @@ def restaurants(request):
 
 			context['schedule'] = schedule
 		else:
+<<<<<<< HEAD
 			print("its working")
+=======
+			#print("its working")
+			restaurant_module.get_restaurant_using_ID(request.POST['id'])
+
+			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
+			context['rest_items'] = items
+>>>>>>> parent of dbc81c6... menu items horizontall scrolling bar for restaurant.html
 
 
 	return render(request, 'dumpApp/restaurants.html', context)

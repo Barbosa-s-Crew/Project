@@ -78,6 +78,7 @@ def get_menu_items_using_restaurant_ID(ID = 0):
 		ret = list()
 		for rest in output:
 			ret.append(dict(Name=rest[0], Cost=rest[1], Notes=rest[2], Image=rest[3]))
+<<<<<<< HEAD
 		return ret
 
 def get_recent_using_user_ID(ID=0):
@@ -128,6 +129,8 @@ def get_favorites_using_user_ID(ID=0):	#using dumb query, needs updating
 		ret = list()
 		for rest in output:
 			ret.append(dict(ID=rest[0], Name=rest[1], Location_ID=rest[2], Category=rest[3], Cuisine=rest[4], Notes=rest[5], Image=rest[6]))
+=======
+>>>>>>> parent of dbc81c6... menu items horizontall scrolling bar for restaurant.html
 		return ret
 
 

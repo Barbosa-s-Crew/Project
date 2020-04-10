@@ -61,6 +61,10 @@
           <p>{{ day }}</p>
         {% endfor %}
     {% endfor %} -->
+    <h2> {{rest_items.Name}} </h2>
+    <h3>{{rest_items.Cost}}</h3>
+    <h3>{{rest_items.Notes}}</h3>
+    <h3><a href="{{rest_items.Image"}}> {{rest_items.Image}}</a></h3>
 
     {% for photo in everything.photos %} 
     <div class="gallery">
