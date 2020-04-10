@@ -223,41 +223,45 @@ def restaurants(request):
 
 	if request.method == "POST":
 	# 	#sktest.
-		restaurant = YelpFusion.search_restaurant(request.POST['id'])
-		context['everything'] = restaurant
-		schedule = {}
-		#context['formatted_schedule']
-		#for i in range(5):
-		#if i == 0:
-		schedule['Monday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
-		schedule['Monday'] = schedule['Monday'] + ' - '
-		schedule['Monday'] = schedule['Monday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
-		schedule['Monday'] = 'Monday   ' + schedule['Monday']
 
-		schedule['Tuesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
-		schedule['Tuesday'] = schedule['Tuesday'] + ' - '
-		schedule['Tuesday'] = schedule['Tuesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
-		schedule['Tuesday'] = 'Tuesday   ' + schedule['Tuesday']
+		print(request.POST['Yelp'])
+		if request.POST['Yelp'] == "True":
+			restaurant = YelpFusion.search_restaurant(request.POST['id'])
+			context['everything'] = restaurant
+			schedule = {}
+			#context['formatted_schedule']
+			#for i in range(5):
+			#if i == 0:
+			schedule['Monday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+			schedule['Monday'] = schedule['Monday'] + ' - '
+			schedule['Monday'] = schedule['Monday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
+			schedule['Monday'] = 'Monday   ' + schedule['Monday']
 
-		schedule['Wednesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
-		schedule['Wednesday'] = schedule['Wednesday'] + ' - '
-		schedule['Wednesday'] = schedule['Wednesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
-		schedule['Wednesday'] = 'Wednesday   ' + schedule['Wednesday']
+			schedule['Tuesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+			schedule['Tuesday'] = schedule['Tuesday'] + ' - '
+			schedule['Tuesday'] = schedule['Tuesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
+			schedule['Tuesday'] = 'Tuesday   ' + schedule['Tuesday']
 
-		schedule['Thursday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
-		schedule['Thursday'] = schedule['Thursday'] + ' - '
-		schedule['Thursday'] = schedule['Thursday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
-		schedule['Thursday'] = 'Thursday   ' + schedule['Thursday']
+			schedule['Wednesday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+			schedule['Wednesday'] = schedule['Wednesday'] + ' - '
+			schedule['Wednesday'] = schedule['Wednesday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
+			schedule['Wednesday'] = 'Wednesday   ' + schedule['Wednesday']
 
-		schedule['Friday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
-		schedule['Friday'] = schedule['Friday'] + ' - '
-		schedule['Friday'] = schedule['Friday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
-		schedule['Friday'] = 'Friday   ' + schedule['Friday']
+			schedule['Thursday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+			schedule['Thursday'] = schedule['Thursday'] + ' - '
+			schedule['Thursday'] = schedule['Thursday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
+			schedule['Thursday'] = 'Thursday   ' + schedule['Thursday']
 
-		print(restaurant['hours'])
-		
-		context['schedule'] = schedule
-	 	
+			schedule['Friday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
+			schedule['Friday'] = schedule['Friday'] + ' - '
+			schedule['Friday'] = schedule['Friday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
+			schedule['Friday'] = 'Friday   ' + schedule['Friday']
+
+			print(restaurant['hours'])
+			
+			context['schedule'] = schedule
+		else:
+			print("its working")
 
 
 	return render(request, 'dumpApp/restaurants.html', context)
