@@ -1,4 +1,4 @@
-import DBSetup
+from . import DBSetup
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -135,4 +135,4 @@ def get_favorites_using_user_ID(ID=0):	#using dumb query, needs updating
 #get_restaurant_using_keyword('pizza')
 #get_menu_items_using_restaurant_ID(9)
 #print(get_recent_using_user_ID(1))
-print(get_favorites_using_user_ID(1))
+#print(get_favorites_using_user_ID(1))
