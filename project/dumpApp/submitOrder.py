@@ -2,26 +2,56 @@ import mysql.connector
 from mysql.connector import errorcode
 from . import DBSetup
 
-def submitItem(that_dict):
-	# Obtain connection string information from the portal
-	config = DBSetup.setup_config()
-	try:
-		conn = mysql.connector.connect(**config)
-		print("Connection established")
-	except mysql.connector.Error as err:
-		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-			print("Something is wrong with the user name or password")
-		elif err.errno == errorcode.ER_BAD_DB_ERROR:
-			print("Database does not exist")
-		else:
-			print(err)
-	else: 
-		cursor = conn.cursor()
-		cursor.execute("INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity) VALUES ('"+str(that_dict.get("Order_ID"))+"', '"+str(that_dict.get("Restaurant_ID"))+"', '"+str(that_dict.get("Menu_ID"))+"', '"+str(that_dict.get("Item_ID"))+"', '"+str(that_dict.get("Item_Quantity"))+"');")
-		conn.commit()
-		conn.close()
+class order_item:
+	restaurant_ID = ''
+	menu_ID = ''
+	item_ID = ''
+	item_quantity = 0
+
+	def __init__(self, restaurant_ID, menu_ID, item_ID, item_quantity):
+		self.restaurant_ID = ''
+		self.menu_ID = ''
+		self.item_ID = ''
+		self.item_quantity = 0
+
+	def submitItem(order_ID):
+		# Obtain connection string information from the portal
+		config = DBSetup.setup_config()
+		try:
+			conn = mysql.connector.connect(**config)
+			print("Connection established")
+		except mysql.connector.Error as err:
+			if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+				print("Something is wrong with the user name or password")
+			elif err.errno == errorcode.ER_BAD_DB_ERROR:
+				print("Database does not exist")
+			else:
+				print(err)
+		else: 
+			cursor = conn.cursor()
+			cursor.execute("INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity) VALUES ('"+str(order_ID)+"', '"+str(self.restaurant_ID)+"', '"+str(self.menu_ID)+"', '"+str(self.item_ID)+"', '"+str(self.item_quantity)+"');")
+			conn.commit()
+			conn.close()
 
 
+#----------------------------------------------------------------------
+class order_list:
+	olist = list()
+	user_ID = ''
+	Location_ID = ''
+	start_time = ''
+	status = ''
+
+	#this will init the orders class with an empty list
+	def __init__(self):
+		pass
+
+	def add_order(order):
+		self.olist.append(order)
+
+	def submit():
+		for o in olist:
+			o.submitItem()
 
 
 def submitOrder(that_dict):
