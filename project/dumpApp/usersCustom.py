@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import check_password, make_password
 
 #User_ID int not null identity,
 #    Location_ID int,
-#   Payment_Option_ID int,
+#    Payment_Option_ID int,
 #    User_name varchar(40) not null,
 #    User_Email varchar(60),
 #    User_Password varchar(255) not null,
