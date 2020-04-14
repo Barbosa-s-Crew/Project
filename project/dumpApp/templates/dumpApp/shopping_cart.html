@@ -1,0 +1,129 @@
+{% extends "dumpApp/base.html" %}
+{% block content %}
+
+
+
+
+    <h1 align="center" style="color:back; font-size: 30px;">Ready to get your food?</h1>
+    <br>
+
+    <div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<div class="row">
+							<div class="col-xs-6">
+								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+							</div>
+							<div class="col-xs-6">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<!-- <div class="row">
+						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+						</div>
+						<div class="col-xs-4">
+							<h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
+						</div>
+						<div class="col-xs-6">
+							<div class="col-xs-6 text-right">
+								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+							</div>
+							<div class="col-xs-4">
+								<input type="text" class="form-control input-sm" value="1">
+							</div>
+							<div class="col-xs-2">
+								<button type="button" class="btn btn-link btn-xs">
+									<span class="glyphicon glyphicon-trash"> </span>
+								</button>
+							</div>
+						</div>
+					</div> -->
+					<hr>
+					<br>
+          {% for item in shopping_cart %}
+
+					<div class="row shopping_cart_frame" style="width:700px;">
+						<div class="col-xs-2">
+              {% if item.Image != "" %}
+                <img style="max-width:100px; max-height:70px; margin:0px 20px" class="img-responsive shopping_cart_item_image" src="{{item.Image}}">
+              {% else %}
+                <img class="img-responsive shopping_cart_item_image" src="http://placehold.it/100x70">
+              {% endif %}
+						</div>
+						<div class="col-xs-4">
+							<h4 class="product-name">
+                <strong>{{item.Name}}</strong>
+              </h4>
+              <h4>
+                <small>{{item.Restaurant}}</small>
+              </h4>
+						</div>
+
+  					<hr>
+						<div class="col-xs-6">
+							<div class="col-xs-6 text-right">
+								<h6 align="right"><strong>${{item.Price}} <span class="text-muted">x {{item.Quantity}}</span></strong></h6>
+							</div>
+							<div class="col-xs-4">
+								<!-- <input type="text" class="form-control input-sm" value="1"> -->
+							</div>
+							<div class="col-xs-2">
+								<button type="button" class="btn btn-link btn-xs">
+									<span class="glyphicon glyphicon-trash"> </span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<hr>
+
+          {% endfor %}
+
+
+          <hr>
+          <br>
+          <br>
+          <br>
+					<div class="row">
+						<div class="text-center">
+							<div class="col-xs-9">
+								<!-- <h6 class="text-right">Added items?</h6> -->
+							</div>
+							<div class="col-xs-3">
+								<!-- <button type="button" class="btn btn-default btn-sm btn-block">
+									Update cart
+								</button> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="row text-center">
+						<div class="col-xs-9">
+							<h4 class="text-right">Total $ {{shopping_cart_price_total}}</h4>
+              <br>
+              <button type="button" class="btn btn-primary btn-block" style="color:black;">
+								Check Out
+							</button>
+						</div>
+						<div class="col-xs-3">
+							<!-- <button type="button" class="btn btn-success btn-block">
+								Checkout
+							</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- <section><div class="ea ao ar aq af"><div class="eu ao ap ev"><div><h2 class="dx dy bd be">New on Uber Eats</h2></div></div><div class="ao aq el ev b5"><div class="au ew aw ax ay"></div><div class="ao aq"><button aria-label="Previous" class="bb bc bd gq gr ew ao aq bu aj ay dv co" disabled=""><div class="c5 c6 c7"><svg width="24px" height="24px" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true" focusable="false"><path d="M18.6666 13H8.19995L11.8666 18H9.53328L5.19995 12L9.53328 6H11.8666L8.19995 11H18.6666V13Z" fill="#AFAFAF"></path></svg></div></button><div class="au f0 aw ax ay"></div><button aria-label="Next" class="bb bc bd be ch ew ao aq bu aj ay ex ey ez cm cn co"><div class="c5 c6 c7"><svg width="24px" height="24px" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true" focusable="false"><path d="M18.6666 13H8.19995L11.8666 18H9.53328L5.19995 12L9.53328 6H11.8666L8.19995 11H18.6666V13Z" fill="#000000" transform="rotate(180, 12, 12)"></path></svg></div></button></div></div></div><div class="f1 ao f2 f3 f4"><ul class="ao au f5 f6 az f7 f8"><li class="au f5 f9 f7"><a class="at em az" href="/los-angeles/food-delivery/chipotle-mexican-grill-155-n-brand-blvd/o9kYsNLWRSKBt_JsWH5nvQ"><div class="af"><figure height="240" class="dv af fa ax"><div class="az bj b2 d8 db"><img alt="" role="presentation" src="https://d1ralsognjng37.cloudfront.net/28829701-533b-467e-833f-44113f0fbe31.jpeg" class="az bj gp c2"></div></figure><div><div class="bb bc bd be fg fh bf b1">Chipotle Mexican Grill (155 N Brand Blvd)</div><div class="cu cv c0 fi fh b1 bf">$ • Healthy • Mexican</div><div class="ao ap"><div class="ao fj"><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><div><div class="fl fm"><span class="c0 cu cv be fn">10–20 Min</span></div></div></div><div class="au c8 aw ax ay"></div><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><span class="b2 aw bx b1 by bf bz">A top rated restaurant with 4.8 out of 5 stars based on 20 reviews.</span><div aria-hidden="true" class="ao aq">4.8<img alt="" role="presentation" src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/92367108b11b8ee48b6f29cb3fef2d4d.svg"><span class="fi">(20)</span></div></div><div class="au c8 aw ax ay"></div><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><span class="b2 aw bx b1 by bf bz">Delivery Fee is No Fee</span><div aria-hidden="true" class="ao aq">$0 Delivery Fee</div></div></div></div></div></div></a></li><li class="au f5 f9 f7"><a class="at em az" href="/los-angeles/food-delivery/sams-crispy-chicken-702-americana-way/uskYMGgJRXG0bf9vBtya2Q"><div class="af"><figure height="240" class="dv af fa ax"><div class="az bj b2 d8 db"><img alt="" role="presentation" src="https://d1ralsognjng37.cloudfront.net/eaf586cd-d215-42df-8a49-3712a64ca54d.jpeg" class="az bj gp c2"></div></figure><div><div class="bb bc bd be fg fh bf b1">Sam's Crispy Chicken - 702 Americana Way</div><div class="cu cv c0 fi fh b1 bf">$ • Burgers • American • Sandwiches</div><div class="ao ap"><div class="ao fj"><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><div><div class="fl fm"><span class="c0 cu cv be fn">25–35 Min</span></div></div></div><div class="au c8 aw ax ay"></div><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><span class="b2 aw bx b1 by bf bz">A top rated restaurant with 4.9 out of 5 stars based on 16 reviews.</span><div aria-hidden="true" class="ao aq">4.9<img alt="" role="presentation" src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/92367108b11b8ee48b6f29cb3fef2d4d.svg"><span class="fi">(16)</span></div></div><div class="au c8 aw ax ay"></div><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><span class="b2 aw bx b1 by bf bz">Delivery Fee is No Fee</span><div aria-hidden="true" class="ao aq">$0 Delivery Fee</div></div></div></div><div class="cu cv c0 fi dz ao e8"><img alt="" role="presentation" src="https://uber-test.s3.amazonaws.com/badge_check@3x.png" class="fo fp au"><div class="au fq aw ax ay"></div><div>Crafted by Katsuya-Glendale</div></div></div></div></a></li><li class="au f5 f9 f7"><a class="at em az" href="/los-angeles/food-delivery/brick-%26-flour-glendale/0IePNNQVSVO7RubL-cNk0g?promo=69642778-4bcc-45f9-ade6-cf4ed4db758a"><div class="af"><figure height="240" class="dv af fa ax"><div class="az bj b2 d8 db"><img alt="" role="presentation" src="https://d1ralsognjng37.cloudfront.net/52acc91c-274e-43d3-b504-cca20a250e22.jpeg" class="az bj gp c2"></div></figure><div class="cu cv c0 ci b2 fb fc fd fe ff">Spend $20, Save $5</div><div><div class="bb bc bd be fg fh bf b1">Brick &amp; Flour (Glendale)</div><div class="cu cv c0 fi fh b1 bf">$ • Mexican • Chicken • Desserts</div><div class="ao ap"><div class="ao fj"><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><div><div class="fl fm"><span class="c0 cu cv be fn">20–30 Min</span></div></div></div><div class="au c8 aw ax ay"></div><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><span class="b2 aw bx b1 by bf bz">Rated 4.5 out of 5 stars based on 17 reviews.</span><div aria-hidden="true" class="ao aq">4.5<img alt="" role="presentation" src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/92367108b11b8ee48b6f29cb3fef2d4d.svg"><span class="fi">(17)</span></div></div><div class="au c8 aw ax ay"></div><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><span class="b2 aw bx b1 by bf bz">Delivery Fee is No Fee</span><div aria-hidden="true" class="ao aq">$0 Delivery Fee</div></div></div></div></div></div></a></li></ul><ul class="ao au f5 f6 az f7 f8"><li class="au f5 f9 f7"><a class="at em az" href="/los-angeles/food-delivery/zankou-chicken-burbank/nKSGZV4ATiqdtuItbisheA"><div class="af"><figure height="240" class="dv af fa ax"><div class="az bj b2 d8 db"><img alt="" role="presentation" src="https://d1ralsognjng37.cloudfront.net/e3a8516a-aea5-4e29-9223-49925a8dc7a2.jpeg" class="az bj gp c2"></div></figure><div><div class="bb bc bd be fg fh bf b1">Zankou Chicken (Burbank)</div><div class="cu cv c0 fi fh b1 bf">$ • Mediterranean • Middle Eastern • Vegetarian Friendly</div><div class="ao ap"><div class="ao fj"><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><div><div class="fl fm"><span class="c0 cu cv be fn">15–25 Min</span></div></div></div><div class="au c8 aw ax ay"></div><div class="cu cv c0 be ec fk bf ao ap ar aq dz c6"><span class="b2 aw bx b1 by bf bz">Delivery Fee is No Fee</span><div aria-hidden="true" class="ao aq">$0 Delivery Fee</div></div></div></div></div></div></a></li></ul></div></section> -->
+
+
+{% endblock content %}

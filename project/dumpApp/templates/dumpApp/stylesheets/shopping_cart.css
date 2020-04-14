@@ -1,0 +1,16 @@
+body {
+	margin-top: 20px;
+}
+
+.shopping_cart_frame {
+  min-height:800px;
+  height:1200px;
+  height:100%;
+}
+
+.shopping_cart_item_image {
+  height: 70px;
+  width: 100px;
+  max-height:100px;
+  max-width:100px;
+}

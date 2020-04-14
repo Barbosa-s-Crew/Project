@@ -220,7 +220,7 @@ div{
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/main.css' %}">
-
+    
 
 
     {% if title %}
@@ -250,17 +250,18 @@ div{
             </div>
             <!-- Navbar Right Side -->
             <!-- ADDED-->
-                <div class="search-bar mt-sm-2 mr-2">
+                <!-- <div class="search-bar mt-sm-2 mr-2">
                   <form method="get">
                       <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
 
                   </form>
 
 
-                </div>
+                </div> -->
             <!-- ADDED-->
             <div class="navbar-nav">
                 {% if user_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'shopping_cart' %}">Cart</a>
                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
                 {% else %}
