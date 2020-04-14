@@ -52,6 +52,29 @@ def dashboard(request):
 	# If not logged in, go to home page instead
 	return render(request, 'dumpApp/home.html', context)
 
+def shopping_cart(request):
+	check_user(request)
+	context = {
+		'user_authenticated': request.session['is_authenticated'],
+	}
+	if context['user_authenticated'] == False:
+		return render(request, 'dumpApp/home.html', context)
+
+	#context['shopping_cart'] = request.session['shopping_cart'];
+	context['shopping_cart'] = [
+		{
+		'Name': "Big Cheeseburger",
+		'Image': "https://image.shutterstock.com/image-photo/fresh-tasty-burger-isolated-on-260nw-705104968.jpg",
+		'Price': 3.49,
+		'Quantity': 1,
+		'Restaurant': "Barbosas Cuisine"
+		}
+	]
+	context['shopping_cart_price_total'] = 12.34
+
+	# If logged in, go to dashboard instead
+	return render(request, 'dumpApp/shopping_cart.html', context)
+
 def dump(request):
 	check_user(request)
 	context = {
@@ -170,6 +193,7 @@ def login(request):
 		#request.session['gender'] = user.gender
 		request.session['preferences'] = user.other_info
 		request.session['is_authenticated'] = user.is_authenticated
+		request.session['shopping_cart'] = []
 
 		print(user.username)
 
@@ -290,11 +314,11 @@ def restaurants(request):
 			print(request.POST['id'])
 
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
-			context['restaurants'] = restaurant[0] 
+			context['restaurants'] = restaurant[0]
 
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items
-			
+
 
 			#ID=rest[0], Name=rest[1], Location_ID=rest[2], Category=rest[3], Cuisine=rest[4], Notes=rest[5], Image=rest[6])
 
