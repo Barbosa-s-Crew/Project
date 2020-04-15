@@ -35,23 +35,23 @@
     <!-- {% endfor %} -->
 
 <!--     <h1>{{ everything }}</h1> -->
-    
-    <h2><a href="{{ everything.url }}">{{ everything.name }}</a></h2>
-    <h3 style="color: green">Address</h3>
-    <h3>{{ everything.location.address1 }} {{ everything.location.city }} {{ everything.location.zip_code }},
+    {% if everything %}
+      <h2><a href="{{ everything.url }}">{{ everything.name }}</a></h2>
+      <h3 style="color: green">Address</h3>
+      <h3>{{ everything.location.address1 }} {{ everything.location.city }} {{ everything.location.zip_code }},
       {{ everything.location.state }}
-    </h3>
-    <br>
-    <h3 style="color: green">Schedule</h3>
-    <h3>{{ schedule.Monday }}</h3>
-    <h3>{{ schedule.Tuesday }}</h3>
-    <h3>{{ schedule.Wednesday }}</h3>
-    <h3>{{ schedule.Thursday }}</h3>
-    <h3>{{ schedule.Friday }}</h3>
-    <br>
-    <br>
-    <h4 style="color: green">Phone: </h4>
-    <h4>{{ everything.display_phone }}</h4>
+     </h3>
+     <br>
+     <h3 style="color: green">Schedule</h3>
+     <h3>{{ schedule.Monday }}</h3>
+     <h3>{{ schedule.Tuesday }}</h3>
+     <h3>{{ schedule.Wednesday }}</h3>
+     <h3>{{ schedule.Thursday }}</h3>
+     <h3>{{ schedule.Friday }}</h3>
+     <br>
+     <br>
+     <h4 style="color: green">Phone: </h4>
+     <h4>{{ everything.display_phone }}</h4>
     <h4 style="color: green">Rating: </h4>
     <h4>{{ everything.rating }}</h4>
     <!-- <p>{{ schedule.Monday }}</p> -->
@@ -62,28 +62,6 @@
         {% endfor %}
     {% endfor %} -->
 
-    <h3 align="left" style="color:black;">Menu Items</h3>
-    <div class="horizontal-scroll-wrapper squares">
-      {% for items in rest_items %}
-        <div class="container-horizontal-scroll-item">
-          <div>
-            <img class = "centered" style="background-size: 10px; width: 250px; height: 250px; border: 0px solid;" src="{{items.Image}}">
-          </div>
-          <div class="centered">
-            <h2 style="color:white;" align="center">{{items.Name}}</h2>
-            <p style="color:white;" align="center">{{items.Cost}} </p>
-            <p style="color:white;" align="center">{{items.Notes}} </p>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     {% for photo in everything.photos %} 
     <div class="gallery">
       <a target="_blank" href="{{ photo }}">
@@ -95,5 +73,51 @@
       <h3>Sorry, no photos for this restaurant</h3> 
     {% endfor %}
 
+    {% else %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>{{ restaurants.Name }}</h2>
+    
+    <h3>
+     {% if rest_address.Location_Street_1  != "None" %}
+        {{ rest_address.Location_Street_1 }}
+      {% endif %}
+      {% if rest_address.Location_Street_2  != "None" %}
+        {{ rest_address.Location_2 }}
+      {% endif %}
+      {% if rest_address.Location_City  != "None" %}
+        {{ rest_address.Location_City }}
+      {% endif %}
+      {% if rest_address.Location_State  != "None" %}
+        {{ rest_address.Location_State }}
+      {% endif %}
+      {% if rest_address.Location_Zip != "None" %}
+        {{rest_address.Location_Zip}}
+      {% endif %}
+    </h3>
+    
+      
+    <img scr="{{restaurant_Image}}">
+     <h3 align="left" style="color:black;">Menu Items</h3>
+    
+    <div class="horizontal-scroll-wrapper squares">
+      {% for items in rest_items %}
+        <div class="container-horizontal-scroll-item">
+          <div>
+            <img class = "centered" style="background-size: 10px; width: 800px; height: 250px; border: 0px solid;" src="{{items.Image}}">
+          </div>
+          <div class="centered">
+            <h2 style="color:white;" align="center">{{items.Name}}</h2>
+            <p style="color:white;" align="center">${{items.Cost}} </p>
+            <p style="color:white;" align="center">{{items.Notes}} </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+ 
+
+    {% endif %}
 
 {% endblock content %}
