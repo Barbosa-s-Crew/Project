@@ -79,13 +79,12 @@
     <br>
     <br>
     <h2>{{ restaurants.Name }}</h2>
-    
-    <h3>
+    <h3>Address: 
      {% if rest_address.Location_Street_1  != "None" %}
         {{ rest_address.Location_Street_1 }}
       {% endif %}
       {% if rest_address.Location_Street_2  != "None" %}
-        {{ rest_address.Location_2 }}
+        {{ rest_address.Location_Street_2 }}
       {% endif %}
       {% if rest_address.Location_City  != "None" %}
         {{ rest_address.Location_City }}
