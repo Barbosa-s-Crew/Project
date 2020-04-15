@@ -9,12 +9,12 @@ class order_item:
 	item_quantity = 0
 
 	def __init__(self, restaurant_ID, menu_ID, item_ID, item_quantity):
-		self.restaurant_ID = ''
-		self.menu_ID = ''
-		self.item_ID = ''
-		self.item_quantity = 0
+		self.restaurant_ID = restaurant_ID
+		self.menu_ID = menu_ID
+		self.item_ID = item_ID
+		self.item_quantity = item_quantity
 
-	def submitItem(order_ID):
+	def submitItem(self, order_ID):
 		# Obtain connection string information from the portal
 		config = DBSetup.setup_config()
 		try:
@@ -36,66 +36,73 @@ class order_item:
 
 #----------------------------------------------------------------------
 class order_list:
-	olist = list()
+	olist = []
 	user_ID = ''
-	Location_ID = ''
-	start_time = ''
+	location_ID = ''
 	status = ''
 
 	#this will init the orders class with an empty list
-	def __init__(self):
-		pass
+	def __init__(self, user_ID, location_ID, status):
+		self.user_ID = user_ID
+		self.location_ID = location_ID
+		self.status = status
 
-	def add_order(order):
+	def add_order(self, order):
 		self.olist.append(order)
+		print(self.olist)
 
-	def submit():
-		for o in olist:
-			o.submitItem()
+	def submit(self):
+		ID = self.submitOrder()
+		print("ID is: " + str(ID))
+		for i in range(0, len(self.olist)):
+			self.olist[i].submitItem(ID)
+
+	def submitOrder(self):
+		# Obtain connection string information from the portal
+		config = DBSetup.setup_config()
+		try:
+			conn = mysql.connector.connect(**config)
+			print("Connection established")
+		except mysql.connector.Error as err:
+			if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+				print("Something is wrong with the user name or password")
+			elif err.errno == errorcode.ER_BAD_DB_ERROR:
+				print("Database does not exist")
+			else:
+				print(err)
+		else: 
+			cursor = conn.cursor()
+			cursor.execute("INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES ('"+str(self.user_ID)+"', '"+str(self.location_ID)+"', CURTIME(), '"+str(self.status)+"');")
+			conn.commit()
+			cursor.execute("SELECT max(Order_ID) FROM Orders;")
+			order_ID = cursor.fetchall()
+			print("ID from sorder: " + str(order_ID))
+			conn.close()
+			return order_ID[0][0]
 
 
-def submitOrder(that_dict):
-	# Obtain connection string information from the portal
-	config = DBSetup.setup_config()
-	try:
-		conn = mysql.connector.connect(**config)
-		print("Connection established")
-	except mysql.connector.Error as err:
-		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-			print("Something is wrong with the user name or password")
-		elif err.errno == errorcode.ER_BAD_DB_ERROR:
-			print("Database does not exist")
-		else:
-			print(err)
-	else: 
-		cursor = conn.cursor()
-		cursor.execute("INSERT INTO Orders (Order_ID, User_ID, Location_ID, Order_start_time, Order_Status) VALUES ('"+str(that_dict.get("Order_ID"))+"', '"+str(that_dict.get("User_ID"))+"', '"+str(that_dict.get("Location_ID"))+"', '"+str(that_dict.get("Order_start_time"))+"', '"+str(that_dict.get("Order_status"))+"');")
-		conn.commit()
-		conn.close()
-
-
-def getOrder(order_ID):
-	# Obtain connection string information from the portal
-	config = DBSetup.setup_config()
-	try:
-		conn = mysql.connector.connect(**config)
-		print("Connection established")
-	except mysql.connector.Error as err:
-		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-			print("Something is wrong with the user name or password")
-		elif err.errno == errorcode.ER_BAD_DB_ERROR:
-			print("Database does not exist")
-		else:
-			print(err)
-	else: 
-		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM Orders WHERE Order_ID='"+str(order_ID)+"'")
-		fetched = cursor.fetchall()
-		order = fetch[0]
-		ret = list()
-		ret.append(dict(Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])))
-		cursor.execute("SELECT * FROM Order_items WHERE Order_ID='"+str(order_ID)+"'")
-		fetched = cursor.fetchall()
-		for order in fetched:
-			ret.append(dict(Order_ID=str(order[0]), Restaurant_ID=str(order[1]), Menu_ID=str(order[2]), Item_ID=str(order[3]), Item_Quantity=str(order[4])))
-		return ret
+	def getOrder(order_ID):
+		# Obtain connection string information from the portal
+		config = DBSetup.setup_config()
+		try:
+			conn = mysql.connector.connect(**config)
+			print("Connection established")
+		except mysql.connector.Error as err:
+			if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+				print("Something is wrong with the user name or password")
+			elif err.errno == errorcode.ER_BAD_DB_ERROR:
+				print("Database does not exist")
+			else:
+				print(err)
+		else: 
+			cursor = conn.cursor()
+			cursor.execute("SELECT * FROM Orders WHERE Order_ID='"+str(order_ID)+"'")
+			fetched = cursor.fetchall()
+			order = fetch[0]
+			ret = list()
+			ret.append(dict(Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])))
+			cursor.execute("SELECT * FROM Order_items WHERE Order_ID='"+str(order_ID)+"'")
+			fetched = cursor.fetchall()
+			for order in fetched:
+				ret.append(dict(Order_ID=str(order[0]), Restaurant_ID=str(order[1]), Menu_ID=str(order[2]), Item_ID=str(order[3]), Item_Quantity=str(order[4])))
+			return ret
