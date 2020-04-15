@@ -61,14 +61,7 @@
           <p>{{ day }}</p>
         {% endfor %}
     {% endfor %} -->
-   
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     {% for photo in everything.photos %} 
     <div class="gallery">
       <a target="_blank" href="{{ photo }}">
@@ -84,7 +77,19 @@
     <br>
     <br>
     <br>
-    <h1>{{restaurants.Name}}</h1>
+    <br>
+    <h2>{{ restaurants.Name }}</h2>
+    
+    {% for addr in rest_address %}
+      {% if not None %}
+        <h3> {{addr}}</h3>
+        <h3>went</h3>
+      {% endif %}
+    {% empty %}
+      <h3>Sorry, no address available</h3>
+    {% endfor %}
+    <h3>{{rest_address.Location_Street_1}} {{rest_address.Location_Street_2}} {{rest_address.Location_City}} {{rest_address.Location_State}} {{rest_address.Location_Zip}} </h3>
+
     
     <img scr="{{restaurant_Image}}">
      <h3 align="left" style="color:black;">Menu Items</h3>
