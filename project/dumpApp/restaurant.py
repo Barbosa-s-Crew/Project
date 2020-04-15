@@ -155,6 +155,29 @@ def get_location_using_location_id(ID=0):
 			ret.append(dict(Location_ID=str(location[0]),Location_Street_1=str(location[1]), Location_Street_2=str(location[2]),Location_City=str(location[3]), Location_State=str(location[4]), Location_Zip=str(location[5]), Location_Longitude=str(location[6]), Location_Latitude=str(location[7]), API=str(location[8])))
 		return ret
 
+def get_restaurant_orders(ID=0):
+	config = DBSetup.setup_config()
+	try:
+		conn = mysql.connector.connect(**config)
+		#print("Connection established")
+	except mysql.connector.Error as err:
+		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+			print("Something is wrong with the user name or password")
+		elif err.errno == errorcode.ER_BAD_DB_ERROR:
+			print("Database does not exist")
+		else:
+			print(err)
+	else:
+		cursor = conn.cursor()
+		query = "SELECT * FROM Order_items WHERE Restaurant_ID = "+str(ID)+";"
+		cursor.execute(query)
+		output = cursor.fetchall()
+		cursor.close()
+		conn.close()
+		ret = list()
+		for order in output:
+			ret.append(dict(Order_ID=order[0], Restaurant_ID=rest[1], Menu_ID=rest[2], Item_ID=rest[3], Item_Quantity=rest[4]))
+		return ret
 
 
 #get_restaurant_using_ID(7)
