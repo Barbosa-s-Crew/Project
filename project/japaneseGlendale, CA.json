@@ -1,43 +1,43 @@
 {
-  "id": "AVBzqTzu5u8QdVaLni2Gpw",
-  "alias": "indias-flavor-glendale",
-  "name": "India's Flavor",
-  "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/uGUR78HDBsPk89kr7Nonow/o.jpg",
+  "id": "q8buTNBt3FU9vie0D5OOxA",
+  "alias": "pizzeria-mozza-los-angeles",
+  "name": "Pizzeria Mozza",
+  "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/QbxzKkRRmbANhOc1w9-4Wg/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/indias-flavor-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18189575500",
-  "display_phone": "(818) 957-5500",
-  "review_count": 578,
+  "url": "https://www.yelp.com/biz/pizzeria-mozza-los-angeles?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+13232970101",
+  "display_phone": "(323) 297-0101",
+  "review_count": 4242,
   "categories": [
     {
-      "alias": "indpak",
-      "title": "Indian"
+      "alias": "pizza",
+      "title": "Pizza"
     }
   ],
   "rating": 4.0,
   "location": {
-    "address1": "3303 N Verdugo Rd",
-    "address2": null,
+    "address1": "641 N Highland Ave",
+    "address2": "",
     "address3": "",
-    "city": "Glendale",
-    "zip_code": "91208",
+    "city": "Los Angeles",
+    "zip_code": "90036",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "3303 N Verdugo Rd",
-      "Glendale, CA 91208"
+      "641 N Highland Ave",
+      "Los Angeles, CA 90036"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-    "latitude": 34.1988521,
-    "longitude": -118.229371
+    "latitude": 34.0832522379857,
+    "longitude": -118.338801201765
   },
   "photos": [
-    "https://s3-media3.fl.yelpcdn.com/bphoto/uGUR78HDBsPk89kr7Nonow/o.jpg",
-    "https://s3-media3.fl.yelpcdn.com/bphoto/hNYOLFcHBLtzfURu6fHeag/o.jpg",
-    "https://s3-media3.fl.yelpcdn.com/bphoto/YaYp9W4MNnHs1JgLrt4fgw/o.jpg"
+    "https://s3-media1.fl.yelpcdn.com/bphoto/QbxzKkRRmbANhOc1w9-4Wg/o.jpg",
+    "https://s3-media4.fl.yelpcdn.com/bphoto/dQe1-O11axIhEz2YlzCNXw/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/aq58AXCrdVnOF_3mQnVJHg/o.jpg"
   ],
   "price": "$$",
   "hours": [
@@ -45,75 +45,45 @@
       "open": [
         {
           "is_overnight": false,
-          "start": "1130",
-          "end": "1430",
+          "start": "1200",
+          "end": "2300",
           "day": 0
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2130",
-          "day": 0
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1430",
+          "start": "1200",
+          "end": "2300",
           "day": 1
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2130",
-          "day": 1
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1430",
+          "start": "1200",
+          "end": "2300",
           "day": 2
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2130",
-          "day": 2
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1430",
+          "start": "1200",
+          "end": "2300",
           "day": 3
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2130",
-          "day": 3
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1430",
+          "start": "1200",
+          "end": "0000",
           "day": 4
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2200",
-          "day": 4
-        },
-        {
-          "is_overnight": false,
-          "start": "1130",
-          "end": "1430",
+          "start": "1200",
+          "end": "0000",
           "day": 5
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2200",
-          "day": 5
+          "start": "1200",
+          "end": "2300",
+          "day": 6
         }
       ],
       "hours_type": "REGULAR",
@@ -121,7 +91,6 @@
     }
   ],
   "transactions": [
-    "delivery",
-    "pickup"
+    "delivery"
   ]
 }

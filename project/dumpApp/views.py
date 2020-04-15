@@ -287,10 +287,16 @@ def restaurants(request):
 
 			context['schedule'] = schedule
 		else:
-			print(request.POST['id'])
+			#print(request.POST['id'])    
 
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
 			context['restaurants'] = restaurant[0] 
+			
+			restaurant_location = restaurant_module.get_location_using_location_id(restaurant[0]['Location_ID'])
+			#print("here"+restaurant_location[0]['Location_Street_1'])
+			context['rest_address'] = restaurant_location[0]
+			
+			#print(restaurant[0]['Location_ID'])
 
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items
