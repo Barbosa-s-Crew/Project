@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 <!-- PFOFILE -->
@@ -209,6 +209,13 @@ div{
   transform-origin: right top;
 }
 
+#grad1 {
+  height: 2000px;
+  width: 100%;
+  background-color: #52C1F0; /* For browsers that do not support gradients */
+  background-image: linear-gradient(#52C1F0, white); /* Standard syntax (must be last) */
+}
+
   </style>
 
   <!-- ADDED -->
@@ -236,20 +243,22 @@ div{
 
     <link rel="stylesheet" type="text/css" href="{% static button_over_image.css %}">
 
+    <link rel="stylesheet" type="text/css" href="{% static dividers.css %}">
+
+    <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
+
 </head>
 
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
-<br>
-<br>
-<br>
-<br>
-<div class="container_button">
-    <img src="https://www.justonecookbook.com/wp-content/uploads/2020/01/Sushi-Rolls-Maki-Sushi-%E2%80%93-Hosomaki-1117-I.jpg" alt="Snow" style="width:100%">
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20" id="grad1">
+
+
+ <!--  <div class="container_button" id="grad1">
+    <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="Snow" paddding="100px">
     <button class="btn">Order</button>
-  </div>
+  </div>  -->
 
 
-    <header class="site-header" id="grad1">
+    <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-light fixed-top" style="color: #52C1F0; background-color: #52C1F0">
         <div class="container">
           <a class="navbar-brand mr-4" href="{% url 'home' %}">Barbosa's Delivery</a>
@@ -291,6 +300,7 @@ div{
           </div>
         </div>
       </nav>
+
     </header>
 
     <main role="main" class="container">

@@ -4,7 +4,7 @@
   background-image: linear-gradient(#00ffff, white); /* Standard syntax (must be last) */
 }
 
-div {
+#div {
   background-image: linear-gradient(top, #FF5A00, #FFAE00); 
 } 
 
@@ -37,4 +37,5 @@ div {
 
 .container_button .btn:hover {
   background-color: black;
+
 }
