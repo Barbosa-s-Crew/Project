@@ -1,97 +1,96 @@
 {
-  "id": "N4sbDFWKIPkZKgNs-A6BCg",
-  "alias": "pizza-boy-glendale",
-  "name": "Pizza Boy",
-  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
+  "id": "0YPcBWiU-8t2kGe-DOhW5g",
+  "alias": "tommys-joynt-san-francisco",
+  "name": "Tommy's Joynt",
+  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/RmfcnwXBfmIt3LiQnj1hhA/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/pizza-boy-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182475555",
-  "display_phone": "(818) 247-5555",
-  "review_count": 627,
+  "url": "https://www.yelp.com/biz/tommys-joynt-san-francisco?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+14157754216",
+  "display_phone": "(415) 775-4216",
+  "review_count": 2883,
   "categories": [
     {
-      "alias": "pizza",
-      "title": "Pizza"
+      "alias": "tradamerican",
+      "title": "American (Traditional)"
+    },
+    {
+      "alias": "bars",
+      "title": "Bars"
     },
     {
       "alias": "salad",
       "title": "Salad"
-    },
-    {
-      "alias": "chicken_wings",
-      "title": "Chicken Wings"
     }
   ],
-  "rating": 4.5,
+  "rating": 4.0,
   "location": {
-    "address1": "1321 E Colorado St",
-    "address2": "Ste C",
+    "address1": "1101 Geary Blvd",
+    "address2": "",
     "address3": "",
-    "city": "Glendale",
-    "zip_code": "91205",
+    "city": "San Francisco",
+    "zip_code": "94109",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "1321 E Colorado St",
-      "Ste C",
-      "Glendale, CA 91205"
+      "1101 Geary Blvd",
+      "San Francisco, CA 94109"
     ],
-    "cross_streets": ""
+    "cross_streets": "Franklin St & United States Highway 101"
   },
   "coordinates": {
-    "latitude": 34.1428476,
-    "longitude": -118.2366086
+    "latitude": 37.785547,
+    "longitude": -122.421814
   },
   "photos": [
-    "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/vhSYf-mXeNmX4NjKgXRbCQ/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/Ns84cb6QuGcBHBoKWZAUwA/o.jpg"
+    "https://s3-media4.fl.yelpcdn.com/bphoto/RmfcnwXBfmIt3LiQnj1hhA/o.jpg",
+    "https://s3-media2.fl.yelpcdn.com/bphoto/JVKAwP2qoUJ4lKWadYL3tA/o.jpg",
+    "https://s3-media4.fl.yelpcdn.com/bphoto/dPAh1_uqNTsECG24jwhRPQ/o.jpg"
   ],
   "price": "$$",
   "hours": [
     {
       "open": [
         {
-          "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "is_overnight": true,
+          "start": "1000",
+          "end": "0130",
           "day": 0
         },
         {
-          "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "is_overnight": true,
+          "start": "1000",
+          "end": "0130",
           "day": 1
         },
         {
-          "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "is_overnight": true,
+          "start": "1000",
+          "end": "0130",
           "day": 2
         },
         {
-          "is_overnight": false,
-          "start": "0930",
-          "end": "2145",
+          "is_overnight": true,
+          "start": "1000",
+          "end": "0130",
           "day": 3
         },
         {
-          "is_overnight": false,
-          "start": "0930",
-          "end": "2230",
+          "is_overnight": true,
+          "start": "1000",
+          "end": "0130",
           "day": 4
         },
         {
-          "is_overnight": false,
-          "start": "0930",
-          "end": "2215",
+          "is_overnight": true,
+          "start": "1000",
+          "end": "0130",
           "day": 5
         },
         {
-          "is_overnight": false,
-          "start": "0930",
-          "end": "2215",
+          "is_overnight": true,
+          "start": "1000",
+          "end": "0130",
           "day": 6
         }
       ],

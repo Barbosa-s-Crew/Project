@@ -140,10 +140,9 @@ def search_results(request):
 		#context['name'] = name
 		#print(name)
 	#list = (YelpFusion.search_yelp(request.POST['myvalue'])).split(" ")
-	list = (request.POST['myvalue']).split(' ')
-	context['search_results_db'] = restaurant_module.get_restaurant_using_keyword(list[0])
+	context['search_results_db'] = restaurant_module.get_restaurant_using_keyword(request.POST['myvalue'])
 	print(context['search_results_db'])
-	context['search_results'] = YelpFusion.search_yelp('term = ' + list[0], 'location = ' + list[1])
+	context['search_results'] = YelpFusion.search_yelp('term = ' + request.POST['myvalue'], 'location = ' + request.POST['locationValue'])
 
 	return render(request, 'dumpApp/search_results.html', context)
 
