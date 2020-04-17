@@ -16,6 +16,7 @@
   overflow-x:hidden;
   transform:rotate(-90deg) translateY(-320px);
   transform-origin:right top;
+  border: 2px solid gray;
 }
 .horizontal-scroll-list-wrapper > div{
   display:block;
