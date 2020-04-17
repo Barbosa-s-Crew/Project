@@ -3,9 +3,8 @@ body {
 }
 
 .shopping_cart_frame {
-  min-height:800px;
-  height:1200px;
-  height:100%;
+  min-height:100px;
+	height:800px;
 }
 
 .shopping_cart_item_image {
@@ -13,4 +12,9 @@ body {
   width: 100px;
   max-height:100px;
   max-width:100px;
+}
+
+.shopping_cart_column{
+	height: 100px;
+	max-height:200px;
 }

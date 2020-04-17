@@ -62,16 +62,7 @@ def shopping_cart(request):
 		return render(request, 'dumpApp/home.html', context)
 
 	#context['shopping_cart'] = request.session['shopping_cart'];
-	context['shopping_cart'] = [
-		{
-		'Name': "Big Cheeseburger",
-		'Image': "https://image.shutterstock.com/image-photo/fresh-tasty-burger-isolated-on-260nw-705104968.jpg",
-		'Price': 3.49,
-		'Quantity': 1,
-		'Restaurant': "Barbosas Cuisine"
-		}
-	]
-	context['shopping_cart_price_total'] = 12.34
+	context['shopping_cart'] = request.session['shopping_cart']
 
 	# If logged in, go to dashboard instead
 	return render(request, 'dumpApp/shopping_cart.html', context)
@@ -193,9 +184,18 @@ def login(request):
 		#request.session['gender'] = user.gender
 		request.session['preferences'] = user.other_info
 		request.session['is_authenticated'] = user.is_authenticated
-		request.session['shopping_cart'] = []
+		print("Before creating order_list")
+		#request.session['shopping_cart'] = order_module.order_list(user.ID, 0, 0)
+		order_object = order_module.order_list(user.ID, 0, 0)
 
-		print(user.username)
+		# Sample items to put into the cart
+		# orderitem_object = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Souce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
+		# orderitem_object2 = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Sauce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
+		#
+		# order_object.add_order(orderitem_object)
+		# order_object.add_order(orderitem_object2)
+
+		request.session['shopping_cart'] = order_object.convert_to_dict_list()
 
 
 		print(request.session['is_authenticated'])
@@ -205,7 +205,7 @@ def login(request):
 		context['deals'] = dealsmodule.get_deals()
 		return render(request, 'dumpApp/dashboard.html', context)
 	except:
-		print("Error is true")
+		print("you got an error dawg")
 		context['error'] = "Invalid username or password"
 		return render(request, 'dumpApp/login.html', context)
 
@@ -311,15 +311,15 @@ def restaurants(request):
 
 			context['schedule'] = schedule
 		else:
-			#print(request.POST['id'])    
+			#print(request.POST['id'])
 
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
-			context['restaurants'] = restaurant[0] 
-			
+			context['restaurants'] = restaurant[0]
+
 			restaurant_location = restaurant_module.get_location_using_location_id(restaurant[0]['Location_ID'])
 			#print("here"+restaurant_location[0]['Location_Street_1'])
 			context['rest_address'] = restaurant_location[0]
-			
+
 			#print(restaurant[0]['Location_ID'])
 
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
