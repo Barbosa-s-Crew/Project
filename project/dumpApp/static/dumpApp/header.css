@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.header-bar-tab-text {
+  font-family: 'Roboto', monospace;
+  color: black;
+}
+.header-bar-tab-title {
+   font-family: 'Lobster', monospace;
+   color: black;
+   padding: 0px 20px;
+}

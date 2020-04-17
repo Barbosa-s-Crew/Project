@@ -227,7 +227,7 @@ div{
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  
+
 
     {% if title %}
         <title>Barbosa's Delivery new- {{ title }}</title>
@@ -236,99 +236,92 @@ div{
     {% endif %}
 
 
-    
+
       <!-- <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/main.css' %}"> -->
-    
+
     <link rel="stylesheet" href="{% static 'dumpApp/footer.css' %}" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="{% static button_over_image.css %}">
 
     <link rel="stylesheet" type="text/css" href="{% static dividers.css %}">
 
+    <link rel="stylesheet" href="{% static 'dumpApp/horizontal_scroll_box.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'dumpApp/shopping_cart.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'dumpApp/header.css' %}" type="text/css">
+
     <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
 
 </head>
 
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="20" id="grad1">
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
 
 
  <!--  <div class="container_button" id="grad1">
     <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="Snow" paddding="100px">
     <button class="btn">Order</button>
   </div>  -->
+    <div class="all-content" id="grad1">
+      <div class="header">
+        <header class="site-header">
+          <nav class="navbar navbar-expand-md navbar-light fixed-top" style="color: #3ba1cc; background-color: #1895c9;">
+            <div class="container">
+              <a class="navbar-brand mr-4" href="{% url 'home' %}"><h3 class="header-bar-tab-title">Barbosa's Delivery</h3></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                  <a class="nav-item nav-link" href="{% url 'home' %}"><h6 class ="header-bar-tab-text">Home</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'browse' %}"><h6 class ="header-bar-tab-text">Browse</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'search' %}"><h6 class ="header-bar-tab-text">Search</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'order' %}"><h6 class ="header-bar-tab-text">Order</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'deals' %}"><h6 class ="header-bar-tab-text">Deals</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'about' %}"><h6 class ="header-bar-tab-text">About</h6></a>
+
+                </div>
+                <!-- Navbar Right Side -->
+                <!-- ADDED-->
+                    <!-- <div class="search-bar mt-sm-2 mr-2">
+                      <form method="get">
+                          <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
+
+                      </form>
 
 
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-light fixed-top" style="color: #52C1F0; background-color: #52C1F0">
-        <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'home' %}">Barbosa's Delivery</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'browse' %}">Browse</a>
-              <a class="nav-item nav-link" href="{% url 'search' %}">Search</a>
-              <a class="nav-item nav-link" href="{% url 'order' %}">Order</a>
-              <a class="nav-item nav-link" href="{% url 'deals' %}">Deals</a>
-              <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-
+                    </div> -->
+                <!-- ADDED-->
+                <div class="navbar-nav">
+                    {% if user_authenticated %}
+                    <a class="nav-item nav-link" href="{% url 'shopping_cart' %}"><h6 class ="header-bar-tab-text">Cart</h6></a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}"><h6 class ="header-bar-tab-text">Profile</h6></a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}"><h6 class ="header-bar-tab-text">Log Out</h6></a>
+                    {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}"><h6 class ="header-bar-tab-text">Login</h6></a>
+                  <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
+                    {% endif %}
+                  <!--if logged in = true, no need for login tab and register, just log out and manage account -->
+                </div>
+              </div>
             </div>
-            <!-- Navbar Right Side -->
-            <!-- ADDED-->
-                <!-- <div class="search-bar mt-sm-2 mr-2">
-                  <form method="get">
-                      <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
-
-                  </form>
-
-
-                </div> -->
-            <!-- ADDED-->
-            <div class="navbar-nav">
-                {% if user_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'shopping_cart' %}">Cart</a>
-                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
-                {% else %}
-              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-              <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
-                {% endif %}
-              <!--if logged in = true, no need for login tab and register, just log out and manage account -->
-            </div>
-          </div>
-        </div>
-      </nav>
-
-    </header>
-
-    <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-12">
-          {% block content %}{% endblock %}
-        </div>
-        <!-- <div class="col-md-4">
-          <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-            </p>
-          </div> -->
-        </div>
+          </nav>
+        </header>
       </div>
 
-
-<!-- ************************************** -->
-
-
-
-    </main>
+      <div class="main">
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-md-12">
+              {% block content %}{% endblock %}
+            </div>
+          </div>
+        </main>
+      </div>
+      <div class="footer">
+        <p>Barbosa's Crew Ltd.</p>
+      </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -339,9 +332,7 @@ div{
 
 <br>
 <br>
-<div class="footer">
-  <p>Barbosa's Crew Ltd.</p>
-</div>
+
 
 </body>
 </html>
