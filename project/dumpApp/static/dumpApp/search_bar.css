@@ -1,0 +1,98 @@
+.search_bar{
+	min-height: 0px;
+}
+
+.search_bar form {
+	width: 100%;
+	max-width: 1290px;
+	margin: 0;
+	/*background-color: blue;*/
+}
+
+.search_bar form legend {
+	font-size: 50px;
+	line-height: 1;
+	color: black;
+	text-align: center;
+}
+
+.search_bar form .inner-form {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+		justify-content: space-between;
+}
+
+.search_bar form .inner-form .left {
+	-ms-flex-positive: 1;
+		flex-grow: 1;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.search_bar form .inner-form .input-wrap {
+	background: #fff;
+	opacity: 0.8;
+	height: 41px;
+	position: relative;
+	padding: 0px 0px 0px 0px;
+}
+
+.search_bar form .inner-form .input-wrap .input-field label {
+ 	font-size: 16px;
+ 	font-weight: 500;
+	display: block;
+ 	color: #222;
+}
+
+.search_bar form .inner-form .input-wrap .input-field input {
+	font-size: 16px;
+	padding: 0px 0px 0px 0px;
+	color: #333;
+	background: transparent;
+	width: 100%;
+	border: 2px;
+	border-color: #008CBA;
+	padding: 8px 0;
+	cursor: 8px;
+}
+
+.search_bar form .inner-form .input-wrap.first {
+	-ms-flex-positive: 1;
+		flex-grow: 1;
+	border-radius: 3px 0 0 3px;
+}
+
+.search_bar form .inner-form .input-wrap.second {
+	min-width: 262px;
+	border-radius: 0 3px 3px 0;
+	border-left: 1px solid #e5e5e5;
+}
+
+.search_bar form .btn-search {
+	min-width: 110px;
+	height: 38px;
+	padding: 0 15px;
+	background-color: white;
+	border: 3px;
+	font-size: 16px;
+	color: black;
+	transition: .2s;
+	cursor: pointer;
+	font-weight: 400;
+	margin-left: 10px;
+	
+	border-radius: 8px;
+	border: 2px solid #008CBA;
+	transition-duration: 0.4s;
+	display: inline-block;
+	
+}
+
+.search_bar form .btn-search:hover {
+	color: black;
+	cursor: pointer;
+	background-color: #008CBA;
+}
+
+

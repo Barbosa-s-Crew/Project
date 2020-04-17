@@ -1,6 +1,4 @@
-body {
-  margin:0px;
-}
+
 .colour-block {
   background:#369A7E;
   width:60%;
@@ -13,17 +11,17 @@ body {
   padding:7% 20% 10% 20%;
   color:#369A7E;
 }
-h1 {
+/*h1 {
   text-align:center;
   font-size:80px;
   font-family:'wire one', serif;
   font-weight:normal;
-}
-p {
+}*/
+/*p {
   font-size:20px;
   font-family:'Raleway', serif;
 }
-
+*/
 
 /*----------------*/
 /*  SCALLOP down  */
@@ -50,6 +48,6 @@ p {
 
 /* Rounded border */
 hr.rounded {
-  border-top: 39px solid #bbb;
+  border-top: 5px solid #bbb;
   border-radius: 5px;
 }

@@ -64,3 +64,11 @@
   font-family: 'Lobster', monospace;
   color: black;
 }
+
+.bg-image {
+  align-self: : center;
+  background-color: #52C1F0;
+  height: 400px;
+  width: 100%;
+  background-image: url("https://previews.123rf.com/images/udra/udra1402/udra140200001/25829901-wooden-cutlery-on-cutting-board-abstract-food-background.jpg");
+}

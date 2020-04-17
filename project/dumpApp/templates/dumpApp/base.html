@@ -5,15 +5,6 @@
 <link rel="icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-<!-- PFOFILE -->
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-}
-
-* {
-  box-sizing: border-box;
-}
 
 /* Add padding to containers */
 .container_register {
@@ -21,237 +12,51 @@ body {
   background-color: white;
 }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for the submit button */
-.registerbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.registerbtn:hover {
-  opacity: 1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
 /* Set a grey background color and center the text of the "sign in" section */
 .signin {
   background-color: #f1f1f1;
   text-align: center;
 }
-<!-- PROFILE -->
 
-
-  <!-- ADDED -->
-  <style>
-  div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
+.text-input{
+  max-width:300px;
   width: 100%;
-  height: auto;
 }
 
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-
-
-
-
-  button {
-    background: none!important;
-    border: none;
-   padding: 0!important;
-    /*optional*/
-    font-family: arial, sans-serif;
-    /*input has OS specific font-family*/
-    color: #069;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-    .search-bar{
-      max-width: 250px;
-      width: 100%;
-      text-align: center;
-    }
-    .centered_text{
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
-      font-weight: 900;
-      color: #ffffff;
-    }
-
-    .centered_image{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .centered{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .text-input{
-      max-width:300px;
-      width: 100%;
-    }
-    .bg-image {
-      align: center;
-      background-color: #52C1F0;
-      height: 400px;
-      width: 100%;
-      background-image: url("https://previews.123rf.com/images/udra/udra1402/udra140200001/25829901-wooden-cutlery-on-cutting-board-abstract-food-background.jpg");
-    }
-    .container-horizontal-scroll-item {
-      position: relative;
-      text-align: center;
-      color: white;
-    }
 ::-webkit-scrollbar{width:2px;height:2px;}
 ::-webkit-scrollbar-button{width:2px;height:2px;}
 
-div{
-  box-sizing:border-box;
-}
+</style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 
-.horizontal-scroll-wrapper{
-  position:absolute;
-  display:block;
-  top:100;
-  left:20;
-  width:320px;
-  height:100%;
-  max-height:1000px;
-  margin:0;
-  background:#fff;
-  overflow-y:auto;
-  overflow-x:hidden;
-  transform:rotate(-90deg) translateY(-320px);
-  transform-origin:right top;
-}
-.horizontal-scroll-wrapper > div{
-  display:block;
-  padding:5px;
-  background:#cab;
-  transform:rotate(90deg);
-  transform-origin: right top;
-}
-
-.squares{
-  padding:320px 0 0 0;
-}
-
-.squares > div{
-  width:250px;
-  height:250px;
-  margin:20px;
-}
-
-.rectangles{
-  top:100px;
-  padding:100px 0 0 0;
-}
-.rectangles > div{
-  width:140px;
-  height:60px;
-  margin:50px 10px;
-  padding:5px;
-  background:#cab;
-  transform:rotate(90deg) translateY(80px);
-  transform-origin: right top;
-}
-
-#grad1 {
-  height: 2000px;
-  width: 100%;
-  background-color: #52C1F0; /* For browsers that do not support gradients */
-  background-image: linear-gradient(#52C1F0, white); /* Standard syntax (must be last) */
-}
-
-  </style>
-
-  <!-- ADDED -->
+  {% if title %}
+      <title>Barbosa's Delivery new- {{ title }}</title>
+  {% else %}
+      <title>Barbosa's Delivery</title>
+  {% endif %}
 
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_addition.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_hover.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_over_image.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/centered_addition.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/div-gallery.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/dividers.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/footer.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/header.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/horizontal_scroll_box.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/main.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/search_bar.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/shopping_cart.css' %}" >
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-
-    {% if title %}
-        <title>Barbosa's Delivery new- {{ title }}</title>
-    {% else %}
-        <title>Barbosa's Delivery</title>
-    {% endif %}
-
-
-
-      <!-- <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/main.css' %}"> -->
-
-    <link rel="stylesheet" href="{% static 'dumpApp/footer.css' %}" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="{% static button_over_image.css %}">
-
-    <link rel="stylesheet" type="text/css" href="{% static dividers.css %}">
-
-    <link rel="stylesheet" href="{% static 'dumpApp/horizontal_scroll_box.css' %}" type="text/css">
-
-    <link rel="stylesheet" href="{% static 'dumpApp/shopping_cart.css' %}" type="text/css">
-
-    <link rel="stylesheet" href="{% static 'dumpApp/header.css' %}" type="text/css">
-
-    <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -262,72 +67,72 @@ div{
     <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="Snow" paddding="100px">
     <button class="btn">Order</button>
   </div>  -->
-    <div class="all-content" id="grad1">
-      <div class="header">
-        <header class="site-header">
-          <nav class="navbar navbar-expand-md navbar-light fixed-top" style="color: #3ba1cc; background-color: #1895c9;">
-            <div class="container">
-              <a class="navbar-brand mr-4" href="{% url 'home' %}"><h3 class="header-bar-tab-title">Barbosa's Delivery</h3></a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                  <a class="nav-item nav-link" href="{% url 'home' %}"><h6 class ="header-bar-tab-text">Home</h6></a>
-                  <a class="nav-item nav-link" href="{% url 'browse' %}"><h6 class ="header-bar-tab-text">Browse</h6></a>
-                  <a class="nav-item nav-link" href="{% url 'search' %}"><h6 class ="header-bar-tab-text">Search</h6></a>
-                  <a class="nav-item nav-link" href="{% url 'order' %}"><h6 class ="header-bar-tab-text">Order</h6></a>
-                  <a class="nav-item nav-link" href="{% url 'deals' %}"><h6 class ="header-bar-tab-text">Deals</h6></a>
-                  <a class="nav-item nav-link" href="{% url 'about' %}"><h6 class ="header-bar-tab-text">About</h6></a>
+  <div class="all-content" id="grad1">
+    <div class="header">
+      <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top" style="color: #3ba1cc; background-color: #1895c9;">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'home' %}"><h3 class="header-bar-tab-title">Barbosa's Delivery</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'home' %}"><h6 class ="header-bar-tab-text">Home</h6></a>
+                <a class="nav-item nav-link" href="{% url 'browse' %}"><h6 class ="header-bar-tab-text">Browse</h6></a>
+                <a class="nav-item nav-link" href="{% url 'search' %}"><h6 class ="header-bar-tab-text">Search</h6></a>
+                <a class="nav-item nav-link" href="{% url 'order' %}"><h6 class ="header-bar-tab-text">Order</h6></a>
+                <a class="nav-item nav-link" href="{% url 'deals' %}"><h6 class ="header-bar-tab-text">Deals</h6></a>
+                <a class="nav-item nav-link" href="{% url 'about' %}"><h6 class ="header-bar-tab-text">About</h6></a>
 
-                </div>
-                <!-- Navbar Right Side -->
-                <!-- ADDED-->
-                    <!-- <div class="search-bar mt-sm-2 mr-2">
-                      <form method="get">
-                          <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
+              </div>
+              <!-- Navbar Right Side -->
+              <!-- ADDED-->
+                  <!-- <div class="search-bar mt-sm-2 mr-2">
+                    <form method="get">
+                        <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
 
-                      </form>
+                    </form>
 
 
-                    </div> -->
-                <!-- ADDED-->
-                <div class="navbar-nav">
-                    {% if user_authenticated %}
-                    <a class="nav-item nav-link" href="{% url 'shopping_cart' %}"><h6 class ="header-bar-tab-text">Cart</h6></a>
-                    <a class="nav-item nav-link" href="{% url 'profile' %}"><h6 class ="header-bar-tab-text">Profile</h6></a>
-                    <a class="nav-item nav-link" href="{% url 'logout' %}"><h6 class ="header-bar-tab-text">Log Out</h6></a>
-                    {% else %}
-                  <a class="nav-item nav-link" href="{% url 'login' %}"><h6 class ="header-bar-tab-text">Login</h6></a>
-                  <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
-                    {% endif %}
-                  <!--if logged in = true, no need for login tab and register, just log out and manage account -->
-                </div>
+                  </div> -->
+              <!-- ADDED-->
+              <div class="navbar-nav">
+                  {% if user_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'shopping_cart' %}"><h6 class ="header-bar-tab-text">Cart</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'profile' %}"><h6 class ="header-bar-tab-text">Profile</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}"><h6 class ="header-bar-tab-text">Log Out</h6></a>
+                  {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}"><h6 class ="header-bar-tab-text">Login</h6></a>
+                <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
+                  {% endif %}
+                <!--if logged in = true, no need for login tab and register, just log out and manage account -->
               </div>
             </div>
-          </nav>
-        </header>
-      </div>
-
-      <div class="main">
-        <main role="main" class="container">
-          <div class="row">
-            <div class="col-md-12">
-              {% block content %}{% endblock %}
-            </div>
           </div>
-        </main>
-      </div>
-      <div class="footer">
-        <p>Barbosa's Crew Ltd.</p>
-      </div>
+        </nav>
+      </header>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <div class="main">
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="footer">
+      <p>Barbosa's Crew Ltd.</p>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 <br>

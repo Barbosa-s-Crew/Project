@@ -98,7 +98,7 @@
     </h3>
     
 
-    <img scr="{{restaurant_Image}}">
+    <!-- <img scr="{{restaurant_Image}}">
      <h3 align="left" style="color:black;">Menu Items</h3>
     
     <div class="horizontal-scroll-wrapper squares">
@@ -114,8 +114,28 @@
           </div>
         </div>
       {% endfor %}
-    </div>
- 
+    </div> -->
+    <div class="horizontal_scroll_box">
+      <h3 align="left" class="horizontal-scroll-title">Menu Items</h3>
+      <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
+       
+        {% for items in rest_items %}
+          <div class="container-horizontal-scroll-box">
+            <a href="#">
+                <img class="horizontal-scroll-image" src="{{items.Image}}">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h3 class="horizontal-scroll-text">{{items.Name}}</h3>
+              <h3 class="horizontal-scroll-text">{{items.Cost}}</h3>
+              <p class="horizontal-scroll-text">{{items.Notes}}</p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      </div>
 
     {% endif %}
 

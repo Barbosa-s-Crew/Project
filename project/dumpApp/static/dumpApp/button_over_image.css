@@ -1,12 +1,8 @@
-#grad1 {
-  height: 600px;
-  background-color: blue; /* For browsers that do not support gradients */
-  background-image: linear-gradient(#00ffff, white); /* Standard syntax (must be last) */
-}
 
-#div {
+
+/*#div {
   background-image: linear-gradient(top, #FF5A00, #FFAE00); 
-} 
+} */
 
 .container_button {
   position: relative;
