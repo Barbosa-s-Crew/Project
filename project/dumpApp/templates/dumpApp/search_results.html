@@ -1,8 +1,8 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
 
-    <h3 style="color:black; font-size: 20px;">Search Again</h3>
-    <form method="POST" action="{% url 'search_results' %}" style="position:relative;"> {% csrf_token %} <!-- {{search_test.py}} -->
+   <!--  <h3 style="color:black; font-size: 20px;">Search Again</h3>
+    <form method="POST" action="{% url 'search_results' %}" style="position:relative;"> {% csrf_token %} 
       <div class="form-inline" style="position:relative;">
         <input type="text" class="form-control" name="myvalue" id="myvalue" placeholder=" " style="width:60%;">
         <br>
@@ -12,8 +12,11 @@
     <br>
     <br>
     <br>
-    <br>
-
+    <br> -->
+<br>
+<br>
+<br>
+<br>
     
       {% for restaurant in search_results_db %}
         <article class="media content-section">

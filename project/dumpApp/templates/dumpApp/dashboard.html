@@ -14,19 +14,19 @@
       <input style="width: 80px; height:35px; text-align: center;" type="submit" value="Search">
 
     </form> -->
-  <div class="search_bar form-control">
+  <div class="search_bar">
           <form method="POST" action="{% url 'search_results' %}"> {% csrf_token %}
             <legend>Find Your Food</legend>
             <div class="inner-form">
               <div class="left">
                 <div class="input-wrap first">
                   <div class="input-field first">                 
-                    <input type="text" name="myvalue" id="myvalue" placeholder="  What  ex: pizza, sushi, french.." />
+                    <input type="text" name="myvalue" id="myvalue" placeholder="Favorite Food" />
                   </div>
                 </div>
                 <div class="input-wrap first">
                   <div class="input-field first">                 
-                    <input type="text" name="locationValue" id="locationValue" placeholder="  location" />
+                    <input type="text" name="locationValue" id="locationValue" placeholder="Location" />
                   </div>
                 </div>              
               </div>
