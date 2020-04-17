@@ -41,8 +41,13 @@ def get_restaurant_using_keyword(keyword = ''):
 		else:
 			print(err)
 	else:
+		keywordList = keyword.split()
 		cursor = conn.cursor()
-		query = "SELECT * FROM Restaurant WHERE Restaurant_name LIKE '%" + str(keyword) + "%';"
+		keywordList = [word.replace("\'","\\\'") for word in keywordList]
+		query = "SELECT * FROM Restaurant WHERE Restaurant_name LIKE '%" +str(keywordList[0]) + "%'"
+		for x in range(len(keywordList)-1):
+			query += " OR Restaurant_name LIKE '%" + str(keywordList[x+1]) + "%'"
+		query += ";"
 		cursor.execute(query)
 		output = cursor.fetchall()
 		cursor.close()
