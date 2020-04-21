@@ -16,8 +16,10 @@ def getLocationID(that_dict):
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM Location WHERE Location_Street_1='"+that_dict.get("Street1")+"', Location_Street_2='"+that_dict.get("Street2")+"', Location_City='"+that_dict.get("City")+"', Location_State="+that_dict.get("State")+"', Location_Zip="+that_dict.get("Zip")+"'")
+		cursor = conn.cursor(prepared = True)
+		query = "SELECT * FROM Location WHERE Location_Street_1=?, Location_Street_2=?, Location_City=?, Location_State=?, Location_Zip=?"
+		query_tuple = (that_dict.get("Street1"),that_dict.get("Street2"),that_dict.get("City"),that_dict.get("State"),that_dict.get("Zip"))
+		cursor.execute(query, query_tuple)
 		tupleC = cursor.fetchall()
 		if len(tupleC)==0:
 			print("Location not found!")
@@ -38,8 +40,10 @@ def getLocation(locationID):
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM Location WHERE Location_ID='"+str(locationID)+"'")
+		cursor = conn.cursor(prepared = True)
+		query = "SELECT * FROM Location WHERE Location_ID=?"
+		query_tuple = (locationID,)
+		cursor.execute(query, query_tuple)
 		tupleC = cursor.fetchall()
 		if len(tupleC)==0:
 			print("Location not found!")
@@ -55,6 +59,3 @@ def getPaymentID(that_dict):
 	a =0
 
 
-a = getLocation(1)
-print(a)
-print("HELP ME")
