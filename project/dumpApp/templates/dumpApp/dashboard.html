@@ -15,27 +15,27 @@
 
     </form> -->
   <div class="search_bar bg-img-background">
-        <br>
-        <br>
-        <br>
-          <form method="POST" action="{% url 'search_results' %}"> {% csrf_token %}
-            <legend>Find Your Food</legend>
-            <div class="inner-form">
-              <div class="left">
-                <div class="input-wrap first">
-                  <div class="input-field first">                 
-                    <input type="text" name="myvalue" id="myvalue" placeholder="Favorite Food" />
-                  </div>
-                </div>
-                <div class="input-wrap first">
-                  <div class="input-field first">                 
-                    <input type="text" name="locationValue" id="locationValue" placeholder="Location" />
-                  </div>
-                </div>              
+    <br>
+    <br>
+    <br>
+      <form method="POST" action="{% url 'search_results' %}"> {% csrf_token %}
+        <legend>Find Your Food</legend>
+        <div class="inner-form">
+          <div class="left">
+            <div class="input-wrap first">
+              <div class="input-field first">                 
+                <input type="text" name="myvalue" id="myvalue" placeholder="Favorite Food" />
               </div>
-              <button class="btn-search" type="submit" value="submit">SEARCH</button>
             </div>
-          </form>
+            <div class="input-wrap first">
+              <div class="input-field first">                 
+                <input type="text" name="locationValue" id="locationValue" placeholder="Location" />
+              </div>
+            </div>              
+          </div>
+          <button class="btn-search" type="submit" value="submit">SEARCH</button>
+        </div>
+      </form>
   </div>
   <br>
   <br>

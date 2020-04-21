@@ -2,39 +2,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+  <link rel="icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    /* Add padding to containers */
+    .container_register {
+      padding: 16px;
+      background-color: white;
+    }
 
-/* Add padding to containers */
-.container_register {
-  padding: 16px;
-  background-color: white;
-}
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+      background-color: #f1f1f1;
+      text-align: center;
+    }
 
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
+    .text-input{
+      max-width:300px;
+      width: 100%;
+    }
 
-.text-input{
-  max-width:300px;
-  width: 100%;
-}
-
-::-webkit-scrollbar{width:2px;height:2px;}
-::-webkit-scrollbar-button{width:2px;height:2px;}
-
-</style>
+    ::-webkit-scrollbar{width:2px;height:2px;}
+    ::-webkit-scrollbar-button{width:2px;height:2px;}
+    </style>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
 
   {% if title %}
       <title>Barbosa's Delivery new- {{ title }}</title>
