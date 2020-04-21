@@ -72,3 +72,7 @@
   width: 100%;
   background-image: url("https://previews.123rf.com/images/udra/udra1402/udra140200001/25829901-wooden-cutlery-on-cutting-board-abstract-food-background.jpg");
 }
+
+
+::-webkit-scrollbar{width:2px;height:2px;}
+::-webkit-scrollbar-button{width:2px;height:2px;}
