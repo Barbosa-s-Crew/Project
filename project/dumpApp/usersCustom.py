@@ -93,8 +93,10 @@ class userC:
 			self.gender = that_dict.get("gender")
 			#self.Location_ID = that_dict.get("locationID")
 			#self.payment_option = that_dict.get("paymentOption")
-			cursor = conn.cursor()
-			cursor.execute("UPDATE Users SET User_name = '"+str(self.username)+"',User_Email = '"+str(self.email)+"',User_Password = '"+str(self.password)+"',User_Cell = '"+str(self.cell)+"',user_image = '"+str(self.photoURL)+"', user_gender ='"+str(self.gender)+"', Other_Information ='"+str(self.other_info)+"' WHERE User_Email='"+str(oldEmail)+"'")
+			cursor = conn.cursor(prepared = True)
+			query_tuple = (self.username, self.email, self.password, self.cell, self.photoURL, self.gender, self.other_info, oldEmail)
+			query = "UPDATE Users SET User_name = ?,User_Email = ?,User_Password = ?,User_Cell = ?,user_image = ?, user_gender =?, Other_Information = ? WHERE User_Email= ?"
+			cursor.execute(query, query_tuple)
 			conn.commit()
 			conn.close()
 
@@ -118,8 +120,10 @@ def authenticate_user(email='', password = ''):
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM Users WHERE User_Email='"+email+"'")
+		cursor = conn.cursor(prepared = True)
+		query = "SELECT * FROM Users WHERE User_Email=?"
+		email_tuple = (email,)
+		cursor.execute(query, email_tuple)
 		tupleC = cursor.fetchall()
 		fetchedUser = userC(tupleC[0])
 		cursor.close()
@@ -145,11 +149,15 @@ def create_user(email = '', password = '',username='',cellPhoneNum=''):		#will r
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM Users WHERE User_Email='"+email+"'")
+		cursor = conn.cursor(prepared = True)
+		query = "SELECT * FROM Users WHERE User_Email= ?"
+		email_tuple = (email,)
+		cursor.execute(query, email_tuple)
 		tupleC = cursor.fetchall()
 		if len(tupleC)==0:
-			cursor.execute("INSERT INTO Users (User_name, User_Email, User_Password, User_Cell) VALUES ('"+username+"', '"+email+"', '"+make_password(password)+"', '"+cellPhoneNum+"');")
+			query = "INSERT INTO Users (User_name, User_Email, User_Password, User_Cell) VALUES (?, ?, ?, ?);"
+			query_tuple = (username, email, make_password(password), cellPhoneNum)
+			cursor.execute(query, query_tuple)
 			conn.commit()
 			conn.close()
 			result = True

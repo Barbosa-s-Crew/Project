@@ -33,9 +33,12 @@ class order_item:
 				print("Database does not exist")
 			else:
 				print(err)
-		else:
-			cursor = conn.cursor()
-			cursor.execute("INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity) VALUES ('"+str(order_ID)+"', '"+str(self.restaurant_ID)+"', '"+str(self.menu_ID)+"', '"+str(self.item_ID)+"', '"+str(self.item_quantity)+"');")
+
+		else: 
+			cursor = conn.cursor(prepared = True)
+			query = "INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity) VALUES (?, ?, ?, ?, ?);"
+			query_tuple = (order_ID, self.restaurant_ID, self.menu_ID, self.item_ID, self.item_quantity)
+			cursor.execute(query, query_tuple)
 			conn.commit()
 			conn.close()
 
@@ -96,9 +99,11 @@ class order_list:
 				print("Database does not exist")
 			else:
 				print(err)
-		else:
-			cursor = conn.cursor()
-			cursor.execute("INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES ('"+str(self.user_ID)+"', '"+str(self.location_ID)+"', CURTIME(), '"+str(self.status)+"');")
+		else: 
+			cursor = conn.cursor(prepared = True)
+			query = "INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES (?, ?, CURTIME(), ?);"
+			query_tuple = (self.user_ID, self.location_ID, self.status)
+			cursor.execute(query, query_tuple)
 			conn.commit()
 			cursor.execute("SELECT max(Order_ID) FROM Orders;")
 			order_ID = cursor.fetchall()
@@ -119,14 +124,18 @@ def getOrder(order_ID):
 			print("Database does not exist")
 		else:
 			print(err)
-	else:
-		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM Orders WHERE Order_ID='"+str(order_ID)+"'")
+	else: 
+		cursor = conn.cursor(prepared = True)
+		query = "SELECT * FROM Orders WHERE Order_ID= ?"
+		query_tuple = (order_ID,)
+		cursor.execute(query, query_tuple)
 		fetched = cursor.fetchall()
 		order = fetch[0]
 		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
 		ret = order_list(order[1],order[2],order[5])
-		cursor.execute("SELECT * FROM Order_items WHERE Order_ID='"+str(order_ID)+"'")
+		query = "SELECT * FROM Order_items WHERE Order_ID= ?"
+		query_tuple = (order_ID,)
+		cursor.execute(query, query_tuple)
 		fetched = cursor.fetchall()
 		for order in fetched:
 			ret.olist.append(dict(Order_ID=str(order[0]), Restaurant_ID=str(order[1]), Menu_ID=str(order[2]), Item_ID=str(order[3]), Item_Quantity=str(order[4])))
