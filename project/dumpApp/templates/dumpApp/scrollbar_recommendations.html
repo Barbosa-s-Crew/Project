@@ -1,0 +1,9 @@
+<div class="horizontal_scroll_box">
+  <h3 align="left" class="horizontal-scroll-title">Recommendations</h3>
+  <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
+    {% for recommendation in recommendations %}
+      {% include 'scrollbar_item.html' with image=recommendation.Image caption=recommendation.Name description='' price='' %}
+      
+    {% endfor %}
+  </div>
+</div>

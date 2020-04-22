@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 .horizontal_scroll_box {
-  min-height: 400px;
-  max-height: 500px;
+  min-height: 300px;
+  max-height: 400px;
 
 }
 .horizontal-scroll-list-wrapper{

@@ -1,0 +1,12 @@
+<div class="horizontal_scroll_box">
+  <h3 align="left" class="horizontal-scroll-title">Recent Orders</h3>
+  <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
+    {% if recent_orders|length == 0 %}
+      {% include 'scrollbar_item.html' with image='https://i.insider.com/57d961d5077dcc3d018b5b9c?width=412&format=jpeg' caption='You have no orders!' description='' price='' %}
+    {% else %}
+      {% for order in recent_orders %}
+        {% include 'scrollbar_item.html' with image='order.Image' caption=order.Restaurant description=order.Order_start_time price='' %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

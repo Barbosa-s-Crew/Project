@@ -1,0 +1,17 @@
+<div class="container-horizontal-scroll-box">
+  <a href="#">
+    {% if image != "" %}
+      <img class="horizontal-scroll-image" src="{{image}}">
+    {% else %}
+      <img class="horizontal-scroll-image" src="https://static.toiimg.com/photo/72023714.cms">
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3 class="horizontal-scroll-text">{{caption}}</h3>
+    <h4 class="horizontal-scroll-text">{{description}} </h4>
+    <p class="horizontal-scroll-text">{{price}}</p>
+  </a>
+</div>

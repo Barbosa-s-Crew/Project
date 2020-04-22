@@ -6,10 +6,10 @@
 
   <h1 align="center" style="color:back; font-size: 30px;"> Welcome back!</h1>
   <br>
-  <!-- 
+  <!--
     <h3 align ="center" style="color:black; font-size: 20px;">Find Food Now</h3>
     <form method="POST" align="center"  method="POST" action="{% url 'search_results' %}"> {% csrf_token %}
-      
+
       <input type="text" class="form-control" name="myvalue" id="myvalue" maxlength="64" placeholder="Search Restaurants..." class="pseudo-input_field business-search-form_input-field" aria-autocomplete="list" tabindex="1"  style="display: inline-block; background: white;  width: 40%; box-sizing: border-box;">
       <input style="width: 80px; height:35px; text-align: center;" type="submit" value="Search">
 
@@ -23,15 +23,15 @@
         <div class="inner-form">
           <div class="left">
             <div class="input-wrap first">
-              <div class="input-field first">                 
+              <div class="input-field first">
                 <input type="text" name="myvalue" id="myvalue" placeholder="Favorite Food" />
               </div>
             </div>
             <div class="input-wrap first">
-              <div class="input-field first">                 
+              <div class="input-field first">
                 <input type="text" name="locationValue" id="locationValue" placeholder="Location" />
               </div>
-            </div>              
+            </div>
           </div>
           <button class="btn-search" type="submit" value="submit">SEARCH</button>
         </div>
@@ -43,93 +43,16 @@
   <hr class="rounded">
 
   <!--Deals -->
-  <div class="horizontal_scroll_box">
-    <h3 align="left" class="horizontal-scroll-title">Great Deals Now</h3>
-    <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
-      {% for deal in deals %}
-        <div class="container-horizontal-scroll-box">
-          <a href="#">
-            {% if deal.Image != "" %}
-              <img class="horizontal-scroll-image" src="{{deal.Image}}">
-            {% else %}
-              <img class="horizontal-scroll-image" src="https://static.toiimg.com/photo/72023714.cms">
-            {% endif %}
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h2 class="horizontal-scroll-text">{{deal.Restaurant}}</h2>
-            <h4 class="horizontal-scroll-text">{{deal.Name}} </h4>
-            <p class="horizontal-scroll-text">for only {{deal.Price}}</p>
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
+  {% include 'scrollbar_deals.html' %}
   <hr class="rounded">
 
   <!-- Recommendations -->
-  <div class="horizontal_scroll_box">
-    <h3 align="left" class="horizontal-scroll-title">Recommendations</h3>
-    <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
-      {% for recommendation in recommendations %}
-        <div class="container-horizontal-scroll-box">
-          <a href="#">
-            {% if recommendation.Image != "" %}
-              <img class="horizontal-scroll-image" src="{{recommendation.Image}}">
-            {% else %}
-              <img class="horizontal-scroll-image" src="https://cdn.vox-cdn.com/thumbor/PKuCLfWaj5H1RiUEOlvt7LoCUUQ=/14x0:245x173/1200x800/filters:focal(14x0:245x173)/cdn.vox-cdn.com/uploads/chorus_image/image/39195560/In-N-Out-Survey.0.jpg">
-            {% endif %}
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h4 class="horizontal-scroll-text">{{recommendation.Name}}</h4>
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
+  {% include 'scrollbar_recommendations.html' %}
   <hr class="rounded">
 
   <!--Recent Orders-->
-  <div class="horizontal_scroll_box">
-    <h3 align="left" class="horizontal-scroll-title">Recent Orders</h3>
-    <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
-      {% if recent_orders|length == 0 %}
-        <div class="container-horizontal-scroll-box">
-          <a href="#">
-            <img class="horizontal-scroll-image" src="https://i.insider.com/57d961d5077dcc3d018b5b9c?width=412&format=jpeg">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p class="horizontal-scroll-text">You have no orders!</p>
-          </a>
-
-        </div>
-      {% else %}
-        {% for order in recent_orders %}
-          <div class="container-horizontal-scroll-box">
-            <a href="#">
-              <img class="horizontal-scroll-image" src="https://i.insider.com/57d961d5077dcc3d018b5b9c?width=412&format=jpeg">
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <h1 class="horizontal-scroll-text">{{order.Order_start_time}} </h1>
-            </a>
-          </div>
-        {% endfor %}
-      {% endif %}
-    </div>
-  </div>
+  {% include 'scrollbar_recent_orders.html' %}
+  <hr class="rounded">
 
 
 {% endblock content %}
