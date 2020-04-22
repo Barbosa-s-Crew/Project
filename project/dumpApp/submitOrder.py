@@ -124,8 +124,10 @@ class order_list:
 	def change_order(added_item, quantity):
 		for i in range(0, len(self.olist)):
 			if self.olist[i].item_ID == added_item['ID']:
-				self.olist[i].quantity = quantity
-				item_found = True
+				if quantity <= 0:
+					del self.olist[i]
+				else:
+					self.olist[i].quantity = quantity
 				return
 		temp_item = order_item(added_item['restaurant_ID'],added_item['menu_ID'],added_item['item_ID'],added_item['item_name'],added_item['item_price'],added_item['item_quantity'],added_item['item_image'])
 		self.add_order(temp_item)
