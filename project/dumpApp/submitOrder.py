@@ -11,7 +11,8 @@ class order_item:
 	item_quantity = 0
 	item_image = ''
 
-	def __init__(self, restaurant_ID, menu_ID, item_ID, item_name, item_price, item_quantity, item_image):
+	def __init__(self, restaurant_ID, menu_ID, item_ID, item_name, item_price, item_quantity
+		, item_image):
 		self.restaurant_ID = restaurant_ID
 		self.menu_ID = menu_ID
 		self.item_ID = item_ID
@@ -55,6 +56,7 @@ class order_list:
 		self.user_ID = user_ID
 		self.location_ID = location_ID
 		self.status = status
+
 	def create_from_dict_list(self, dict_list):
 		for item in dict_list:
 			orderitem = order_item(item['restaurant_ID'],item['menu_ID'],item['item_ID'],item['item_name'],item['item_price'],item['item_quantity'],item['item_image'])
@@ -66,10 +68,13 @@ class order_list:
 		if len(self.olist) > 0:
 			for i in range(0,len(self.olist)):
 				item_dict = dict()
-				item_dict['Name'] = self.olist[i].item_name
-				item_dict['Image'] = self.olist[i].item_image
-				item_dict['Price'] = self.olist[i].item_price
-				item_dict['Quantity'] = self.olist[i].item_quantity
+				item_dict['restaurant_ID'] = self.olist[i].restaurant_ID
+				item_dict['menu_ID'] = self.olist[i].menu_ID
+				item_dict['item_ID'] = self.olist[i].item_ID
+				item_dict['item_name'] = self.olist[i].item_name
+				item_dict['item_image'] = self.olist[i].item_image
+				item_dict['item_rice'] = self.olist[i].item_price
+				item_dict['item_quantity'] = self.olist[i].item_quantity
 
 				dict_list.append(item_dict)
 		print(dict_list)
@@ -111,6 +116,16 @@ class order_list:
 			conn.close()
 			return order_ID[0][0]
 
+
+	def change_order(added_item, quantity):
+		for i in range(0, len(self.olist)):
+			if self.olist[i].item_ID == added_item['ID']:
+				self.olist[i].quantity = quantity
+				item_found = True
+				return
+		temp_item = order_item(added_item['restaurant_ID'],added_item['menu_ID'],added_item['item_ID'],added_item['item_name'],added_item['item_price'],added_item['item_quantity'],added_item['item_image'])
+		self.add_order(temp_item)
+		
 def getOrder(order_ID):
 	# Obtain connection string information from the portal
 	config = DBSetup.setup_config()
@@ -149,3 +164,6 @@ def getOrderList(order_list_object_ID):
 		return order_list_to_return
 	except (KeyError, order_list.DoesNotExist):
 		order_list_to_return = None
+
+
+
