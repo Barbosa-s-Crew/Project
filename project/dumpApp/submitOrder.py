@@ -21,6 +21,19 @@ class order_item:
 		self.item_quantity = item_quantity
 		self.item_image = item_image
 
+
+	def get_item_dictionary(self):
+		item_dict = dict()
+		item_dict['restaurant_ID'] = self.restaurant_ID
+		item_dict['menu_ID'] = self.menu_ID
+		item_dict['item_ID'] = self.item_ID
+		item_dict['item_name'] = self.item_name
+		item_dict['item_image'] = self.item_image
+		item_dict['item_rice'] = self.item_price
+		item_dict['item_quantity'] = self.item_quantity
+		return item_dict
+
+
 	def submitItem(self, order_ID):
 		# Obtain connection string information from the portal
 		config = DBSetup.setup_config()
@@ -67,16 +80,7 @@ class order_list:
 		print(" IN convert_to_dict_list")
 		if len(self.olist) > 0:
 			for i in range(0,len(self.olist)):
-				item_dict = dict()
-				item_dict['restaurant_ID'] = self.olist[i].restaurant_ID
-				item_dict['menu_ID'] = self.olist[i].menu_ID
-				item_dict['item_ID'] = self.olist[i].item_ID
-				item_dict['item_name'] = self.olist[i].item_name
-				item_dict['item_image'] = self.olist[i].item_image
-				item_dict['item_rice'] = self.olist[i].item_price
-				item_dict['item_quantity'] = self.olist[i].item_quantity
-
-				dict_list.append(item_dict)
+				dict_list.append(olist[i].get_item_dictionary)
 		print(dict_list)
 		return dict_list
 
