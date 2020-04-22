@@ -83,22 +83,32 @@ class userC:
 			else:
 				print(err)
 		else: 
-			oldEmail = self.email
-			self.username = that_dict.get("username")
-			self.email = that_dict.get("email")
-			self.password = that_dict.get("password")
-			self.cell = that_dict.get("cellPhoneNumber")
-			self.other_info = that_dict.get("preferences")
-			self.photoURL = that_dict.get("photo")
-			self.gender = that_dict.get("gender")
-			#self.Location_ID = that_dict.get("locationID")
-			#self.payment_option = that_dict.get("paymentOption")
 			cursor = conn.cursor(prepared = True)
-			query_tuple = (self.username, self.email, self.password, self.cell, self.photoURL, self.gender, self.other_info, oldEmail)
-			query = "UPDATE Users SET User_name = ?,User_Email = ?,User_Password = ?,User_Cell = ?,user_image = ?, user_gender =?, Other_Information = ? WHERE User_Email= ?"
-			cursor.execute(query, query_tuple)
-			conn.commit()
+			ret = True
+			if self.email != that_dict.get("email"):
+				query = "SELECT * FROM Users WHERE User_Email= ?"
+				email_tuple = (that_dict("email"),)
+				cursor.execute(query, email_tuple)
+				tupleC = cursor.fetchall()
+				if len(tupleC)>0:
+					ret = False
+			if ret == True:
+				oldEmail = self.email
+				self.username = that_dict.get("username")
+				self.email = that_dict.get("email")
+				self.password = that_dict.get("password")
+				self.cell = that_dict.get("cellPhoneNumber")
+				self.other_info = that_dict.get("preferences")
+				self.photoURL = that_dict.get("photo")
+				self.gender = that_dict.get("gender")
+				#self.Location_ID = that_dict.get("locationID")
+				#self.payment_option = that_dict.get("paymentOption")
+				query_tuple = (self.username, self.email, self.password, self.cell, self.photoURL, self.gender, self.other_info, oldEmail)
+				query = "UPDATE Users SET User_name = ?,User_Email = ?,User_Password = ?,User_Cell = ?,user_image = ?, user_gender =?, Other_Information = ? WHERE User_Email= ?"
+				cursor.execute(query, query_tuple)
+				conn.commit()
 			conn.close()
+			return ret
 
 
 
