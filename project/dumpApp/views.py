@@ -267,6 +267,7 @@ def restaurants(request):
 
 	#the dictionary context is the database query
 	context = {}
+	context['user_authenticated'] = request.session['is_authenticated']
 	# 	'name': "Narek Zamanyan",
 	# 	'user_authenticated': request.session['is_authenticated']
 	# }
@@ -278,6 +279,7 @@ def restaurants(request):
 		if request.POST['Yelp'] == "True":
 			restaurant = YelpFusion.search_restaurant(request.POST['id'])
 			context['everything'] = restaurant
+
 			schedule = {}
 			#context['formatted_schedule']
 			#for i in range(5):
