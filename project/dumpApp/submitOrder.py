@@ -94,6 +94,7 @@ class order_list:
 		print("ID is: " + str(ID))
 		for i in range(0, len(self.olist)):
 			self.olist[i].submitItem(ID)
+		olist = list()
 
 	def submitOrder(self):
 		# Obtain connection string information from the portal
