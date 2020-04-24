@@ -78,7 +78,7 @@
     <br>
     <br>
     <br>
-    <h2>{{ restaurants.Name }}</h2>
+    <h2>{{ restaurants.Restaurant_name }}</h2>
     <h3>Address: 
      {% if rest_address.Location_Street_1  != "None" %}
         {{ rest_address.Location_Street_1 }}
@@ -122,15 +122,15 @@
         {% for items in rest_items %}
           <div class="container-horizontal-scroll-box">
             <a href="#">
-                <img class="horizontal-scroll-image" src="{{items.Image}}">
+                <img class="horizontal-scroll-image" src="{{items.item_image}}">
               <br>
               <br>
               <br>
               <br>
               <br>
-              <h3 class="horizontal-scroll-text">{{items.Name}}</h3>
-              <h3 class="horizontal-scroll-text">${{items.Cost|floatformat:2}}</h3>
-              <p class="horizontal-scroll-text">{{items.Notes}}</p>
+              <h3 class="horizontal-scroll-text">{{items.Item_name}}</h3>
+              <h3 class="horizontal-scroll-text">${{items.Item_cost|floatformat:2}}</h3>
+              <p class="horizontal-scroll-text">{{items.item_notes}}</p>
             </a>
           </div>
         {% endfor %}

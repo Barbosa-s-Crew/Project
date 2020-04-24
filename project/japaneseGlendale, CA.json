@@ -1,90 +1,97 @@
 {
-  "id": "uIzdHpMiDYml1UJjtFxx9Q",
-  "alias": "lucys-pizza-and-burgers-glendale",
-  "name": "Lucy's Pizza & Burgers",
-  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/Aai3o1Q3Hofz5alOhUj8Gg/o.jpg",
+  "id": "N4sbDFWKIPkZKgNs-A6BCg",
+  "alias": "pizza-boy-glendale",
+  "name": "Pizza Boy",
+  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/lucys-pizza-and-burgers-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+18182416336",
-  "display_phone": "(818) 241-6336",
-  "review_count": 348,
+  "url": "https://www.yelp.com/biz/pizza-boy-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18182475555",
+  "display_phone": "(818) 247-5555",
+  "review_count": 629,
   "categories": [
-    {
-      "alias": "burgers",
-      "title": "Burgers"
-    },
     {
       "alias": "pizza",
       "title": "Pizza"
     },
     {
-      "alias": "italian",
-      "title": "Italian"
+      "alias": "vegan",
+      "title": "Vegan"
+    },
+    {
+      "alias": "gluten_free",
+      "title": "Gluten-Free"
     }
   ],
-  "rating": 4.0,
+  "rating": 4.5,
   "location": {
-    "address1": "624 E Colorado St",
-    "address2": "",
+    "address1": "1321 E Colorado St",
+    "address2": "Ste C",
     "address3": "",
     "city": "Glendale",
     "zip_code": "91205",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "624 E Colorado St",
+      "1321 E Colorado St",
+      "Ste C",
       "Glendale, CA 91205"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-    "latitude": 34.14238,
-    "longitude": -118.24721
+    "latitude": 34.1428476,
+    "longitude": -118.2366086
   },
   "photos": [
-    "https://s3-media4.fl.yelpcdn.com/bphoto/Aai3o1Q3Hofz5alOhUj8Gg/o.jpg",
-    "https://s3-media4.fl.yelpcdn.com/bphoto/5MDWTwsjuVKvZkF0R2UotQ/o.jpg",
-    "https://s3-media4.fl.yelpcdn.com/bphoto/b7vkEIdp_6ITImnayIMGkw/o.jpg"
+    "https://s3-media2.fl.yelpcdn.com/bphoto/jyo_GWDYunhHnVA4vFFdAQ/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/vhSYf-mXeNmX4NjKgXRbCQ/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/Ns84cb6QuGcBHBoKWZAUwA/o.jpg"
   ],
-  "price": "$",
+  "price": "$$",
   "hours": [
     {
       "open": [
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
+          "day": 0
+        },
+        {
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
           "day": 1
         },
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
           "day": 2
         },
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2145",
           "day": 3
         },
         {
-          "is_overnight": true,
-          "start": "1700",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2230",
           "day": 4
         },
         {
-          "is_overnight": true,
-          "start": "1300",
-          "end": "0200",
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2215",
           "day": 5
         },
         {
-          "is_overnight": true,
-          "start": "1300",
-          "end": "0100",
+          "is_overnight": false,
+          "start": "0930",
+          "end": "2215",
           "day": 6
         }
       ],
@@ -93,7 +100,7 @@
     }
   ],
   "transactions": [
-    "delivery",
-    "pickup"
+    "pickup",
+    "delivery"
   ]
 }
