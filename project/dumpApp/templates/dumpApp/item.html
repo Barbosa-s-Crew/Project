@@ -7,11 +7,12 @@
   <div class="bottom-left_item" style="color: #1895c9; font: bold;">For only ${{price}}</div>
 </div>
 
-<p></p>
+<p>{{dic}}</p>
 
 <form method="POST" action="{% url 'item' %}"> {% csrf_token %}
   <label>Enter quantity:</label>
   <input name="quantity" id="quantity_id" type="number" value="1" min="0" max="100" step="1"/>
+  <input type="hidden" name="dic" value="{{dic}}">
   <button class="button_hover_2">Order</button>
 </form>
 

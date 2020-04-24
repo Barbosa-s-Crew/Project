@@ -333,15 +333,17 @@ def restaurants(request):
 def item(request):
 	context = {}
 	if request.method == "POST":
-		print(request.POST['description'])
-		description = request.POST['description']
-		price = request.POST['price']
-		image = request.POST['image']
+		print(request.POST.get('dic', False))
+		#description = request.POST['description']
+		#price = request.POST['price']
+		#image = request.POST['image']
 
 		context = {
-		'description': description,
-		'price': price,
-		'image': image,
+		#'description': description,
+		#'price': price,
+		#'image': image,
+		'shopping_cart':request.session['shopping_cart'],
+		'dic':request.POST.get('dic', False),
 		'user_authenticated': request.session['is_authenticated']
 	}
 
