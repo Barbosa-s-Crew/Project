@@ -25,21 +25,21 @@ class userC:
 	other_info = ''
 	is_authenticated = False
 
-	def __init__(self, tup):
+	def __init__(self, that_dict):
 		try:
-			self.ID = tup[0]
-			self.Location_ID = tup[1]
-			self.payment_option = tup[2]
-			self.username = tup[3]
-			self.email = tup[4]
-			self.password = tup[5]
-			self.cell = tup[6]
-			self.photoURL = tup[7]
-			self.gender = tup[8]
-			self.other_info = tup[9]
+			self.ID = that_dict['User_ID']
+			self.Location_ID = that_dict['Location_ID']
+			self.payment_option = that_dict['Payment_Option_ID']
+			self.username = that_dict['User_name']
+			self.email = that_dict['User_Email']
+			self.password = str(that_dict['User_Password'])
+			self.cell = that_dict['User_Cell']
+			self.photoURL = that_dict['user_image']
+			self.gender = that_dict['user_gender']
+			self.other_info = that_dict['Other_Information']
 		
 			#tup is not empty
-			if tup[0] != '':
+			if that_dict['User_ID'] != '':
 				self.is_authenticated = True
 		except:
 			self.ID = ''
@@ -83,12 +83,11 @@ class userC:
 			else:
 				print(err)
 		else: 
-			cursor = conn.cursor(prepared = True)
+			cursor = conn.cursor(dictionary = True)
 			ret = True
 			if self.email != that_dict.get("email"):
-				query = "SELECT * FROM Users WHERE User_Email= ?"
-				email_tuple = (that_dict("email"),)
-				cursor.execute(query, email_tuple)
+				query = "SELECT * FROM Users WHERE User_Email= \""+str(that_dict("email"))+"\";"
+				cursor.execute(query)
 				tupleC = cursor.fetchall()
 				if len(tupleC)>0:
 					ret = False
@@ -103,9 +102,8 @@ class userC:
 				self.gender = that_dict.get("gender")
 				#self.Location_ID = that_dict.get("locationID")
 				#self.payment_option = that_dict.get("paymentOption")
-				query_tuple = (self.username, self.email, self.password, self.cell, self.photoURL, self.gender, self.other_info, oldEmail)
-				query = "UPDATE Users SET User_name = ?,User_Email = ?,User_Password = ?,User_Cell = ?,user_image = ?, user_gender =?, Other_Information = ? WHERE User_Email= ?"
-				cursor.execute(query, query_tuple)
+				query = "UPDATE Users SET User_name = \""+str(self.username)+"\",User_Email = \""+str(self.email)+"\",User_Password = \""+str(self.password)+"\",User_Cell = \""+self.cell+"\",user_image = \""+self.photoURL+"\", user_gender =\""+self.gender+"\", Other_Information = \""+self.other_info+"\" WHERE User_Email= \""+oldEmail+"\";"
+				cursor.execute(query)
 				conn.commit()
 			conn.close()
 			return ret
@@ -130,12 +128,11 @@ def authenticate_user(email='', password = ''):
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor(prepared = True)
-		query = "SELECT * FROM Users WHERE User_Email=?"
-		email_tuple = (email,)
-		cursor.execute(query, email_tuple)
-		tupleC = cursor.fetchall()
-		fetchedUser = userC(tupleC[0])
+		cursor = conn.cursor(dictionary = True)
+		query = "SELECT * FROM Users WHERE User_Email=\""+email+"\";"
+		cursor.execute(query)
+		fetchedList = cursor.fetchall()
+		fetchedUser = userC(fetchedList[0])
 		cursor.close()
 		conn.close()
 		if check_password(password, fetchedUser.password):
@@ -159,20 +156,17 @@ def create_user(email = '', password = '',username='',cellPhoneNum=''):		#will r
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor(prepared = True)
-		query = "SELECT * FROM Users WHERE User_Email= ?"
-		email_tuple = (email,)
-		cursor.execute(query, email_tuple)
+		cursor = conn.cursor(dictionary = True)
+		query = "SELECT * FROM Users WHERE User_Email= \""+str(email)+"\";"
+		cursor.execute(query)
 		tupleC = cursor.fetchall()
 		if len(tupleC)==0:
-			query = "INSERT INTO Users (User_name, User_Email, User_Password, User_Cell) VALUES (?, ?, ?, ?);"
-			query_tuple = (username, email, make_password(password), cellPhoneNum)
-			cursor.execute(query, query_tuple)
+			query = "INSERT INTO Users (User_name, User_Email, User_Password, User_Cell) VALUES (\""+str(username)+"\",\""+str(email)+"\",\""+str(make_password(password))+"\", \""+cellPhoneNum+"\");"
+			cursor.execute(query)
 			conn.commit()
 			conn.close()
 			result = True
 			print('User Created')
-
 		else: 
 			print("A user with that email already exists.")
 			cursor.close()
@@ -185,9 +179,9 @@ def create_user(email = '', password = '',username='',cellPhoneNum=''):		#will r
 
 #u=authenticate_user(username='abc',password= '123')
 #create_user('jikemsa@gmail.com','jikemsaPassword','Hunter Swanson','(408)507-0461')
-#u=authenticate_user('jikemsa@gmail.com','jikemsaPassword')
+#u=authenticate_user("jikemsa@gmail.com","jikemsaPassword")
 #a=u.get_dictionary()
-#print(a)
+#print(u.password)
 #a.update({"username":"Hunter Swanson"})
 #print(a)
 #u.save_preferences(a)
