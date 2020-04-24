@@ -318,7 +318,7 @@ def restaurants(request):
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
 			context['restaurants'] = restaurant[0]
 
-			restaurant_location = restaurant_module.get_location_using_location_id(restaurant[0]['Location_ID'])
+			restaurant_location = restaurant_module.get_location_using_location_id(restaurant[0]['Location_id'])
 			#print("here"+restaurant_location[0]['Location_Street_1'])
 			context['rest_address'] = restaurant_location[0]
 
