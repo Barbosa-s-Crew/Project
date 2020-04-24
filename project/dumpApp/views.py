@@ -328,3 +328,22 @@ def restaurants(request):
 			context['rest_items'] = items
 
 	return render(request, 'dumpApp/restaurants.html', context)
+
+
+def item(request):
+	context = {}
+	if request.method == "POST":
+		print(request.POST['description'])
+		description = request.POST['description']
+		price = request.POST['price']
+		image = request.POST['image']
+
+		context = {
+		'description': description,
+		'price': price,
+		'image': image,
+		'user_authenticated': request.session['is_authenticated']
+	}
+
+	check_user(request)
+	return render(request, 'dumpApp/item.html', context)

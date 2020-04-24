@@ -1,4 +1,4 @@
-<div class="container-horizontal-scroll-box">
+<!-- <div class="container-horizontal-scroll-box">
   <a href="#">
     {% if image != "" %}
       <img class="horizontal-scroll-image" src="{{image}}">
@@ -11,7 +11,38 @@
     <br>
     <br>
     <h3 class="horizontal-scroll-text">{{caption}}</h3>
-    <h4 class="horizontal-scroll-text">{{description}} </h4>
+    <h7 class="horizontal-scroll-text">{{description}} </h7>
     <p class="horizontal-scroll-text">{{price|floatformat:2}}</p>
+  </a>
+</div> -->
+ 
+<div class="container-horizontal-scroll-box">
+  <a href="#">
+  <form method="POST" action="{% url 'item' %}"> {% csrf_token %}
+     {% if image != "" %}
+       <img class="horizontal-scroll-image" src="{{image}}">
+     {% else %}
+       <img class="horizontal-scroll-image" src="https://static.toiimg.com/photo/72023714.cms">
+      {% endif %}
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <button><h4 class="horizontal-scroll-text">{{caption}}</h4></button>
+      <!-- <h3 class="horizontal-scroll-text">{{caption}}</h3> -->
+      
+      <p class="horizontal-scroll-text">{{price|floatformat:2}}</p>  
+
+    
+      <input type="hidden" name="description" value="{{description}}">
+      <input type="hidden" name="caption" value="{{caption}}">
+      <input type="hidden" name="price" value="{{price|floatformat:2}}">
+      <input type="hidden" name="image" value="{{image}}">
+
+
+    </form>
+    
+   
   </a>
 </div>
