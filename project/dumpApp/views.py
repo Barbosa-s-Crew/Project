@@ -358,9 +358,14 @@ def item(request):
 			order_list.add_order_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
 			#order_item = order_module.order_item()
 			
+
+			order_object = order_module.order_list(request.session['ID'], 0, 0)
+
+			request.session['shopping_cart'] = order_object.convert_to_dict_list()
+
 			order_item = order_module.order_item(request.session['current_item']['restaurant_ID'],request.session['current_item']['menu_ID'],request.session['current_item']['item_ID'],request.session['current_item']['item_name'],request.session['current_item']['item_price'],request.session['current_item']['item_quantity'],request.session['current_item']['item_image'])
 
-			request.session['shopping_cart'].append(order_item)
+			request.session['shopping_cart'].append(order_item.convert_to_dict_list())
 			#request.session['shopping_cart'].append(order_item)
 			# print("*********************")
 			# print(request.session['shopping_cart'][0].restaurant_ID)
