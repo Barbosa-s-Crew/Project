@@ -115,7 +115,8 @@ class order_list:
 			item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList[0]['item_price'], quantity, fetchedList[0]['Item_image'])
 			for i in range(0, len(self.olist)):
 				if self.olist[i].item_ID == item.item_ID:
-					self.olist[i].item_quantity +=item.item_quantity
+					temp = int(self.olist[i].item_quantity) 
+					self.olist[i].item_quantity = temp + int(item.item_quantity)
 					return
 			self.add_order(item)
 

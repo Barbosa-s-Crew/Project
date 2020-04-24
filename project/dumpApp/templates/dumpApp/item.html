@@ -35,5 +35,9 @@
   <button class="button_hover_2">Add To Cart</button>
 </form>
 
+<form method="POST" action="{% url 'shopping_cart' %}"> {% csrf_token %}
+  <button class="button_hover_2">View Your Cart</button>
+</form>
+
 
 {% endblock content %}

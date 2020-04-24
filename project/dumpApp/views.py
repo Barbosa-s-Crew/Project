@@ -62,9 +62,21 @@ def shopping_cart(request):
 	if context['user_authenticated'] == False:
 		return render(request, 'dumpApp/home.html', context)
 
-	#context['shopping_cart'] = request.session['shopping_cart'];
 	context['shopping_cart'] = request.session['shopping_cart']
 
+	#print("*********************")
+	#print(request.session['shopping_cart'])
+	#print("*********************")
+	print("/////////////////////")
+	print(request.session['shopping_cart'])
+	print(request.session['shopping_cart'][0].restaurant_ID)
+	print(request.session['shopping_cart'][0].menu_ID)
+	print(request.session['shopping_cart'][0].item_ID)
+	print(request.session['shopping_cart'][0].item_name)
+	print(request.session['shopping_cart'][0].item_price)
+	print(request.session['shopping_cart'][0].item_quantity)
+	print(request.session['shopping_cart'][0].item_image)
+	print("/////////////////////")
 	# If logged in, go to dashboard instead
 	return render(request, 'dumpApp/shopping_cart.html', context)
 
@@ -198,7 +210,7 @@ def login(request):
 
 		request.session['shopping_cart'] = order_object.convert_to_dict_list()
 
-		request.session['current_item'] =  dict(description='', item_price='', item_image='', item_name='', item_ID='', menu_ID='', restaurant_ID='', item_quantity='')
+		request.session['current_item'] = dict(description='', item_price='', item_image='', item_name='', item_ID='', menu_ID='', restaurant_ID='', item_quantity='')
 
 		print(request.session['is_authenticated'])
 		context['user_authenticated'] = request.session['is_authenticated']
@@ -337,13 +349,43 @@ def item(request):
 	if request.method == "POST":
 		if request.POST['origin'] == "item":
 			quantity = request.POST['item_quantity']
-			request.session['current_item'] = ast.literal_eval(request.POST['string'])
+			#request.session['current_item'] = ast.literal_eval(request.POST['string'])
 			request.session['current_item']['item_quantity'] = quantity
 
 			#using default address for now
-			#status code: 1 = "in the shopping cart" 2 = "ordered/pending" 3 = "Already Delivered"
-			order_list = order_module.order_list(request.session['ID'], 'default address', 1)
-			order_list.add_order_by_ID(current_item.item_ID, current_item.item_quantity)
+			#status code: 0 = "in the shopping cart" 1 = "ordered/pending" 2 = "Already Delivered"
+			order_list = order_module.order_list(request.session['ID'], '1', 0)
+			order_list.add_order_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
+			#order_item = order_module.order_item()
+			order_item = order_module.order_item(request.session['current_item']['restaurant_ID'],request.session['current_item']['menu_ID'],request.session['current_item']['item_ID'],request.session['current_item']['item_name'],request.session['current_item']['item_price'],request.session['current_item']['item_quantity'],request.session['current_item']['item_image'])
+
+			request.session['shopping_cart'].append(order_item)
+			request.session['shopping_cart'].append(order_item)
+			print("*********************")
+			print(request.session['shopping_cart'][0].restaurant_ID)
+			print(request.session['shopping_cart'][0].menu_ID)
+			print(request.session['shopping_cart'][0].item_ID)
+			print(request.session['shopping_cart'][0].item_name)
+			print(request.session['shopping_cart'][0].item_price)
+			print(request.session['shopping_cart'][0].item_quantity)
+			print(request.session['shopping_cart'][0].item_image)
+			print("*********************")
+			# request.session['shopping_cart'][0] = request.session['current_item']['restaurant_ID']
+			# request.session['shopping_cart'][1] = request.session['current_item']['menu_ID']
+			# request.session['shopping_cart'][2] = request.session['current_item']['item_ID']
+			# request.session['shopping_cart'][3] = request.session['current_item']['item_name']
+			# request.session['shopping_cart'][4] = request.session['current_item']['item_price']
+			# request.session['shopping_cart'][5] = request.session['current_item']['item_quantity']
+			# request.session['shopping_cart'][6] = request.session['current_item']['item_image']
+
+			# print("*********************")
+			# print(order_list.olist[0].menu_ID)
+			# print(order_list.olist[0].item_ID)
+			# print(order_list.olist[0].item_name)
+			# print(order_list.olist[0].item_price)
+			# print(order_list.olist[0].item_quantity)
+			# print(order_list.olist[0].item_image)
+			# print("*********************")
 			#order_module.order_list.add_order_by_ID(current_item.item_ID, current_item.item_quantity)
 			#change_order(current_item, quantity)
 
