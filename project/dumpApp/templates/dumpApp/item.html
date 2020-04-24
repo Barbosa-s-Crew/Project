@@ -1,6 +1,7 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
-<h1>current_item = {{current_item}}</h1>
+<!-- <h1>current_item = {{current_item}}</h1> -->
+<h1>shopping_cart = {{shopping_cart}}</h1>
 <!-- <h2>dic = {{current_item.dic}}</h2>
 <h2>id = {{current_item.item_ID}}</h2>
 <h2>menu_id = {{current_item.menu_ID}}</h2>
@@ -8,7 +9,7 @@
  -->
 <div class="container_item">
   <img src="{{current_item.item_image}}" alt="Snow" style="width: 49%;">
-  <div class="bottom-left_item" style="color: #1895c9; font: bold;">For only ${{price}}</div>
+  <div class="bottom-left_item" style="color: #1895c9; font: bold;">For only ${{current_item.item_price}}</div>
 </div>
 
 <p>{{caption}}</p>

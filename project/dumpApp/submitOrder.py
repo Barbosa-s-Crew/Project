@@ -11,8 +11,7 @@ class order_item:
 	item_quantity = 0
 	item_image = ''
 
-	def __init__(self, restaurant_ID, menu_ID, item_ID, item_name, item_price, item_quantity
-		, item_image):
+	def __init__(self, restaurant_ID, menu_ID, item_ID, item_name, item_price, item_quantity, item_image):
 		self.restaurant_ID = restaurant_ID
 		self.menu_ID = menu_ID
 		self.item_ID = item_ID

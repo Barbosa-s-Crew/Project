@@ -68,14 +68,14 @@ def shopping_cart(request):
 	#print(request.session['shopping_cart'])
 	#print("*********************")
 	print("/////////////////////")
-	print(request.session['shopping_cart'])
-	print(request.session['shopping_cart'][0].restaurant_ID)
-	print(request.session['shopping_cart'][0].menu_ID)
-	print(request.session['shopping_cart'][0].item_ID)
-	print(request.session['shopping_cart'][0].item_name)
-	print(request.session['shopping_cart'][0].item_price)
-	print(request.session['shopping_cart'][0].item_quantity)
-	print(request.session['shopping_cart'][0].item_image)
+	# print(request.session['shopping_cart'])
+	# print(request.session['shopping_cart'][0].restaurant_ID)
+	# print(request.session['shopping_cart'][0].menu_ID)
+	# print(request.session['shopping_cart'][0].item_ID)
+	# print(request.session['shopping_cart'][0].item_name)
+	# print(request.session['shopping_cart'][0].item_price)
+	# print(request.session['shopping_cart'][0].item_quantity)
+	# print(request.session['shopping_cart'][0].item_image)
 	print("/////////////////////")
 	# If logged in, go to dashboard instead
 	return render(request, 'dumpApp/shopping_cart.html', context)
@@ -357,19 +357,20 @@ def item(request):
 			order_list = order_module.order_list(request.session['ID'], '1', 0)
 			order_list.add_order_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
 			#order_item = order_module.order_item()
+			
 			order_item = order_module.order_item(request.session['current_item']['restaurant_ID'],request.session['current_item']['menu_ID'],request.session['current_item']['item_ID'],request.session['current_item']['item_name'],request.session['current_item']['item_price'],request.session['current_item']['item_quantity'],request.session['current_item']['item_image'])
 
 			request.session['shopping_cart'].append(order_item)
-			request.session['shopping_cart'].append(order_item)
-			print("*********************")
-			print(request.session['shopping_cart'][0].restaurant_ID)
-			print(request.session['shopping_cart'][0].menu_ID)
-			print(request.session['shopping_cart'][0].item_ID)
-			print(request.session['shopping_cart'][0].item_name)
-			print(request.session['shopping_cart'][0].item_price)
-			print(request.session['shopping_cart'][0].item_quantity)
-			print(request.session['shopping_cart'][0].item_image)
-			print("*********************")
+			#request.session['shopping_cart'].append(order_item)
+			# print("*********************")
+			# print(request.session['shopping_cart'][0].restaurant_ID)
+			# print(request.session['shopping_cart'][0].menu_ID)
+			# print(request.session['shopping_cart'][0].item_ID)
+			# print(request.session['shopping_cart'][0].item_name)
+			# print(request.session['shopping_cart'][0].item_price)
+			# print(request.session['shopping_cart'][0].item_quantity)
+			# print(request.session['shopping_cart'][0].item_image)
+			# print("*********************")
 			# request.session['shopping_cart'][0] = request.session['current_item']['restaurant_ID']
 			# request.session['shopping_cart'][1] = request.session['current_item']['menu_ID']
 			# request.session['shopping_cart'][2] = request.session['current_item']['item_ID']
@@ -416,7 +417,7 @@ def item(request):
 		'user_authenticated': request.session['is_authenticated']
 	}
 
-	print(request.session['current_item'])
+	#print(request.session['current_item'])
 
 	check_user(request)
 	return render(request, 'dumpApp/item.html', context)
