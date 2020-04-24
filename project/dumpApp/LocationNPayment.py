@@ -16,16 +16,15 @@ def getLocationID(that_dict):
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor(prepared = True)
-		query = "SELECT * FROM Location WHERE Location_Street_1=?, Location_Street_2=?, Location_City=?, Location_State=?, Location_Zip=?"
-		query_tuple = (that_dict.get("Street1"),that_dict.get("Street2"),that_dict.get("City"),that_dict.get("State"),that_dict.get("Zip"))
-		cursor.execute(query, query_tuple)
+		cursor = conn.cursor(dictionary = True)
+		query = "SELECT * FROM Location WHERE Location_Street_1=\""+that_dict.get("Street1")+"\", Location_Street_2=\""+that_dict.get("Street2")+"\", Location_City=\""+that_dict.get("City")+"\", Location_State=\""+that_dict.get("State")+"\", Location_Zip=\""+that_dict.get("Zip")+"\";"
+		cursor.execute(query)
 		tupleC = cursor.fetchall()
 		if len(tupleC)==0:
 			print("Location not found!")
 		else:
 			print("Location Found!")
-			return getLocationDict(tupleC[0])
+			return tupleC[0]
 
 
 def getLocation(locationID):
@@ -40,16 +39,15 @@ def getLocation(locationID):
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor(prepared = True)
-		query = "SELECT * FROM Location WHERE Location_ID=?"
-		query_tuple = (locationID,)
-		cursor.execute(query, query_tuple)
+		cursor = conn.cursor(dictionary= True)
+		query = "SELECT * FROM Location WHERE Location_ID=\""+str(locationID)+"\";"
+		cursor.execute(query)
 		tupleC = cursor.fetchall()
 		if len(tupleC)==0:
 			print("Location not found!")
 		else:
 			print("Location Found!")
-			return getLocationDict(tupleC[0])
+			return tupleC[0]
 
 def getLocationDict(tup):
 	this_dict = dict(ID=tup[0],Street1=tup[1],Street2=tup[2],City=tup[3],State=tup[4],Zip=tup[5],Long=tup[6],Lat=tup[7],API=tup[8])
