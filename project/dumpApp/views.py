@@ -6,6 +6,7 @@ from . import usersCustom
 from . import deals as dealsmodule
 from . import restaurant as restaurant_module
 from . import submitOrder as order_module
+import ast
 
 from django.db.models import Q
 
@@ -197,6 +198,7 @@ def login(request):
 
 		request.session['shopping_cart'] = order_object.convert_to_dict_list()
 
+		request.session['current_item'] =  dict(description='', item_price='', item_image='', item_name='', item_ID='', menu_ID='', restaurant_ID='', item_quantity='')
 
 		print(request.session['is_authenticated'])
 		context['user_authenticated'] = request.session['is_authenticated']
@@ -333,19 +335,46 @@ def restaurants(request):
 def item(request):
 	context = {}
 	if request.method == "POST":
-		print(request.POST.get('dic', False))
-		#description = request.POST['description']
-		#price = request.POST['price']
-		#image = request.POST['image']
+		if request.POST['origin'] == "item":
+			quantity = request.POST['item_quantity']
+			request.session['current_item'] = ast.literal_eval(request.POST['string'])
+			request.session['current_item']['item_quantity'] = quantity
+
+			#using default address for now
+			#status code: 1 = "in the shopping cart" 2 = "ordered/pending" 3 = "Already Delivered"
+			order_list = order_module.order_list(request.session['ID'], 'default address', 1)
+			order_list.add_order_by_ID(current_item.item_ID, current_item.item_quantity)
+			#order_module.order_list.add_order_by_ID(current_item.item_ID, current_item.item_quantity)
+			#change_order(current_item, quantity)
+
+		elif request.POST['origin'] == "dashboard":
+			print(request.POST.get('dic', False))
+			description = request.POST['description']
+			price = request.POST['price']
+			image = request.POST['image']
+			caption = request.POST['caption']
+			item_id = request.POST['item_ID']
+			menu_id = request.POST['menu_ID']
+			restaurant_id = request.POST['restaurant_ID']
+
+			request.session['current_item']['description'] = description
+			request.session['current_item']['item_price'] = price
+			request.session['current_item']['item_image'] = image
+			request.session['current_item']['item_name'] = caption
+			request.session['current_item']['item_ID'] = item_id
+			request.session['current_item']['menu_ID'] = menu_id
+			request.session['current_item']['restaurant_ID'] = restaurant_id
+
+
 
 		context = {
-		#'description': description,
-		#'price': price,
-		#'image': image,
+		'current_item': request.session['current_item'],
 		'shopping_cart':request.session['shopping_cart'],
 		'dic':request.POST.get('dic', False),
 		'user_authenticated': request.session['is_authenticated']
 	}
+
+	print(request.session['current_item'])
 
 	check_user(request)
 	return render(request, 'dumpApp/item.html', context)

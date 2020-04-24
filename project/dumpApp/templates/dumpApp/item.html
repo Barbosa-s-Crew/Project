@@ -1,19 +1,38 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
-<h2>{{description}}</h2>
-
+<h1>current_item = {{current_item}}</h1>
+<!-- <h2>dic = {{current_item.dic}}</h2>
+<h2>id = {{current_item.item_ID}}</h2>
+<h2>menu_id = {{current_item.menu_ID}}</h2>
+<h2>restaurant_id = {{current_item.restaurant_ID}}</h2>
+ -->
 <div class="container_item">
-  <img src="{{image}}" alt="Snow" style="width: 49%;">
+  <img src="{{current_item.item_image}}" alt="Snow" style="width: 49%;">
   <div class="bottom-left_item" style="color: #1895c9; font: bold;">For only ${{price}}</div>
 </div>
 
-<p>{{dic}}</p>
+<p>{{caption}}</p>
 
 <form method="POST" action="{% url 'item' %}"> {% csrf_token %}
   <label>Enter quantity:</label>
-  <input name="quantity" id="quantity_id" type="number" value="1" min="0" max="100" step="1"/>
-  <input type="hidden" name="dic" value="{{dic}}">
-  <button class="button_hover_2">Order</button>
+
+  {% if current_item.item_quantity == '' %}
+  	<input name="item_quantity" id="quantity_id" type="number" value="1" min="0" max="100" step="1"/>
+  {% else %}
+  	<input name="item_quantity" id="quantity_id" type="number" value="{{current_item.item_quantity}}" min="0" max="100" step="1"/>
+  {% endif %}
+
+  <input type="hidden" name="description" value="{{description}}">
+  <input type="hidden" name="caption" value="{{caption}}">
+  <input type="hidden" name="price" value="{{price|floatformat:2}}">
+  <input type="hidden" name="image" value="{{image}}">
+  <input type="hidden" name="item_id" value="{{item_ID}}">
+  <input type="hidden" name="menu_id" value="{{menu_ID}}">
+  <input type="hidden" name="restaurant_id" value="{{restaurant_ID}}"> 
+  <input type="hidden" name="string" value="{{current_item}}">
+
+  <input type="hidden" name="origin" value="item">
+  <button class="button_hover_2">Add To Cart</button>
 </form>
 
 
