@@ -26,6 +26,7 @@ def check_user(request):
 
 def home(request):
 	check_user(request)
+	order_module.add_order_by_ID("15")
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
 		'deals': dealsmodule.get_deals()

@@ -72,7 +72,7 @@ class order_list:
 
 	def create_from_dict_list(self, dict_list):
 		for item in dict_list:
-			orderitem = order_item(item['restaurant_ID'],item['menu_ID'],item['item_ID'],item['item_name'],item['item_price'],item['item_quantity'],item['item_image'])
+			orderitem = order_item(item['restaurant_ID'],item['menu_ID'],item['item_ID'],item['item_name'],item['item_price'],item['item_quantity'],item['item_image'], )
 			self.olist.append(orderitem)
 		
 	def convert_to_dict_list(self):
@@ -88,6 +88,32 @@ class order_list:
 	def add_order(self, order):
 		self.olist.append(order)
 		print(self.olist)
+
+	def add_order_by_ID(self, ID, quantity):
+		# Obtain connection string information from the portal
+		config = DBSetup.setup_config()
+		try:
+			conn = mysql.connector.connect(**config)
+			print("Connection established")
+		except mysql.connector.Error as err:
+			if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+				print("Something is wrong with the user name or password")
+			elif err.errno == errorcode.ER_BAD_DB_ERROR:
+				print("Database does not exist")
+			else:
+				print(err)
+		else: 
+			cursor = conn.cursor(dictionary=True)
+			query = "SELECT R.Restaurant_ID, M.Menu_ID, I.Item_ID, I.Item_name, I.Item_cost AS item_price, I.Item_image "
+			query += "FROM Item I INNER JOIN Menu M ON I.Menu_ID=M.Menu_ID "
+			query += "INNER JOIN Restaurant R ON M.Restaurant_ID=R.Restaurant_ID "
+			query += "WHERE I.Item_ID = " + str(ID) + ";"
+			cursor.execute(query)
+			fetchedList = cursor.fetchall()
+			print(fetchedList)
+			conn.close()
+			item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList[0]['item_price'], quantity, fetchedList[0]['Item_image'])
+			self.add_order(item)
 
 	def submit(self):
 		ID = self.submitOrder()
