@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
-from . import DBSetup
+import DBSetup
 
 class order_item:
 	restaurant_ID = ''
@@ -29,7 +29,7 @@ class order_item:
 		item_dict['item_ID'] = self.item_ID
 		item_dict['item_name'] = self.item_name
 		item_dict['item_image'] = self.item_image
-		item_dict['item_rice'] = self.item_price
+		item_dict['item_price'] = self.item_price
 		item_dict['item_quantity'] = self.item_quantity
 		return item_dict
 
@@ -49,10 +49,10 @@ class order_item:
 				print(err)
 
 		else: 
-			cursor = conn.cursor(prepared = True)
-			query = "INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity) VALUES (?, ?, ?, ?, ?);"
-			query_tuple = (order_ID, self.restaurant_ID, self.menu_ID, self.item_ID, self.item_quantity)
-			cursor.execute(query, query_tuple)
+			cursor = conn.cursor(dictionary = True)
+			query = "INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity)"
+			query += " VALUES (\""+order_ID+"\",\""+self.restaurant_ID+"\", \""+self.menu_ID+"\", \""+self.item_ID+"\", \""+self.item_quantity+"\");"
+			cursor.execute(query)
 			conn.commit()
 			conn.close()
 
@@ -110,16 +110,15 @@ class order_list:
 			else:
 				print(err)
 		else: 
-			cursor = conn.cursor(prepared = True)
-			query = "INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES (?, ?, CURTIME(), ?);"
-			query_tuple = (self.user_ID, self.location_ID, self.status)
-			cursor.execute(query, query_tuple)
+			cursor = conn.cursor(dictionary=True)
+			query = "INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES (\""+self.user_ID+"\",\""+self.location_ID+"\", CURTIME(),\""+self.status+"\");"
+			cursor.execute(query)
 			conn.commit()
 			cursor.execute("SELECT max(Order_ID) FROM Orders;")
-			order_ID = cursor.fetchall()
-			print("ID from sorder: " + str(order_ID))
+			fetchedList = cursor.fetchall()
+			print("ID from sorder: " + str(fetchedList[0]))
 			conn.close()
-			return order_ID[0][0]
+			return fetchedList[0]['Order_ID']
 
 
 	def change_order(added_item, quantity):
@@ -147,20 +146,20 @@ def getOrder(order_ID):
 		else:
 			print(err)
 	else: 
-		cursor = conn.cursor(prepared = True)
-		query = "SELECT * FROM Orders WHERE Order_ID= ?"
-		query_tuple = (order_ID,)
-		cursor.execute(query, query_tuple)
+		cursor = conn.cursor(dictionary = True)
+		query = "SELECT * FROM Orders WHERE Order_ID= \""+str(order_ID)+"\";"
+		cursor.execute(query)
 		fetched = cursor.fetchall()
-		order = fetch[0]
+		order = fetched[0]
 		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
-		ret = order_list(order[1],order[2],order[5])
-		query = "SELECT * FROM Order_items WHERE Order_ID= ?"
-		query_tuple = (order_ID,)
-		cursor.execute(query, query_tuple)
+		ret = order_list(order['User_ID'],order['Location_ID'],order['Order_status'])
+		query = "SELECT * FROM Order_items WHERE Order_ID= \""+str(order_ID)+"\";"
+		cursor.execute(query)
 		fetched = cursor.fetchall()
+		print(fetched)
 		for order in fetched:
-			ret.olist.append(dict(Order_ID=str(order[0]), Restaurant_ID=str(order[1]), Menu_ID=str(order[2]), Item_ID=str(order[3]), Item_Quantity=str(order[4])))
+			print(order)
+			ret.olist.append(order)
 		return ret
 
 def getOrderList(order_list_object_ID):
@@ -173,4 +172,5 @@ def getOrderList(order_list_object_ID):
 		order_list_to_return = None
 
 
+#u = getOrder(1)
 
