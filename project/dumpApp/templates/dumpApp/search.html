@@ -21,16 +21,41 @@
         <div class="left">
           <div class="input-wrap first">
             <div class="input-field first">                 
-              <input type="text" name="myvalue" id="myvalue" placeholder="  What  ex: pizza, sushi, french.." />
+              <input type="text" name="myvalue" id="myvalue" placeholder="  What: pizza; sushi; french.." />
             </div>
           </div>
           <div class="input-wrap first">
             <div class="input-field first">                 
-              <input type="text" name="locationValue" id="locationValue" placeholder="  location" />
+              <input type="text" name="locationValue" id="locationValue" placeholder="  Where: 123 Washington Dr; LA.." />
             </div>
           </div>              
         </div>
         <button class="btn-search" type="submit" value="submit">SEARCH</button>
+      </div>
+      <br>
+      <button type="button" class="search_bar_collapsible">Open Collapsible</button>
+      <div class="search_bar_content">
+        <div class="inner-form">
+          <div class="left">
+            <div class="input-wrap first">
+              <div class="input-field first">                 
+                <input type="text" name="myvalue" id="myvalue" placeholder="  Radius: 5 miles" />
+              </div>
+            </div>
+            <div class="input-wrap first">
+              <div class="input-field first">
+                <select id="Price">
+                  <option value="">None</option>
+                  <option value="1">$</option>
+                  <option value="2">$$</option>
+                  <option value="3">$$$</option>
+                  <option value="4">$$$$</option>
+                </select>                 
+                <!-- <input type="text" name="locationValue" id="locationValue" placeholder="  Price:" /> -->
+              </div>
+            </div>              
+          </div>
+        </div>
       </div>
     </form>
   </div>
@@ -40,7 +65,6 @@
   <br>
   <button type="button" class="search_bar_collapsible">Open Collapsible</button>
   <div class="search_bar_content">
-    <form method="POST" action="{% url 'search_results' %}"> {% csrf_token %}
       <div class="inner-form">
         <div class="left">
           <div class="input-wrap first">
@@ -55,7 +79,6 @@
           </div>              
         </div>
       </div>
-    </form>
   </div>
 
   <!-- Necessary JavaScript to make the expandable options work -->
