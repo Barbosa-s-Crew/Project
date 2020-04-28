@@ -202,32 +202,15 @@ def login(request):
 		order_object = order_module.order_list(user.ID, 0, 0)
 
 
-
-		# #start --- FOR TESTING
-		# #create a new order item to add to the list
-		# order_item = order_module.order_item(7, 8, 22, "Pacific Steamed", 29, 2, "https://eatnorth.com/sites/default/files/styles/span9_thumbnail/public/pacific_steamed_clams.jpg?itok=xACdkKfv")
-
-		# #add the item to the order_object
-		# order_object.add_order(order_item)
-
-		# #print the list
-		# print("***************************************")
-		# print("Printing the Order")
-		# print(order_object)
-		# print("***************************************")
-		# #end --- FOR TESTING
-
-
-
 		# Sample items to put into the cart
-		orderitem_object = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Souce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
-		print("1")
-		orderitem_object2 = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Sauce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
-		print("2")
-		order_object.add_order(orderitem_object)
-		print("3")
-		order_object.add_order(orderitem_object2)
-		print("4")
+		# orderitem_object = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Souce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
+		# print("1")
+		# orderitem_object2 = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Sauce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
+		# print("2")
+		# order_object.add_order(orderitem_object)
+		# print("3")
+		# order_object.add_order(orderitem_object2)
+		# print("4")
 
 		request.session['shopping_cart'] = order_object.convert_to_dict_list()
 
@@ -372,56 +355,26 @@ def item(request):
 			quantity = request.POST['item_quantity']
 			#request.session['current_item'] = ast.literal_eval(request.POST['string'])
 			request.session['current_item']['item_quantity'] = quantity
-
-			#CONVERTING THE DICT_LIST BACK TO AN OBJECT
-
-			#using default address for now
-			#status code: 0 = "in the shopping cart" 1 = "ordered/pending" 2 = "Already Delivered"
-			#order_list = order_module.order_list(request.session['ID'], '1', 0)
-			#order_list.add_order_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
-			#order_item = order_module.order_item()
 			
 
+			# #start --- FOR TESTING
+			# #create a new order item to add to the list
+			print("**********************Shopping Cart")
+			print(request.session['shopping_cart'])
+			print("**********************Shopping Cart")
 
+			order_object = order_module.order_list(request.session['ID'], 0, 0)
+			order_object.create_from_dict_list(request.session['shopping_cart'])
+			
+			
+			order_object.add_item_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
 
+			request.session['shopping_cart'] = order_object.convert_to_dict_list();
+			print("**********************Shopping Cart")
+			print(request.session['shopping_cart'])
+			print("**********************Shopping Cart")
 
-			#order_list_object = order_module.order_list(request.session['ID'], 0, 0)
-			#order_list_object.create_from_dict_list(request.session['shopping_cart'])
-
-			#order_item_object = order_module.order_item(request.session['current_item']['restaurant_ID'],request.session['current_item']['menu_ID'],request.session['current_item']['item_ID'],request.session['current_item']['item_name'],request.session['current_item']['item_price'],request.session['current_item']['item_quantity'],request.session['current_item']['item_image'])
-
-			#order_list_object.add_order(order_item_object)
-
-			#request.session['shopping_cart'] = order_list_object.convert_to_dict_list()
-
-			# request.session['shopping_cart'].append(order_item)
-			# print("*********************")
-			# print(request.session['shopping_cart'][0].restaurant_ID)
-			# print(request.session['shopping_cart'][0].menu_ID)
-			# print(request.session['shopping_cart'][0].item_ID)
-			# print(request.session['shopping_cart'][0].item_name)
-			# print(request.session['shopping_cart'][0].item_price)
-			# print(request.session['shopping_cart'][0].item_quantity)
-			# print(request.session['shopping_cart'][0].item_image)
-			# print("*********************")
-			# request.session['shopping_cart'][0] = request.session['current_item']['restaurant_ID']
-			# request.session['shopping_cart'][1] = request.session['current_item']['menu_ID']
-			# request.session['shopping_cart'][2] = request.session['current_item']['item_ID']
-			# request.session['shopping_cart'][3] = request.session['current_item']['item_name']
-			# request.session['shopping_cart'][4] = request.session['current_item']['item_price']
-			# request.session['shopping_cart'][5] = request.session['current_item']['item_quantity']
-			# request.session['shopping_cart'][6] = request.session['current_item']['item_image']
-
-			# print("*********************")
-			# print(order_list.olist[0].menu_ID)
-			# print(order_list.olist[0].item_ID)
-			# print(order_list.olist[0].item_name)
-			# print(order_list.olist[0].item_price)
-			# print(order_list.olist[0].item_quantity)
-			# print(order_list.olist[0].item_image)
-			# print("*********************")
-			#order_module.order_list.add_order_by_ID(current_item.item_ID, current_item.item_quantity)
-			#change_order(current_item, quantity)
+			# #end --- FOR TESTING
 
 		elif request.POST['origin'] == "dashboard":
 			print(request.POST.get('dic', False))
