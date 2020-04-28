@@ -146,7 +146,7 @@ def search_results(request):
 	#list = (YelpFusion.search_yelp(request.POST['myvalue'])).split(" ")
 	context['search_results_db'] = restaurant_module.get_restaurant_using_keyword(request.POST['myvalue'])
 	print(context['search_results_db'])
-	context['search_results'] = YelpFusion.search_yelp('term = ' + request.POST['myvalue'], 'location = ' + request.POST['locationValue'])
+	context['search_results'] = YelpFusion.search_yelp(term = request.POST['myvalue'], location = request.POST['locationValue'], radius = request.POST['myRadius'], price= request.POST['myPrice'])
 
 	return render(request, 'dumpApp/search_results.html', context)
 
