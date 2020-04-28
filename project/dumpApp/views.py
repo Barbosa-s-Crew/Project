@@ -359,14 +359,16 @@ def item(request):
 			#order_item = order_module.order_item()
 			
 
-			order_object = order_module.order_list(request.session['ID'], 0, 0)
+			order_list_object = order_module.order_list(request.session['ID'], 0, 0)
+			order_list_object.create_from_dict_list(request.session['shopping_cart'])
 
-			request.session['shopping_cart'] = order_object.convert_to_dict_list()
+			order_item_object = order_module.order_item(request.session['current_item']['restaurant_ID'],request.session['current_item']['menu_ID'],request.session['current_item']['item_ID'],request.session['current_item']['item_name'],request.session['current_item']['item_price'],request.session['current_item']['item_quantity'],request.session['current_item']['item_image'])
 
-			order_item = order_module.order_item(request.session['current_item']['restaurant_ID'],request.session['current_item']['menu_ID'],request.session['current_item']['item_ID'],request.session['current_item']['item_name'],request.session['current_item']['item_price'],request.session['current_item']['item_quantity'],request.session['current_item']['item_image'])
+			order_list_object.add_order(order_item_object)
 
-			request.session['shopping_cart'].append(order_item.convert_to_dict_list())
-			#request.session['shopping_cart'].append(order_item)
+			request.session['shopping_cart'] = order_list_object.convert_to_dict_list()
+
+			# request.session['shopping_cart'].append(order_item)
 			# print("*********************")
 			# print(request.session['shopping_cart'][0].restaurant_ID)
 			# print(request.session['shopping_cart'][0].menu_ID)
