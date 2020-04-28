@@ -79,13 +79,14 @@ class order_list:
 		print(" IN convert_to_dict_list")
 		if len(self.olist) > 0:
 			for i in range(0,len(self.olist)):
-				dict_list.append(self.olist[i].get_item_dictionary)
+				dict_list.append(self.olist[i].get_item_dictionary())
 		print(dict_list)
 		return dict_list
 
 
 	def add_order(self, order):
 		self.olist.append(order)
+		print("*******************************before print")
 		print(self.olist)
 
 	def add_order_by_ID(self, ID, quantity):
