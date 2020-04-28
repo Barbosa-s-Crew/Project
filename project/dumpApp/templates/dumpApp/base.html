@@ -1,130 +1,125 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+  <head>
+    
+    <link rel="icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_addition.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_hover.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_over_image.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/centered_addition.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/div-gallery.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/dividers.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/footer.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/header.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/horizontal_scroll_box.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/main.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/search_bar.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/shopping_cart.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/header-background.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/register.css' %}" >
+
+    <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
+
+      
+    {% if title %}
+        <title>Barbosa's Delivery new- {{ title }}</title>
+    {% else %}
+        <title>Barbosa's Delivery</title>
+    {% endif %}
+   
+
+  </head>
+
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
 
 
+     <!--  <div class="container_button" id="grad1">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="Snow" paddding="100px">
+        <button class="btn">Order</button>
+      </div>  -->
+    <div class="all-content" id="grad1">
+      <div class="header">
+        <header class="site-header">
+          <nav class="navbar navbar-expand-md navbar-light fixed-top" style="color: #3ba1cc; background-color: #1895c9;">
+            <div class="container">
+              <a class="navbar-brand mr-4" href="{% url 'home' %}"><h3 class="header-bar-tab-title">Barbosa's Delivery</h3></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                  <a class="nav-item nav-link" href="{% url 'home' %}"><h6 class ="header-bar-tab-text">Home</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'browse' %}"><h6 class ="header-bar-tab-text">Browse</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'search' %}"><h6 class ="header-bar-tab-text">Search</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'order' %}"><h6 class ="header-bar-tab-text">Order</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'deals' %}"><h6 class ="header-bar-tab-text">Deals</h6></a>
+                  <a class="nav-item nav-link" href="{% url 'about' %}"><h6 class ="header-bar-tab-text">About</h6></a>
 
-</style>
+                </div>
+                <!-- Navbar Right Side -->
+                <!-- ADDED-->
+                    <!-- <div class="search-bar mt-sm-2 mr-2">
+                      <form method="get">
+                          <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-
-  {% if title %}
-      <title>Barbosa's Delivery new- {{ title }}</title>
-  {% else %}
-      <title>Barbosa's Delivery</title>
-  {% endif %}
-
-
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_addition.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_hover.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/button_over_image.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/centered_addition.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/div-gallery.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/dividers.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/footer.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/header.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/horizontal_scroll_box.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/main.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/search_bar.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/shopping_cart.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/header-background.css' %}" >
-  <link rel="stylesheet" type="text/css" href="{% static 'dumpApp/register.css' %}" >
-
-  <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
-
-</head>
-
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+                      </form>
 
 
- <!--  <div class="container_button" id="grad1">
-    <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="Snow" paddding="100px">
-    <button class="btn">Order</button>
-  </div>  -->
-  <div class="all-content" id="grad1">
-    <div class="header">
-      <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-light fixed-top" style="color: #3ba1cc; background-color: #1895c9;">
-          <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'home' %}"><h3 class="header-bar-tab-title">Barbosa's Delivery</h3></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-              <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'home' %}"><h6 class ="header-bar-tab-text">Home</h6></a>
-                <a class="nav-item nav-link" href="{% url 'browse' %}"><h6 class ="header-bar-tab-text">Browse</h6></a>
-                <a class="nav-item nav-link" href="{% url 'search' %}"><h6 class ="header-bar-tab-text">Search</h6></a>
-                <a class="nav-item nav-link" href="{% url 'order' %}"><h6 class ="header-bar-tab-text">Order</h6></a>
-                <a class="nav-item nav-link" href="{% url 'deals' %}"><h6 class ="header-bar-tab-text">Deals</h6></a>
-                <a class="nav-item nav-link" href="{% url 'about' %}"><h6 class ="header-bar-tab-text">About</h6></a>
-
-              </div>
-              <!-- Navbar Right Side -->
-              <!-- ADDED-->
-                  <!-- <div class="search-bar mt-sm-2 mr-2">
-                    <form method="get">
-                        <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
-
-                    </form>
-
-
-                  </div> -->
-              <!-- ADDED-->
-              <div class="navbar-nav">
-                  {% if user_authenticated %}
-                  <a class="nav-item nav-link" href="{% url 'shopping_cart' %}"><h6 class ="header-bar-tab-text">Cart</h6></a>
-                  <a class="nav-item nav-link" href="{% url 'profile' %}"><h6 class ="header-bar-tab-text">Profile</h6></a>
-                  <a class="nav-item nav-link" href="{% url 'logout' %}"><h6 class ="header-bar-tab-text">Log Out</h6></a>
-                  {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}"><h6 class ="header-bar-tab-text">Login</h6></a>
-                <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
-                  {% endif %}
-                <!--if logged in = true, no need for login tab and register, just log out and manage account -->
+                    </div> -->
+                <!-- ADDED-->
+                <div class="navbar-nav">
+                    {% if user_authenticated %}
+                    <a class="nav-item nav-link" href="{% url 'shopping_cart' %}"><h6 class ="header-bar-tab-text">Cart</h6></a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}"><h6 class ="header-bar-tab-text">Profile</h6></a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}"><h6 class ="header-bar-tab-text">Log Out</h6></a>
+                    {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}"><h6 class ="header-bar-tab-text">Login</h6></a>
+                  <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
+                    {% endif %}
+                  <!--if logged in = true, no need for login tab and register, just log out and manage account -->
+                </div>
               </div>
             </div>
+          </nav>
+        </header>
+      </div>
+      <br>
+      <br>
+      <br>
+
+      <div class="main">
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-md-12">
+              {% block content %}{% endblock %}
+            </div>
           </div>
-        </nav>
-      </header>
+        </main>
+      </div>
+      <div class="footer">
+        <p>Barbosa's Crew Ltd.</p>
+      </div>
     </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
     <br>
     <br>
-    <br>
-
-    <div class="main">
-      <main role="main" class="container">
-        <div class="row">
-          <div class="col-md-12">
-            {% block content %}{% endblock %}
-          </div>
-        </div>
-      </main>
-    </div>
-    <div class="footer">
-      <p>Barbosa's Crew Ltd.</p>
-    </div>
-  </div>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-<br>
-<br>
-
-
-</body>
+  </body>
 </html>
