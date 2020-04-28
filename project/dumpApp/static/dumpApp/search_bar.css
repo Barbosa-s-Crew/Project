@@ -63,6 +63,16 @@
 	border-radius: 3px 0 0 3px;
 }
 
+.search_bar form .inner-form .input-wrap.first select {
+	font-size: 100%;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border-bottom: 1px solid #DDDDDD;
+	background-color: #FFFFFF;
+	margin: 0;
+}
+
 .search_bar form .inner-form .input-wrap.second {
 	min-width: 262px;
 	border-radius: 0 3px 3px 0;
@@ -116,3 +126,4 @@
   overflow: hidden;
   background-color: #f1f1f1;
 }
+
