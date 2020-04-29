@@ -2,8 +2,7 @@
 {% block content %}
 
 
-
-
+	
     <h1 align="center" style="color:back; font-size: 30px;">Ready to get your food?</h1>
     <br>
    	<h2>{{shopping_cart}}</h2>
@@ -23,53 +22,29 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<!-- <div class="row">
-						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
-						</div>
-						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
-						</div>
-						<div class="col-xs-6">
-							<div class="col-xs-6 text-right">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-							</div>
-							<div class="col-xs-4">
-								<input type="text" class="form-control input-sm" value="1">
-							</div>
-							<div class="col-xs-2">
-								<button type="button" class="btn btn-link btn-xs">
-									<span class="glyphicon glyphicon-trash"> </span>
-								</button>
-							</div>
-						</div>
-					</div> -->
 					<hr>
 					<br>
 					<div class="row shopping_cart_frame" style="width:700px;">
-            {% for item in shopping_cart %}
+            			{% for item in shopping_cart %}
   						<div class="col-xs-2 shopping_cart_column">
-                {% if item.item_image != "" %}
-                  <img style="max-width:100px; max-height:70px; margin:0px 20px" class="img-responsive shopping_cart_item_image" src="{{item.item_image}}">
-                {% else %}
-                  <img class="img-responsive shopping_cart_item_image" src="http://placehold.it/100x70">
-                {% endif %}
+                		{% if item.item_image != "" %}
+                  			<img style="max-width:100px; max-height:70px; margin:0px 20px" class="img-responsive shopping_cart_item_image" src="{{item.item_image}}">
+                		{% else %}
+                			<img class="img-responsive shopping_cart_item_image" src="http://placehold.it/100x70">
+                		{% endif %}
   						</div>
-  						<div class="col-xs-2 shopping_cart_column">
-  							<h4 class="product-name">
-                  <strong>{{item.item_name}}</strong>
-                </h4>
-                <h4>
-                  <small>{{item.restaurant_name}}</small>
-                </h4>
-  						</div>
-
+						<div class="col-xs-2 shopping_cart_column">
+							<h4 class="product-name">
+          						<strong>{{item.item_name}}</strong>
+        					</h4>
+       						<h4>
+        						<small>{{item.restaurant_name}}</small>
+        					</h4>
+						</div>
     					<hr>
   						<div class="col-xs-6 shopping_cart_column">
   							<div class="col-xs-6 text-right">
   								<h6 align="right"><strong>${{item.item_price}} <span class="text-muted">x {{item.item_quantity}}</span></strong></h6>
-  							</div>
-  							<div class="col-xs-4">
-  								<!-- <input type="text" class="form-control input-sm" value="1"> -->
   							</div>
   							<div class="col-xs-2">
   								<button type="button" class="btn btn-link btn-xs">
@@ -77,37 +52,20 @@
   								</button>
   							</div>
   						</div>
-            {% endfor %}
+            			{% endfor %}
 					</div>
 					<hr>
-          <h1> test</h1>
-
-					<div class="row">
-						<div class="text-center">
-							<div class="col-xs-9">
-								<!-- <h6 class="text-right">Added items?</h6> -->
-							</div>
-							<div class="col-xs-3">
-								<!-- <button type="button" class="btn btn-default btn-sm btn-block">
-									Update cart
-								</button> -->
-							</div>
-						</div>
-					</div>
+					
 				</div>
 				<div class="panel-footer">
 					<div class="row text-center">
-						<div class="col-xs-9">
-							<h4 class="text-right">Subtotal $ {{shopping_cart_subtotal}}</h4>
-              <br>
-              <button type="button" class="btn btn-primary btn-block" style="color:black;">
-								Check Out
-							</button>
-						</div>
-						<div class="col-xs-3">
-							<!-- <button type="button" class="btn btn-success btn-block">
-								Checkout
-							</button> -->
+						<div class="col-xs-12">
+							<h4 class="text-right">Subtotal $ {{shopping_cart_subtotal|floatformat:2}}</h4>
+							<br>
+							<form method="POST" action="{% url 'checkout' %}"> {% csrf_token %}
+								<input type="hidden" name="subtotal" value="{{shopping_cart_subtotal|floatformat:2}}">
+            					<button type="submit" value="submit" class="button_hover_2" style="color:black;">Check Out</button>
+							</form>
 						</div>
 					</div>
 				</div>
