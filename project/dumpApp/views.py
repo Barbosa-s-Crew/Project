@@ -63,6 +63,10 @@ def shopping_cart(request):
 		return render(request, 'dumpApp/home.html', context)
 
 	context['shopping_cart'] = request.session['shopping_cart']
+	order_object = order_module.order_list(request.session['ID'], 0, 0)
+	order_object.create_from_dict_list(request.session['shopping_cart'])
+	context['shopping_cart_subtotal']=order_object.get_order_subtotal()
+			
 
 	#print("*********************")
 	#print(request.session['shopping_cart'])

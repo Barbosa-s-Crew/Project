@@ -48,15 +48,15 @@
 					<div class="row shopping_cart_frame" style="width:700px;">
             {% for item in shopping_cart %}
   						<div class="col-xs-2 shopping_cart_column">
-                {% if item.Image != "" %}
-                  <img style="max-width:100px; max-height:70px; margin:0px 20px" class="img-responsive shopping_cart_item_image" src="{{item.Image}}">
+                {% if item.item_image != "" %}
+                  <img style="max-width:100px; max-height:70px; margin:0px 20px" class="img-responsive shopping_cart_item_image" src="{{item.item_image}}">
                 {% else %}
                   <img class="img-responsive shopping_cart_item_image" src="http://placehold.it/100x70">
                 {% endif %}
   						</div>
   						<div class="col-xs-2 shopping_cart_column">
   							<h4 class="product-name">
-                  <strong>{{item.Name}}</strong>
+                  <strong>{{item.item_name}}</strong>
                 </h4>
                 <h4>
                   <small>{{item.restaurant_name}}</small>
@@ -66,7 +66,7 @@
     					<hr>
   						<div class="col-xs-6 shopping_cart_column">
   							<div class="col-xs-6 text-right">
-  								<h6 align="right"><strong>${{item.Price}} <span class="text-muted">x {{item.Quantity}}</span></strong></h6>
+  								<h6 align="right"><strong>${{item.item_price}} <span class="text-muted">x {{item.item_quantity}}</span></strong></h6>
   							</div>
   							<div class="col-xs-4">
   								<!-- <input type="text" class="form-control input-sm" value="1"> -->
@@ -98,7 +98,7 @@
 				<div class="panel-footer">
 					<div class="row text-center">
 						<div class="col-xs-9">
-							<h4 class="text-right">Total $ {{shopping_cart_price_total}}</h4>
+							<h4 class="text-right">Subtotal $ {{shopping_cart_subtotal}}</h4>
               <br>
               <button type="button" class="btn btn-primary btn-block" style="color:black;">
 								Check Out
