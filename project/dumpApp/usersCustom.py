@@ -164,13 +164,12 @@ def create_user(email = '', password = '',username='',cellPhoneNum=''):		#will r
 			query = "INSERT INTO Users (User_name, User_Email, User_Password, User_Cell) VALUES (\""+str(username)+"\",\""+str(email)+"\",\""+str(make_password(password))+"\", \""+cellPhoneNum+"\");"
 			cursor.execute(query)
 			conn.commit()
-			conn.close()
 			result = True
 			print('User Created')
 		else: 
 			print("A user with that email already exists.")
-			cursor.close()
-			conn.close()
+		cursor.close()
+		conn.close()
 		return result
 
 
