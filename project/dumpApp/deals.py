@@ -43,6 +43,5 @@ def get_deals():
 def format_deals(tup):
 	list_of_deals = list()
 	for d in tup:
-		print(d)
 		list_of_deals.append(dict(Price=d[0], Name=d[1], Image=d[2], Restaurant_Name=d[3], Menu_ID=d[4], Item_ID=d[5], Restaurant_ID=d[6]))
 	return list_of_deals
