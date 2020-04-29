@@ -373,7 +373,7 @@ def item(request):
 			
 			order_object.add_item_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
 
-			request.session['shopping_cart'] = order_object.convert_to_dict_list();
+			request.session['shopping_cart'] = order_object.convert_to_dict_list()
 			print("**********************Shopping Cart")
 			print(request.session['shopping_cart'])
 			print("**********************Shopping Cart")
@@ -411,3 +411,15 @@ def item(request):
 
 	check_user(request)
 	return render(request, 'dumpApp/item.html', context)
+
+def checkout(request):
+	check_user(request)
+	context = {
+	'shopping_cart': request.session['shopping_cart'],
+	'user_authenticated': request.session['is_authenticated']
+	}
+	order_object = order_module.order_list(request.session['ID'], 0, 0)
+	order_object.create_from_dict_list(request.session['shopping_cart'])
+	#order_object.submitOrder()
+	request.session['shopping_cart'] = order_object.convert_to_dict_list()
+	return render(request, 'dumpApp/checkout.html', context)
