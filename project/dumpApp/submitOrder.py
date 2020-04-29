@@ -108,21 +108,23 @@ class order_list:
 			query += "WHERE I.Item_ID = " + str(ID) + ";"
 			cursor.execute(query)
 			fetchedList = cursor.fetchall()
-			conn.close()
-			print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-			print(self.olist)
-			print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-			item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList[0]['item_price'], quantity, fetchedList[0]['Item_image'])
+			query = "SELECT D.Item_ID, D.Deal_Price "
+			query += "FROM Deal D "
+			query += "WHERE D.Item_ID = " + str(fetchedList[0]['Item_ID']) +";"
+			cursor.execute(query)
+			fetchedList2=cursor.fetchall()
+			if fetchedList2[0] != None:
+				item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList2[0]['Deal_Price'], quantity, fetchedList[0]['Item_image'])
+			else:
+				item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList[0]['item_price'], quantity, fetchedList[0]['Item_image'])
 			for i in range(0, len(self.olist)):
-				print("*************************************item_id")
-				print(int(self.olist[i].item_ID))
-				print(item.item_ID)
-				print("*************************************item_id")
 				if int(self.olist[i].item_ID) == item.item_ID:
 					temp = int(self.olist[i].item_quantity)
 					self.olist[i].item_quantity = str(temp + int(quantity))
 					return
-			print("Not supposed to be here")
+			
+
+			conn.close()
 			self.add_order(item)
 
 	def submit(self):
@@ -167,6 +169,13 @@ class order_list:
 				return
 		temp_item = order_item(added_item['restaurant_ID'],added_item['menu_ID'],added_item['item_ID'],added_item['item_name'],added_item['item_price'],added_item['item_quantity'],added_item['item_image'])
 		self.add_order(temp_item)
+
+	def get_order_subtotal(self):
+		subtotal=0
+		for item in self.olist:
+			subtotal += float(item.item_price) * float(item.item_quantity)
+		return float(subtotal)
+
 		
 def getOrder(order_ID):
 	# Obtain connection string information from the portal

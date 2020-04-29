@@ -27,7 +27,7 @@ def get_deals():
 				print(err)
 		else:
 			cursor = conn.cursor()
-			query =  "SELECT D.Deal_Price, I.Item_name, I.item_image, R.Restaurant_Name, I.Menu_ID, I.Item_ID, R.Restaurant_id "
+			query =  "SELECT D.Deal_Price, I.Item_name, I.item_image, R.Restaurant_Name, I.Menu_ID, I.Item_ID, R.Restaurant_id, R.Restaurant_name "
 			query += "FROM Deal D  INNER JOIN Item I ON D.Item_ID=I.Item_ID "
 			query += "INNER JOIN Menu M ON I.Menu_ID=M.Menu_ID "
 			query += "INNER JOIN Restaurant R ON M.Restaurant_ID=R.Restaurant_ID "
@@ -38,6 +38,7 @@ def get_deals():
 			conn.close()
 			deals = format_deals(fetched_deals)
 
+	print(deals)
 	return deals
 
 def format_deals(tup):
