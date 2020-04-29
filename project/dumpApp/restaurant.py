@@ -42,14 +42,14 @@ def get_restaurant_using_keyword(keyword = ''):
 		keywordList = keyword.split()
 		#keywordList = [ '%{0}%'.format(element) for element in keywordList ]
 		cursor = conn.cursor(dictionary = True)
-		print(len(keywordList))
+		#print(len(keywordList))
 		if len(keywordList) > 0:
 			query = "SELECT * FROM Restaurant WHERE Restaurant_name LIKE \"%"+keywordList[0]+"%\""
 			if len(keywordList) > 1:
 				for x in range(len(keywordList)-1):
 					query += " OR Restaurant_name LIKE \"%"+keywordList[x+1]+"%\""
 			query += ";"
-			print(query)
+			#print(query)
 			cursor.execute(query)
 			output = cursor.fetchall()
 			cursor.close()
@@ -71,7 +71,7 @@ def get_menu_items_using_restaurant_ID(ID = 0):
 		else:
 			print(err)
 	else:
-		print(str(ID))
+		#print(str(ID))
 		cursor = conn.cursor(dictionary = True)
 		query = "SELECT Item_name, Item_cost, item_notes, item_image FROM Restaurant R INNER JOIN Menu M ON R.Restaurant_ID=M.Restaurant_ID "
 		query += "INNER JOIN Item I ON M.Menu_ID = I.Menu_ID "
