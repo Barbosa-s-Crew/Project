@@ -50,7 +50,7 @@ class order_item:
 		else: 
 			cursor = conn.cursor(dictionary = True)
 			query = "INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity)"
-			query += " VALUES (\""+order_ID+"\",\""+self.restaurant_ID+"\", \""+self.menu_ID+"\", \""+self.item_ID+"\", \""+self.item_quantity+"\");"
+			query += " VALUES (\""+str(order_ID)+"\",\""+str(self.restaurant_ID)+"\", \""+str(self.menu_ID)+"\", \""+str(self.item_ID)+"\", \""+str(self.item_quantity)+"\");"
 			cursor.execute(query)
 			conn.commit()
 			conn.close()
@@ -149,10 +149,10 @@ class order_list:
 				print(err)
 		else: 
 			cursor = conn.cursor(dictionary=True)
-			query = "INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES (\""+self.user_ID+"\",\""+self.location_ID+"\", CURTIME(),\""+self.status+"\");"
+			query = "INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES (\""+str(self.user_ID)+"\",\""+str(self.location_ID)+"\", CURTIME(),\""+str(self.status)+"\");"		
 			cursor.execute(query)
 			conn.commit()
-			cursor.execute("SELECT max(Order_ID) FROM Orders;")
+			cursor.execute("SELECT max(Order_ID) AS Order_ID FROM Orders;")
 			fetchedList = cursor.fetchall()
 			print("ID from sorder: " + str(fetchedList[0]))
 			conn.close()
@@ -175,6 +175,9 @@ class order_list:
 		for item in self.olist:
 			subtotal += float(item.item_price) * float(item.item_quantity)
 		return float(subtotal)
+
+	def get_order_total(self):
+		return self.get_order_subtotal()*1.1
 
 		
 def getOrder(order_ID):

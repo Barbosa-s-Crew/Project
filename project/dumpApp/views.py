@@ -63,7 +63,7 @@ def shopping_cart(request):
 		return render(request, 'dumpApp/home.html', context)
 
 	context['shopping_cart'] = request.session['shopping_cart']
-	order_object = order_module.order_list(request.session['ID'], 0, 0)
+	order_object = order_module.order_list(request.session['ID'], 5, 0)
 	order_object.create_from_dict_list(request.session['shopping_cart'])
 	context['shopping_cart_subtotal']=order_object.get_order_subtotal()
 			
@@ -203,7 +203,7 @@ def login(request):
 		request.session['is_authenticated'] = user.is_authenticated
 		print("Before creating order_list")
 		#request.session['shopping_cart'] = order_module.order_list(user.ID, 0, 0)
-		order_object = order_module.order_list(user.ID, 0, 0)
+		order_object = order_module.order_list(user.ID, 2, 0)
 
 
 		# Sample items to put into the cart
@@ -422,4 +422,27 @@ def checkout(request):
 	order_object.create_from_dict_list(request.session['shopping_cart'])
 	#order_object.submitOrder()
 	request.session['shopping_cart'] = order_object.convert_to_dict_list()
+	context['shopping_cart_subtotal']=order_object.get_order_subtotal()
+	context['shopping_cart_tax']=order_object.get_order_subtotal()*0.1
+	context['shopping_cart_total']=order_object.get_order_total()
+
 	return render(request, 'dumpApp/checkout.html', context)
+
+def checkout_success(request):
+	check_user(request)
+	order_object = order_module.order_list(request.session['ID'], 2, 1)
+	order_object.create_from_dict_list(request.session['shopping_cart'])
+	order_object.submit()
+
+	#clearing the shopping cart
+	order_object_empty = order_module.order_list(request.session['ID'], 0, 0)
+	request.session['shopping_cart'] = order_object_empty.convert_to_dict_list()
+
+	print("************************after submit")
+	print(request.session['shopping_cart'])
+	print("************************after submit")
+	context = {
+	'shopping_cart': request.session['shopping_cart'],
+	'user_authenticated': request.session['is_authenticated']
+	}
+	return render(request, 'dumpApp/checkout_success.html', context)

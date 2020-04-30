@@ -1,9 +1,83 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-    <h1>Checkout</h1>
+<div class="row">
+  <div class="col-75">
+    <div class="container_cart">
+      <form method="POST" action="{% url 'checkout_success' %}" >
+      {% csrf_token %}
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <input type="submit" value="Submit Your Order" class="btn">
+      </form>
+    </div>
+  </div>
+  
+  <div class="col-25">
+    <div class="container_cart">
+     
+      	<h4>Cart <span class="price" style="color:black">
+
+      	<i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      {% for item in shopping_cart %}
+      	<p><a href="#">{{item.item_name}}</a> <span class="price">{{item.item_quantity}} x ${{item.item_price}}</span></p>
+      	<p><a href="#"><img class="img-responsive shopping_cart_item_image" src="{{item.item_image}}"></a> <span class="price"></span></p>
+      	<br>
+      	<hr>
+      {% endfor %}
+      <p><a href="#">Subtotal:</a> <span class="price">${{shopping_cart_subtotal}}</span></p>
+      <p><a href="#">Tax:</a> <span class="price">${{shopping_cart_tax}}</span></p>
+      <hr>
+      <p><a href="#">Total</a> <span class="price">${{shopping_cart_total}}</span></p>
+    </div>
+  </div>
+  
+</div>
+
 {% endblock content %}
