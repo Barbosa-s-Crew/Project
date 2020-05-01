@@ -32,57 +32,43 @@ def home(request):
 		'user_authenticated': request.session['is_authenticated'],
 		'deals': dealsmodule.get_deals()
 	}
-	if context['user_authenticated'] == False:
+	if request.session['is_authenticated'] == False:
 		return render(request, 'dumpApp/home.html', context)
 
 	context['recommendations'] = restaurant_module.get_favorites_using_user_ID(request.session['ID'])
 	context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
 
 	# If logged in, go to dashboard instead
-	return render(request, 'dumpApp/dashboard.html', context)
+	return redirect('dashboard')
 
 def dashboard(request):
 	check_user(request)
+
+	if request.session['is_authenticated'] == False:
+		return redirect('login')
 	context = {
 		'deals': dealsmodule.get_deals(),
 		'recommendations': restaurant_module.get_favorites_using_user_ID(),
 		'recent_orders': restaurant_module.get_recent_using_user_ID(request.session['ID']),
 		'user_authenticated': request.session['is_authenticated']
 	}
-	print("DEBUG" + str(context['recommendations']))
-	if content['user_authenticated'] == True:
-		return render(request, 'dumpApp/dashboard.html', context)
 	# If not logged in, go to home page instead
-	return render(request, 'dumpApp/home.html', context)
+	return render(request, 'dumpApp/dashboard.html', context)
 
 def shopping_cart(request):
 	check_user(request)
+
+	if request.session['is_authenticated'] == False:
+		return redirect('login')
+
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
 	}
-	if context['user_authenticated'] == False:
-		return render(request, 'dumpApp/home.html', context)
-
 	context['shopping_cart'] = request.session['shopping_cart']
 	order_object = order_module.order_list(request.session['ID'], 5, 0)
 	order_object.create_from_dict_list(request.session['shopping_cart'])
 	context['shopping_cart_subtotal']=order_object.get_order_subtotal()
-			
 
-	#print("*********************")
-	#print(request.session['shopping_cart'])
-	#print("*********************")
-	print("/////////////////////")
-	# print(request.session['shopping_cart'])
-	# print(request.session['shopping_cart'][0].restaurant_ID)
-	# print(request.session['shopping_cart'][0].menu_ID)
-	# print(request.session['shopping_cart'][0].item_ID)
-	# print(request.session['shopping_cart'][0].item_name)
-	# print(request.session['shopping_cart'][0].item_price)
-	# print(request.session['shopping_cart'][0].item_quantity)
-	# print(request.session['shopping_cart'][0].item_image)
-	print("/////////////////////")
-	# If logged in, go to dashboard instead
 	return render(request, 'dumpApp/shopping_cart.html', context)
 
 def dump(request):
@@ -226,7 +212,8 @@ def login(request):
 		context['recommendations'] = restaurant_module.get_favorites_using_user_ID()
 		context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
 		context['deals'] = dealsmodule.get_deals()
-		return render(request, 'dumpApp/dashboard.html', context)
+		request.session['is_authenticated'] = True
+		return redirect('dashboard')
 	except:
 		print("There is an error")
 		context['error'] = "Invalid username or password"
@@ -234,6 +221,8 @@ def login(request):
 
 def register(request):
 	check_user(request)
+	if request.session['is_authenticated'] == True:
+		return redirect('dashboard')
 	context = {}
 
 	if request.method == "POST":
@@ -259,7 +248,6 @@ def logout(request):
 	check_user(request)
 	context = {}
 	request.session.flush()
-	request.session['user_authenticated'] = False
 	return render(request, 'dumpApp/logout.html', context)
 
 def login_error(request):
@@ -269,11 +257,9 @@ def login_error(request):
 
 def profile(request):
 	check_user(request)
+	if request.session['is_authenticated'] == False:
+		return redirect("login")
 
-	#request.session['order_history'] = order_module.getOrderHistory(request.session['ID'])
-	#print("****************************************")
-	#print(request.session['order_history'])
-	#print("****************************************")
 	order_history = order_module.getOrderHistory(request.session['ID'])
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
@@ -285,13 +271,7 @@ def profile(request):
 		'preferences': request.session['preferences'],
 		'order_history': order_history,
 	}
-	try:
-		if request.session['is_authenticated']:
-			return render(request, 'dumpApp/profile.html', context)
-		else:
-			return redirect("login")
-	except:
-		return login(request)
+	return render(request, 'dumpApp/profile.html', context)
 
 def restaurants(request):
 	check_user(request)
@@ -362,24 +342,27 @@ def restaurants(request):
 
 
 def item(request):
+	check_user(request)
 	context = {}
 	if request.method == "POST":
+		if request.session['is_authenticated'] == False:
+			return redirect('login')
 		if request.POST['origin'] == "item":
 			quantity = request.POST['item_quantity']
 			#request.session['current_item'] = ast.literal_eval(request.POST['string'])
 			request.session['current_item']['item_quantity'] = quantity
-			
+
 
 			# #start --- FOR TESTING
 			# #create a new order item to add to the list
 			order_object = order_module.order_list(request.session['ID'], 0, 0)
 			order_object.create_from_dict_list(request.session['shopping_cart'])
-			
-			
+
+
 			order_object.add_item_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
 
 			request.session['shopping_cart'] = order_object.convert_to_dict_list()
-			
+
 
 			# #end --- FOR TESTING
 
@@ -409,14 +392,13 @@ def item(request):
 		'dic':request.POST.get('dic', False),
 		'user_authenticated': request.session['is_authenticated']
 	}
-
-	#print(request.session['current_item'])
-
-	check_user(request)
 	return render(request, 'dumpApp/item.html', context)
 
 def checkout(request):
 	check_user(request)
+	if request.session['is_authenticated'] == False:
+		return redirect('login')
+
 	context = {
 	'shopping_cart': request.session['shopping_cart'],
 	'user_authenticated': request.session['is_authenticated']
@@ -433,6 +415,8 @@ def checkout(request):
 
 def checkout_success(request):
 	check_user(request)
+	if request.session['is_authenticated'] == False:
+		return redirect('login')
 	order_object = order_module.order_list(request.session['ID'], 2, 1)
 	order_object.create_from_dict_list(request.session['shopping_cart'])
 	order_object.submit()
