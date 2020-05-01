@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from . import sktest
 from . import YelpFusion
 from . import usersCustom
@@ -204,7 +205,7 @@ def login(request):
 		print("Before creating order_list")
 		#request.session['shopping_cart'] = order_module.order_list(user.ID, 0, 0)
 		order_object = order_module.order_list(user.ID, 2, 0)
-
+		print("After creating order_list")
 
 		# Sample items to put into the cart
 		# orderitem_object = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Souce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
@@ -227,7 +228,7 @@ def login(request):
 		context['deals'] = dealsmodule.get_deals()
 		return render(request, 'dumpApp/dashboard.html', context)
 	except:
-		print("you got an error dawg")
+		print("There is an error")
 		context['error'] = "Invalid username or password"
 		return render(request, 'dumpApp/login.html', context)
 
@@ -258,6 +259,7 @@ def logout(request):
 	check_user(request)
 	context = {}
 	request.session.flush()
+	request.session['user_authenticated'] = False
 	return render(request, 'dumpApp/logout.html', context)
 
 def login_error(request):
@@ -267,6 +269,12 @@ def login_error(request):
 
 def profile(request):
 	check_user(request)
+
+	#request.session['order_history'] = order_module.getOrderHistory(request.session['ID'])
+	#print("****************************************")
+	#print(request.session['order_history'])
+	#print("****************************************")
+	order_history = order_module.getOrderHistory(request.session['ID'])
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
 		'email': request.session['email'],
@@ -274,13 +282,14 @@ def profile(request):
 		'username': request.session['username'],
 		'payment_option': request.session['payment_option'],
 		'photo': request.session['photo'],
-		'preferences': request.session['preferences']
+		'preferences': request.session['preferences'],
+		'order_history': order_history,
 	}
 	try:
 		if request.session['is_authenticated']:
 			return render(request, 'dumpApp/profile.html', context)
 		else:
-			return login(request)
+			return redirect("login")
 	except:
 		return login(request)
 
@@ -363,10 +372,6 @@ def item(request):
 
 			# #start --- FOR TESTING
 			# #create a new order item to add to the list
-			print("**********************Shopping Cart")
-			print(request.session['shopping_cart'])
-			print("**********************Shopping Cart")
-
 			order_object = order_module.order_list(request.session['ID'], 0, 0)
 			order_object.create_from_dict_list(request.session['shopping_cart'])
 			
@@ -374,9 +379,7 @@ def item(request):
 			order_object.add_item_by_ID(request.session['current_item']['item_ID'], request.session['current_item']['item_quantity'])
 
 			request.session['shopping_cart'] = order_object.convert_to_dict_list()
-			print("**********************Shopping Cart")
-			print(request.session['shopping_cart'])
-			print("**********************Shopping Cart")
+			
 
 			# #end --- FOR TESTING
 
@@ -438,9 +441,6 @@ def checkout_success(request):
 	order_object_empty = order_module.order_list(request.session['ID'], 0, 0)
 	request.session['shopping_cart'] = order_object_empty.convert_to_dict_list()
 
-	print("************************after submit")
-	print(request.session['shopping_cart'])
-	print("************************after submit")
 	context = {
 	'shopping_cart': request.session['shopping_cart'],
 	'user_authenticated': request.session['is_authenticated']

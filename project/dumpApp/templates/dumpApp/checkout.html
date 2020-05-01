@@ -62,9 +62,9 @@
   <div class="col-25">
     <div class="container_cart">
      
-      	<h4>Cart <span class="price" style="color:black">
+      	<h4>You Shopping Cart <span class="price" style="color:black">
 
-      	<i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      	<i class="fa fa-shopping-cart"></i> <b></b></span></h4>
       {% for item in shopping_cart %}
       	<p><a href="#">{{item.item_name}}</a> <span class="price">{{item.item_quantity}} x ${{item.item_price}}</span></p>
       	<p><a href="#"><img class="img-responsive shopping_cart_item_image" src="{{item.item_image}}"></a> <span class="price"></span></p>

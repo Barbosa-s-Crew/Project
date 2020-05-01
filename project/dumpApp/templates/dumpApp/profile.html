@@ -4,7 +4,7 @@
       <!-- search inside url not recognized -->
 
    <img src="{{photo}}" style="width:300px; height:300px">
-
+<!-- <p>order_history = {{order_history}}</p> -->
 
   <form action="{% url 'register' %}">
   <div class="container_register"> {% csrf_token %}
@@ -34,11 +34,52 @@
 
     <!-- <input type="text" placeholder="{{preferences}}" name="preferences" required style="height:200px;"> -->
 
+<h3>Your Recent Orders</h3>
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Item</th> 
+    <th>Image</th>
+    <th>Price</th>
+    <th>Review</th>
+  </tr>
+  {% for order in order_history %}
+  <tr>
+    <td>{{order.Item_Quantity}}</td>
+    <td>{{order.Item_name}}</td>
+    <td><img src="{{order.Item_image}}" border=3 height=100 width=100></td>
+    <td>{{order.Item_cost}}</td>
+    <td><a href="Review">Add a Review</a></td>
+  </tr>
+  {% endfor %}
+
+</table>
+
+
+<h3>Your Recent Reviews</h3>
+<table>
+  <tr> 
+    <th>Restaurant Name</th>
+    <th>Rating</th>
+    <th>Review</th>
+  </tr>
+  {% for order in order_history %}
+  <tr>
+    <td>Restaurant Name</td>
+    <td>Rating</td>
+    <td>Review text</td>
+  </tr>
+  {% endfor %}
+
+</table>
  
 
     <!-- <input type="submit" value="Update Profile"> -->
   </div>
 </form>
+<!-- <p>{{order_history}}</p>
+ -->
+
  
 
 {% endblock content %}

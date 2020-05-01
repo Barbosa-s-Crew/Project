@@ -220,5 +220,48 @@ def getOrderList(order_list_object_ID):
 		order_list_to_return = None
 
 
+def getOrderHistory(user_ID):
+	# Obtain connection string information from the portal
+	config = DBSetup.setup_config()
+	try:
+		conn = mysql.connector.connect(**config)
+		print("Connection established")
+	except mysql.connector.Error as err:
+		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+			print("Something is wrong with the user name or password")
+		elif err.errno == errorcode.ER_BAD_DB_ERROR:
+			print("Database does not exist")
+		else:
+			print(err)
+	else: 
+		cursor = conn.cursor(dictionary = True)
+		query = "SELECT O.User_ID, OI.Item_Quantity, I.Item_name, I.Item_image, I.Item_cost, R.Restaurant_ID, I.Item_ID, M.Menu_ID "
+		query += "FROM Orders O INNER JOIN Order_items OI ON O.Order_ID=OI.Order_ID "
+		query += "INNER JOIN Item I ON I.Item_ID=OI.Item_ID "
+		query += "INNER JOIN Menu M ON I.Menu_ID=M.Menu_ID "
+		query += "INNER JOIN Restaurant R ON M.Restaurant_ID=R.Restaurant_id "
+		query += "WHERE O.User_ID= " + str(user_ID) + " "
+		query += "GROUP BY O.Order_ID "
+		query += "LIMIT 5;"
+		cursor.execute(query)
+		fetched = cursor.fetchall()
+
+		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
+		#order = fetched[0]
+		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
+		ret = order_list(user_ID,1,0)
+		for order in fetched:
+		 	print(order)
+		 	ret.olist.append(order)
+		#return ret.olist
+		print("*****************************fetched")
+		print(fetched)
+		print("*****************************fetched")
+		return fetched
+
+#def submitReview(user_ID, Order_ID):
+
+
+
 #u = getOrder(1)
 
