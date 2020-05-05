@@ -24,16 +24,30 @@ class usersCustomTestCase(SimpleTestCase):
 				print(err)
 		else: 
 			cursor = conn.cursor(dictionary = True)
-			self.assertEqual(usersCustom.create_user("test@test.com","testPassword","testName","testCell"),True)
-			u = usersCustom.authenticate_user("test@test.com", "testPassword")
-			print(u.get_dictionary())
-			self.assertEqual(u.get_dictionary(),{'username': 'testName', 'locationID': None, 'paymentOption': None, 'email': 'test@test.com', 'password': 'pbkdf2_sha256$180000$ObAKOy5FmYqk$KjE1tjcnpAw5uHJwdXQY4uCiivwSw369A7nzVMpu3xc=', 'cellPhoneNumber': 'testCell', 'preferences': None, 'photo': None, 'gender': None})
-			#the code writes a new hash each time the test user is created, so having these values will not work. need to get them off of the the server, instead.
+			query = "DELETE FROM Users WHERE User_Email = 'test@test.com';"	
+			cursor.execute(query)
+			query = "DELETE FROM Users WHERE User_Email = 'testtest@test.com';"	
+			cursor.execute(query)
+			conn.commit()	#clear test values
+			self.assertEqual(usersCustom.create_user("test@test.com","testPassword","testName","testCell"),True)	#test create_user
+			u = usersCustom.authenticate_user("test@test.com", "testPassword")	#test authenticate_user
+			query = "SELECT * FROM Users WHERE User_Email=\"test@test.com\";"
+			cursor.execute(query)
+			fetchedList = cursor.fetchall()
+			fetchedUser = usersCustom.userC(fetchedList[0])
+			self.assertEqual(u.get_dictionary(),fetchedUser.get_dictionary())
+			modifiedDictionary = fetchedUser.get_dictionary()	#test userC.save_preferences
+			modifiedDictionary['email'] = "testtest@test.com"
+			u.save_preferences(that_dict=modifiedDictionary)
+			v = usersCustom.authenticate_user("testtest@test.com","testPassword")
+			self.assertEqual((u.get_dictionary())['email'],(v.get_dictionary())['email'])
+			u.logout()		#test ucerC.logout
+			self.assertEqual(u.is_authenticated, False)
 
 
-
-
-			query = "DELETE FROM Users WHERE User_Email = 'test@test.com';"
+			query = "DELETE FROM Users WHERE User_Email = 'test@test.com';"	#delete test values
+			cursor.execute(query)
+			query = "DELETE FROM Users WHERE User_Email = 'testtest@test.com';"	
 			cursor.execute(query)
 			conn.commit()
 			cursor.close()
