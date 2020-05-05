@@ -65,9 +65,7 @@ class userC:
 		self.is_authenticated = False
 
 	def get_dictionary(self):
-		print(self.username)
 		this_dict = dict(username = self.username, locationID = self.Location_ID, paymentOption = self.payment_option, email=self.email, password = self.password, cellPhoneNumber = self.cell, preferences = self.other_info, photo=self.photoURL, gender=self.gender)
-		print(self.email)
 		return this_dict
 
 	def save_preferences(self, that_dict):		#use make_password before saving the settings, convert commas in the preferences string to "&&"
@@ -86,7 +84,7 @@ class userC:
 			cursor = conn.cursor(dictionary = True)
 			ret = True
 			if self.email != that_dict.get("email"):
-				query = "SELECT * FROM Users WHERE User_Email= \""+str(that_dict("email"))+"\";"
+				query = "SELECT * FROM Users WHERE User_Email= \""+str(that_dict['email'])+"\";"
 				cursor.execute(query)
 				tupleC = cursor.fetchall()
 				if len(tupleC)>0:
@@ -102,7 +100,7 @@ class userC:
 				self.gender = that_dict.get("gender")
 				#self.Location_ID = that_dict.get("locationID")
 				#self.payment_option = that_dict.get("paymentOption")
-				query = "UPDATE Users SET User_name = \""+str(self.username)+"\",User_Email = \""+str(self.email)+"\",User_Password = \""+str(self.password)+"\",User_Cell = \""+self.cell+"\",user_image = \""+self.photoURL+"\", user_gender =\""+self.gender+"\", Other_Information = \""+self.other_info+"\" WHERE User_Email= \""+oldEmail+"\";"
+				query = "UPDATE Users SET User_name = \""+str(self.username)+"\",User_Email = \""+str(self.email)+"\",User_Password = \""+str(self.password)+"\",User_Cell = \""+str(self.cell)+"\",user_image = \""+str(self.photoURL)+"\", user_gender =\""+str(self.gender)+"\", Other_Information = \""+str(self.other_info)+"\" WHERE User_Email= \""+str(oldEmail)+"\";"
 				cursor.execute(query)
 				conn.commit()
 			conn.close()
