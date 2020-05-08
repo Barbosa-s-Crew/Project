@@ -85,7 +85,7 @@ class order_list:
 
 	def add_order(self, order):
 		self.olist.append(order)
-		print(self.olist)
+		#print(self.olist)
 
 	def add_item_by_ID(self, ID, quantity):
 		# Obtain connection string information from the portal
@@ -113,7 +113,8 @@ class order_list:
 			query += "WHERE D.Item_ID = " + str(fetchedList[0]['Item_ID']) +";"
 			cursor.execute(query)
 			fetchedList2=cursor.fetchall()
-			if fetchedList2[0] != None:
+
+			if len(fetchedList2) > 0 :
 				item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList2[0]['Deal_Price'], quantity, fetchedList[0]['Item_image'])
 			else:
 				item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList[0]['item_price'], quantity, fetchedList[0]['Item_image'])
@@ -154,20 +155,21 @@ class order_list:
 			conn.commit()
 			cursor.execute("SELECT max(Order_ID) AS Order_ID FROM Orders;")
 			fetchedList = cursor.fetchall()
-			print("ID from sorder: " + str(fetchedList[0]))
+			print("ID from order: " + str(fetchedList[0]))
+			cursor.close()
 			conn.close()
 			return fetchedList[0]['Order_ID']
 
 
-	def change_order(added_item, quantity):
+	def change_order(self, added_item, quantity):
 		for i in range(0, len(self.olist)):
-			if self.olist[i].item_ID == added_item['ID']:
+			if self.olist[i].item_ID == added_item['item_ID']:
 				if quantity <= 0:
 					del self.olist[i]
 				else:
-					self.olist[i].quantity = quantity
+					self.olist[i].item_quantity = quantity
 				return
-		temp_item = order_item(added_item['restaurant_ID'],added_item['menu_ID'],added_item['item_ID'],added_item['item_name'],added_item['item_price'],added_item['item_quantity'],added_item['item_image'])
+		temp_item = order_item(added_item['restaurant_ID'],added_item['menu_ID'],added_item['item_ID'],added_item['item_name'],added_item['item_price'], quantity, added_item['item_image'])
 		self.add_order(temp_item)
 
 	def get_order_subtotal(self):
