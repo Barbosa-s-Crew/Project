@@ -50,7 +50,7 @@ class order_item:
 		else: 
 			cursor = conn.cursor(dictionary = True)
 			query = "INSERT INTO Order_items (Order_ID, Restaurant_ID, Menu_ID, Item_ID, Item_Quantity)"
-			query += " VALUES (\""+order_ID+"\",\""+self.restaurant_ID+"\", \""+self.menu_ID+"\", \""+self.item_ID+"\", \""+self.item_quantity+"\");"
+			query += " VALUES (\""+str(order_ID)+"\",\""+str(self.restaurant_ID)+"\", \""+str(self.menu_ID)+"\", \""+str(self.item_ID)+"\", \""+str(self.item_quantity)+"\");"
 			cursor.execute(query)
 			conn.commit()
 			conn.close()
@@ -85,7 +85,7 @@ class order_list:
 
 	def add_order(self, order):
 		self.olist.append(order)
-		print(self.olist)
+		#print(self.olist)
 
 	def add_item_by_ID(self, ID, quantity):
 		# Obtain connection string information from the portal
@@ -108,21 +108,23 @@ class order_list:
 			query += "WHERE I.Item_ID = " + str(ID) + ";"
 			cursor.execute(query)
 			fetchedList = cursor.fetchall()
-			conn.close()
-			print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-			print(self.olist)
-			print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-			item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList[0]['item_price'], quantity, fetchedList[0]['Item_image'])
+			query = "SELECT D.Item_ID, D.Deal_Price "
+			query += "FROM Deal D "
+			query += "WHERE D.Item_ID = " + str(fetchedList[0]['Item_ID']) +";"
+			cursor.execute(query)
+			fetchedList2=cursor.fetchall()
+			if len(fetchedList2) > 0 :
+				item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList2[0]['Deal_Price'], quantity, fetchedList[0]['Item_image'])
+			else:
+				item = order_item(fetchedList[0]['Restaurant_ID'], fetchedList[0]['Menu_ID'], fetchedList[0]['Item_ID'], fetchedList[0]['Item_name'], fetchedList[0]['item_price'], quantity, fetchedList[0]['Item_image'])
 			for i in range(0, len(self.olist)):
-				print("*************************************item_id")
-				print(int(self.olist[i].item_ID))
-				print(item.item_ID)
-				print("*************************************item_id")
 				if int(self.olist[i].item_ID) == item.item_ID:
 					temp = int(self.olist[i].item_quantity)
 					self.olist[i].item_quantity = str(temp + int(quantity))
 					return
-			print("Not supposed to be here")
+			
+
+			conn.close()
 			self.add_order(item)
 
 	def submit(self):
@@ -147,26 +149,37 @@ class order_list:
 				print(err)
 		else: 
 			cursor = conn.cursor(dictionary=True)
-			query = "INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES (\""+self.user_ID+"\",\""+self.location_ID+"\", CURTIME(),\""+self.status+"\");"
+			query = "INSERT INTO Orders (User_ID, Location_ID, Order_start_time, Order_Status) VALUES (\""+str(self.user_ID)+"\",\""+str(self.location_ID)+"\", CURTIME(),\""+str(self.status)+"\");"		
 			cursor.execute(query)
 			conn.commit()
-			cursor.execute("SELECT max(Order_ID) FROM Orders;")
+			cursor.execute("SELECT max(Order_ID) AS Order_ID FROM Orders;")
 			fetchedList = cursor.fetchall()
-			print("ID from sorder: " + str(fetchedList[0]))
+			print("ID from order: " + str(fetchedList[0]))
+			cursor.close()
 			conn.close()
 			return fetchedList[0]['Order_ID']
 
 
-	def change_order(added_item, quantity):
+	def change_order(self, added_item, quantity):
 		for i in range(0, len(self.olist)):
-			if self.olist[i].item_ID == added_item['ID']:
+			if self.olist[i].item_ID == added_item['item_ID']:
 				if quantity <= 0:
 					del self.olist[i]
 				else:
-					self.olist[i].quantity = quantity
+					self.olist[i].item_quantity = quantity
 				return
-		temp_item = order_item(added_item['restaurant_ID'],added_item['menu_ID'],added_item['item_ID'],added_item['item_name'],added_item['item_price'],added_item['item_quantity'],added_item['item_image'])
+		temp_item = order_item(added_item['restaurant_ID'],added_item['menu_ID'],added_item['item_ID'],added_item['item_name'],added_item['item_price'], quantity, added_item['item_image'])
 		self.add_order(temp_item)
+
+	def get_order_subtotal(self):
+		subtotal=0
+		for item in self.olist:
+			subtotal += float(item.item_price) * float(item.item_quantity)
+		return float(subtotal)
+
+	def get_order_total(self):
+		return self.get_order_subtotal()*1.1
+
 		
 def getOrder(order_ID):
 	# Obtain connection string information from the portal
@@ -206,6 +219,49 @@ def getOrderList(order_list_object_ID):
 		return order_list_to_return
 	except (KeyError, order_list.DoesNotExist):
 		order_list_to_return = None
+
+
+def getOrderHistory(user_ID):
+	# Obtain connection string information from the portal
+	config = DBSetup.setup_config()
+	try:
+		conn = mysql.connector.connect(**config)
+		print("Connection established")
+	except mysql.connector.Error as err:
+		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+			print("Something is wrong with the user name or password")
+		elif err.errno == errorcode.ER_BAD_DB_ERROR:
+			print("Database does not exist")
+		else:
+			print(err)
+	else: 
+		cursor = conn.cursor(dictionary = True)
+		query = "SELECT O.User_ID, OI.Item_Quantity, I.Item_name, I.Item_image, I.Item_cost, R.Restaurant_ID, I.Item_ID, M.Menu_ID "
+		query += "FROM Orders O INNER JOIN Order_items OI ON O.Order_ID=OI.Order_ID "
+		query += "INNER JOIN Item I ON I.Item_ID=OI.Item_ID "
+		query += "INNER JOIN Menu M ON I.Menu_ID=M.Menu_ID "
+		query += "INNER JOIN Restaurant R ON M.Restaurant_ID=R.Restaurant_id "
+		query += "WHERE O.User_ID= " + str(user_ID) + " "
+		query += "GROUP BY O.Order_ID "
+		query += "LIMIT 5;"
+		cursor.execute(query)
+		fetched = cursor.fetchall()
+
+		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
+		#order = fetched[0]
+		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
+		ret = order_list(user_ID,1,0)
+		for order in fetched:
+		 	print(order)
+		 	ret.olist.append(order)
+		#return ret.olist
+		print("*****************************fetched")
+		print(fetched)
+		print("*****************************fetched")
+		return fetched
+
+#def submitReview(user_ID, Order_ID):
+
 
 
 #u = getOrder(1)
