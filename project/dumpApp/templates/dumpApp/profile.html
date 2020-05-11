@@ -3,6 +3,9 @@
       <!-- <input type="text" name="" value="myvalue"> -->
       <!-- search inside url not recognized -->
 
+
+
+
    <img src="{{photo}}" style="width:300px; height:300px">
 <!-- <p>order_history = {{order_history}}</p> -->
 
@@ -49,12 +52,37 @@
     <td>{{order.Item_name}}</td>
     <td><img src="{{order.Item_image}}" border=3 height=100 width=100></td>
     <td>{{order.Item_cost}}</td>
-    <td><a href="Review">Add a Review</a></td>
+    <td> 
+
+
+  <button class="open-button" onclick="openForm()">Open Form</button>
+
+      <div class="form-popup" id="myForm">
+        <form action="" class="form-container">
+
+          <label for="review"><b>Review</b></label>
+          <input type="text" placeholder="Enter Review" name="review" required>
+
+          <button type="submit" class="btn-revew">Add Review</button>
+          <button type="button" class="btn-reviews cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+
+
+<script type="text/javascript">
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
+
+    </td>
   </tr>
   {% endfor %}
 
 </table>
-
 
 <h3>Your Recent Reviews</h3>
 <table>
@@ -72,11 +100,14 @@
   {% endfor %}
 
 </table>
- 
+
 
     <!-- <input type="submit" value="Update Profile"> -->
   </div>
 </form>
+
+
+
 <!-- <p>{{order_history}}</p>
  -->
 

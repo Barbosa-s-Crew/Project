@@ -7,6 +7,7 @@ from . import usersCustom
 from . import deals as dealsmodule
 from . import restaurant as restaurant_module
 from . import submitOrder as order_module
+from . import writeReview as review_module
 import ast
 
 from django.db.models import Q
