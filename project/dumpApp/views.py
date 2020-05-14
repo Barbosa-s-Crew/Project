@@ -335,15 +335,23 @@ def restaurants(request):
 
 			context['schedule'] = schedule
 
-		elif request.POST['origin'] == 'recommendations':
-			print("**************************rest id")
-			print(request.POST['id'])
-			print("**************************rest id")
+		# elif request.POST['origin'] == 'recommendations':
+		# 	print("**************************rest id")
+		# 	print(request.POST['id'])
+		# 	print("**************************rest id")
 
-			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
+		# 	restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
+		# 	context['restaurants'] = restaurant[0]
+
+
+		# 	restaurant_location = restaurant_module.get_location_using_location_id(restaurant[0]['Location_id'])
+		# 	context['rest_address'] = restaurant_location[0]
+
+
+		# 	items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			
 
-			context['rest_items'] = items
+		# 	context['rest_items'] = items
 		
 		else:
 	
