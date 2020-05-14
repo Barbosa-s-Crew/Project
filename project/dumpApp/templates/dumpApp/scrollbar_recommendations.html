@@ -2,7 +2,7 @@
   <h3 align="left" class="horizontal-scroll-title">Recommendations</h3>
   <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
     {% for recommendation in recommendations %}
-      {% include 'scrollbar_item.html' with image=recommendation.Restaurant_photo caption=recommendation.Restaurant_name description='' price='' %}
+      {% include 'scrollbar_item.html' with image=recommendation.Restaurant_photo caption=recommendation.Restaurant_name description='' price=recommendation.Price origin='recommendations' restaurant_ID=recommendation.Restaurant_id  %}
       
     {% endfor %}
   </div>

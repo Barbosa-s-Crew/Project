@@ -5,7 +5,7 @@
       {% include 'scrollbar_item.html' with image='https://i.insider.com/57d961d5077dcc3d018b5b9c?width=412&format=jpeg' caption='You have no orders!' description='' price='' %}
     {% else %}
       {% for order in recent_orders %}
-        {% include 'scrollbar_item.html' with image='order.Restaurant_photo' caption=order.Restaurant_name description=order.Order_start_time price='' %}
+        {% include 'scrollbar_item.html' with image='order.Restaurant_photo' caption=order.Restaurant_name description=order.Order_start_time price='' origin='recent orders' %}
       {% endfor %}
     {% endif %}
   </div>

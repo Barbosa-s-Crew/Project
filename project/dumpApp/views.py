@@ -37,6 +37,9 @@ def home(request):
 		return render(request, 'dumpApp/home.html', context)
 
 	context['recommendations'] = restaurant_module.get_favorites_using_user_ID(request.session['ID'])
+	# print("***************************Recomendations rest id")
+	# print(context['recommendations'][0]['Restaurant_id'])
+	# print("***************************Recomendations rest id")
 	context['recent_orders'] = restaurant_module.get_recent_using_user_ID(request.session['ID'])
 
 	# If logged in, go to dashboard instead
@@ -331,7 +334,19 @@ def restaurants(request):
 			print(restaurant['hours'])
 
 			context['schedule'] = schedule
+
+		elif request.POST['origin'] == 'recommendations':
+			print("**************************rest id")
+			print(request.POST['id'])
+			print("**************************rest id")
+
+			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
+			
+
+			context['rest_items'] = items
+		
 		else:
+	
 
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
 			context['restaurants'] = restaurant[0]
