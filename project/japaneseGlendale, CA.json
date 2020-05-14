@@ -1,231 +1,92 @@
 {
-<<<<<<< HEAD
-  "id": "6iJ_E5tMJII601mrzwwdrQ",
-  "alias": "uncle-john-s-cafe-los-angeles",
-  "name": "Uncle John\u2019s Cafe",
-  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/8tO1t5KbF3cPRLVyGgD7ag/o.jpg",
+  "id": "C5s9a_prs6TbH510Bt_sqQ",
+  "alias": "\u771e-jin-cook-authentic-korean-soul-food-glendale",
+  "name": "\u771e Jin Cook - Authentic Korean Soul Food",
+  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/naSBVwUyVFTeXRxc-czW3Q/o.jpg",
   "is_claimed": true,
   "is_closed": false,
-  "url": "https://www.yelp.com/biz/uncle-john-s-cafe-los-angeles?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+12136233555",
-  "display_phone": "(213) 623-3555",
-  "review_count": 761,
+  "url": "https://www.yelp.com/biz/%E7%9C%9E-jin-cook-authentic-korean-soul-food-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+18186377822",
+  "display_phone": "(818) 637-7822",
+  "review_count": 132,
   "categories": [
     {
-      "alias": "tradamerican",
-      "title": "American (Traditional)"
-    },
-    {
-      "alias": "chinese",
-      "title": "Chinese"
-    },
-    {
-      "alias": "cajun",
-      "title": "Cajun/Creole"
-=======
-  "id": "2w7pMH5RBoZPDvluSTchTw",
-  "alias": "lucky-7-pizza-glendale",
-  "name": "Lucky 7 Pizza",
-  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/E6IEv23JB4_cGjVedMGH8g/o.jpg",
-  "is_claimed": true,
-  "is_closed": false,
-  "url": "https://www.yelp.com/biz/lucky-7-pizza-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
-  "phone": "+17477775757",
-  "display_phone": "(747) 777-5757",
-  "review_count": 227,
-  "categories": [
-    {
-      "alias": "pizza",
-      "title": "Pizza"
-    },
-    {
-      "alias": "sandwiches",
-      "title": "Sandwiches"
-    },
-    {
-      "alias": "burgers",
-      "title": "Burgers"
->>>>>>> master
+      "alias": "korean",
+      "title": "Korean"
     }
   ],
-  "rating": 4.0,
+  "rating": 4.5,
   "location": {
-<<<<<<< HEAD
-    "address1": "834 S Grand Ave",
-    "address2": "",
-    "address3": "",
-    "city": "Los Angeles",
-    "zip_code": "90017",
-    "country": "US",
-    "state": "CA",
-    "display_address": [
-      "834 S Grand Ave",
-      "Los Angeles, CA 90017"
-=======
-    "address1": "440 W Broadway",
-    "address2": "",
+    "address1": "310 N Brand Blvd",
+    "address2": null,
     "address3": "",
     "city": "Glendale",
-    "zip_code": "91204",
+    "zip_code": "91203",
     "country": "US",
     "state": "CA",
     "display_address": [
-      "440 W Broadway",
-      "Glendale, CA 91204"
->>>>>>> master
+      "310 N Brand Blvd",
+      "Glendale, CA 91203"
     ],
     "cross_streets": ""
   },
   "coordinates": {
-<<<<<<< HEAD
-    "latitude": 34.0448828174397,
-    "longitude": -118.258630984848
+    "latitude": 34.15036417,
+    "longitude": -118.25460233
   },
   "photos": [
-    "https://s3-media4.fl.yelpcdn.com/bphoto/8tO1t5KbF3cPRLVyGgD7ag/o.jpg",
-    "https://s3-media3.fl.yelpcdn.com/bphoto/8Z261laktn0w_gdyJE31DQ/o.jpg",
-    "https://s3-media4.fl.yelpcdn.com/bphoto/CzKUWE_neuRprReDKjdBgw/o.jpg"
+    "https://s3-media2.fl.yelpcdn.com/bphoto/naSBVwUyVFTeXRxc-czW3Q/o.jpg"
   ],
   "price": "$$",
-=======
-    "latitude": 34.1466232647055,
-    "longitude": -118.262607174622
-  },
-  "photos": [
-    "https://s3-media4.fl.yelpcdn.com/bphoto/E6IEv23JB4_cGjVedMGH8g/o.jpg",
-    "https://s3-media2.fl.yelpcdn.com/bphoto/O6s4x08z9JUisQUaF7rv2g/o.jpg",
-    "https://s3-media1.fl.yelpcdn.com/bphoto/wQ64AW9VVCpJRm3JP68xqQ/o.jpg"
-  ],
-  "price": "$",
->>>>>>> master
   "hours": [
     {
       "open": [
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "0700",
-          "end": "1500",
-=======
-          "start": "1100",
+          "start": "1130",
           "end": "2200",
->>>>>>> master
           "day": 0
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1700",
-          "end": "2100",
-          "day": 0
-        },
-        {
-          "is_overnight": false,
-          "start": "0700",
-          "end": "1500",
+          "start": "1130",
+          "end": "2200",
           "day": 1
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2100",
-=======
-          "start": "1100",
+          "start": "1130",
           "end": "2200",
->>>>>>> master
-          "day": 1
-        },
-        {
-          "is_overnight": false,
-<<<<<<< HEAD
-          "start": "0700",
-          "end": "1500",
           "day": 2
         },
         {
           "is_overnight": false,
-          "start": "1700",
-          "end": "2100",
-=======
-          "start": "1100",
+          "start": "1130",
           "end": "2200",
->>>>>>> master
-          "day": 2
-        },
-        {
-          "is_overnight": false,
-<<<<<<< HEAD
-          "start": "0700",
-          "end": "1500",
-=======
-          "start": "1100",
-          "end": "2200",
->>>>>>> master
           "day": 3
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1700",
-          "end": "2100",
-          "day": 3
-        },
-        {
-          "is_overnight": false,
-          "start": "0700",
-          "end": "1500",
-=======
-          "start": "1100",
+          "start": "1130",
           "end": "2200",
->>>>>>> master
           "day": 4
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1700",
-          "end": "2100",
-          "day": 4
-        },
-        {
-          "is_overnight": false,
-          "start": "0800",
-          "end": "1500",
-=======
-          "start": "1100",
+          "start": "1130",
           "end": "2200",
->>>>>>> master
           "day": 5
         },
         {
           "is_overnight": false,
-<<<<<<< HEAD
-          "start": "1700",
-          "end": "2100",
-          "day": 5
-=======
-          "start": "1100",
+          "start": "1130",
           "end": "2200",
           "day": 6
->>>>>>> master
         }
       ],
       "hours_type": "REGULAR",
       "is_open_now": true
     }
   ],
-  "transactions": [
-<<<<<<< HEAD
-    "pickup",
-    "delivery"
-  ]
-=======
-    "delivery",
-    "pickup"
-  ],
-  "messaging": {
-    "url": "https://www.yelp.com/raq/2w7pMH5RBoZPDvluSTchTw?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA#popup%3Araq",
-    "use_case_text": "Message the Business"
-  }
->>>>>>> master
+  "transactions": []
 }

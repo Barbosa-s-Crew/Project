@@ -94,20 +94,83 @@
     <td>
       
 
+      <form>
+      {% if review.Review_Rating == 1 %}
       <div class="rating">
         
-          <input type="radio" name="star1" id="star1">
-          <label for="star1"></label>
-          <input type="radio" name="star2" id="star2">
-          <label for="star1"></label>
-          <input type="radio" name="star3" id="star3">
-          <label for="star1"></label>
-          <input type="radio" name="star4" id="star4">
-          <label for="star1"></label>
-          <input type="radio" name="star5" id="star5">
-          <label for="star1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5" checked>
+          <label for="star{{review.Review_ID}}_5"></label>
 
       </div>
+      {% elif review.Review_Rating == 2 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4" checked>
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 3 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3" checked>
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 4 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2" checked>
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 5 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1" checked>
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+      </div>
+      {% endif %}
+      </form>
      
 
     </td>
@@ -118,6 +181,7 @@
 
 </table>
 
+<h6>{{reviews}}</h6>
 
 
     {% endif %}

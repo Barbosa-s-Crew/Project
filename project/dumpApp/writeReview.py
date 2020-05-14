@@ -81,7 +81,7 @@ def get_reviews_by_restaurant_ID(Restaurant_ID):
 		query = "SELECT Rv.Review_ID, Rv.Review_Rating, Rv.Review_Text, Rs.Restaurant_Name "
 		query += "FROM Reviews Rv INNER JOIN Restaurant Rs ON Rv.Restaurant_ID = Rs.Restaurant_id "
 		query += "WHERE Rv.Restaurant_ID = " + str(Restaurant_ID) + " "
-		query += "ORDER BY Rv.Review_ID "
+		query += "ORDER BY Rv.Review_ID DESC "
 		query += "LIMIT 5;"
 
 		cursor.execute(query)
