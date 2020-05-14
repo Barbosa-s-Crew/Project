@@ -85,7 +85,6 @@ class order_list:
 
 	def add_order(self, order):
 		self.olist.append(order)
-		#print(self.olist)
 
 	def add_item_by_ID(self, ID, quantity):
 		# Obtain connection string information from the portal
@@ -201,7 +200,6 @@ def getOrder(order_ID):
 		cursor.execute(query)
 		fetched = cursor.fetchall()
 		order = fetched[0]
-		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
 		ret = order_list(order['User_ID'],order['Location_ID'],order['Order_status'])
 		query = "SELECT * FROM Order_items WHERE Order_ID= \""+str(order_ID)+"\";"
 		cursor.execute(query)
@@ -248,22 +246,12 @@ def getOrderHistory(user_ID):
 		cursor.execute(query)
 		fetched = cursor.fetchall()
 
-		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
-		#order = fetched[0]
-		#Full string from the query:Order_ID=str(order[0]),User_ID=str(order[1]),Location_ID=str(order[2]),Order_start_time=str(order[3]),Order_end_time=str(order[4]),Order_status=str(order[5])
 		ret = order_list(user_ID,1,0)
 		for order in fetched:
 		 	print(order)
 		 	ret.olist.append(order)
-		#return ret.olist
 		print("*****************************fetched")
 		print(fetched)
 		print("*****************************fetched")
 		return fetched
-
-#def submitReview(user_ID, Order_ID):
-
-
-
-#u = getOrder(1)
 

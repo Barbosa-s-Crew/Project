@@ -43,10 +43,6 @@
   <body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
 
 
-     <!--  <div class="container_button" id="grad1">
-        <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="Snow" paddding="100px">
-        <button class="btn">Order</button>
-      </div>  -->
     <div class="all-content" id="grad1">
       <div class="header">
         <header class="site-header">
@@ -66,17 +62,7 @@
                   <a class="nav-item nav-link" href="{% url 'about' %}"><h6 class ="header-bar-tab-text">About</h6></a>
 
                 </div>
-                <!-- Navbar Right Side -->
-                <!-- ADDED-->
-                    <!-- <div class="search-bar mt-sm-2 mr-2">
-                      <form method="get">
-                          <input type="text" class="form-control" name="q" id="id_q" placeholder="Search..." value={{search_test.py}}>
-
-                      </form>
-
-
-                    </div> -->
-                <!-- ADDED-->
+           
                 <div class="navbar-nav">
                     {% if user_authenticated %}
                     <a class="nav-item nav-link" href="{% url 'shopping_cart' %}"><h6 class ="header-bar-tab-text">Cart</h6></a>
@@ -84,9 +70,7 @@
                     <a class="nav-item nav-link" href="{% url 'logout' %}"><h6 class ="header-bar-tab-text">Log Out</h6></a>
                     {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}"><h6 class ="header-bar-tab-text">Login</h6></a>
-                  <!--<a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>-->
                     {% endif %}
-                  <!--if logged in = true, no need for login tab and register, just log out and manage account -->
                 </div>
               </div>
             </div>

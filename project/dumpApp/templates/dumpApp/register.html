@@ -9,17 +9,6 @@
     {% endif %}
 
 
-      <!-- <input type="text" name="" value="myvalue"> -->
-      <!-- search inside url not recognized -->
-      
-      <!-- <form method="POST" action="{% url 'register' %}"> {% csrf_token %} 
-          <input type="text" class="form-control text-input" name="email" id="email" placeholder="Username">
-          <br>
-          <input type="password" class="form-control text-input" name="password" id="password" placeholder="Password">
-          <br>
-          <input type="submit" value="Submit">
-      </form>
-       -->
 
      <form method="POST" action="{% url 'register' %}"> {% csrf_token %}
   <div class="container_register"> 
@@ -40,8 +29,6 @@
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
 
- <!--    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required> -->
     <hr>
  
 

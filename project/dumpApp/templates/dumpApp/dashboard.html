@@ -6,14 +6,7 @@
 
   <h1 align="center" style="color:back; font-size: 30px;"> Welcome back!</h1>
   <br>
-  <!--
-    <h3 align ="center" style="color:black; font-size: 20px;">Find Food Now</h3>
-    <form method="POST" align="center"  method="POST" action="{% url 'search_results' %}"> {% csrf_token %}
 
-      <input type="text" class="form-control" name="myvalue" id="myvalue" maxlength="64" placeholder="Search Restaurants..." class="pseudo-input_field business-search-form_input-field" aria-autocomplete="list" tabindex="1"  style="display: inline-block; background: white;  width: 40%; box-sizing: border-box;">
-      <input style="width: 80px; height:35px; text-align: center;" type="submit" value="Search">
-
-    </form> -->
   <div class="search_bar bg-img-background">
     <br>
     <br>
@@ -33,6 +26,7 @@
               </div>
             </div>
           </div>
+          <input type="hidden" name="origin" id="origin" value="dashboard">
           <button class="btn-search" type="submit" value="submit">SEARCH</button>
         </div>
       </form>
