@@ -1,16 +1,19 @@
-from django.test import TestCase
-from . import DBSetup
-from . import deals
+from django.test import SimpleTestCase
+from dumpApp import DBSetup
+from dumpApp import deals
 
 
-class DealsTestCase(TestCase):
+class TestDeals(SimpleTestCase):
 
-	def get_deals_test(self):
-		
+	def test_get_deals_1(self):
+		#tests the correct format list of dicts
 		self.assertEqual(deals.get_deals(), [])
 		return
 
-	def format_deals_test(self, listOTuples):
+	def test_get_deals_2(self):
+		#tests the components of deals
+		test = deals.get_deals()
+		
+		self.assertEqual(test, [])
 		return
-print("here")
-print(deals.get_deals())
+
