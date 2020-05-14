@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "id": "6iJ_E5tMJII601mrzwwdrQ",
   "alias": "uncle-john-s-cafe-los-angeles",
   "name": "Uncle John\u2019s Cafe",
@@ -21,10 +22,35 @@
     {
       "alias": "cajun",
       "title": "Cajun/Creole"
+=======
+  "id": "2w7pMH5RBoZPDvluSTchTw",
+  "alias": "lucky-7-pizza-glendale",
+  "name": "Lucky 7 Pizza",
+  "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/E6IEv23JB4_cGjVedMGH8g/o.jpg",
+  "is_claimed": true,
+  "is_closed": false,
+  "url": "https://www.yelp.com/biz/lucky-7-pizza-glendale?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA",
+  "phone": "+17477775757",
+  "display_phone": "(747) 777-5757",
+  "review_count": 227,
+  "categories": [
+    {
+      "alias": "pizza",
+      "title": "Pizza"
+    },
+    {
+      "alias": "sandwiches",
+      "title": "Sandwiches"
+    },
+    {
+      "alias": "burgers",
+      "title": "Burgers"
+>>>>>>> master
     }
   ],
   "rating": 4.0,
   "location": {
+<<<<<<< HEAD
     "address1": "834 S Grand Ave",
     "address2": "",
     "address3": "",
@@ -35,10 +61,23 @@
     "display_address": [
       "834 S Grand Ave",
       "Los Angeles, CA 90017"
+=======
+    "address1": "440 W Broadway",
+    "address2": "",
+    "address3": "",
+    "city": "Glendale",
+    "zip_code": "91204",
+    "country": "US",
+    "state": "CA",
+    "display_address": [
+      "440 W Broadway",
+      "Glendale, CA 91204"
+>>>>>>> master
     ],
     "cross_streets": ""
   },
   "coordinates": {
+<<<<<<< HEAD
     "latitude": 34.0448828174397,
     "longitude": -118.258630984848
   },
@@ -48,17 +87,34 @@
     "https://s3-media4.fl.yelpcdn.com/bphoto/CzKUWE_neuRprReDKjdBgw/o.jpg"
   ],
   "price": "$$",
+=======
+    "latitude": 34.1466232647055,
+    "longitude": -118.262607174622
+  },
+  "photos": [
+    "https://s3-media4.fl.yelpcdn.com/bphoto/E6IEv23JB4_cGjVedMGH8g/o.jpg",
+    "https://s3-media2.fl.yelpcdn.com/bphoto/O6s4x08z9JUisQUaF7rv2g/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/wQ64AW9VVCpJRm3JP68xqQ/o.jpg"
+  ],
+  "price": "$",
+>>>>>>> master
   "hours": [
     {
       "open": [
         {
           "is_overnight": false,
+<<<<<<< HEAD
           "start": "0700",
           "end": "1500",
+=======
+          "start": "1100",
+          "end": "2200",
+>>>>>>> master
           "day": 0
         },
         {
           "is_overnight": false,
+<<<<<<< HEAD
           "start": "1700",
           "end": "2100",
           "day": 0
@@ -73,10 +129,15 @@
           "is_overnight": false,
           "start": "1700",
           "end": "2100",
+=======
+          "start": "1100",
+          "end": "2200",
+>>>>>>> master
           "day": 1
         },
         {
           "is_overnight": false,
+<<<<<<< HEAD
           "start": "0700",
           "end": "1500",
           "day": 2
@@ -85,16 +146,26 @@
           "is_overnight": false,
           "start": "1700",
           "end": "2100",
+=======
+          "start": "1100",
+          "end": "2200",
+>>>>>>> master
           "day": 2
         },
         {
           "is_overnight": false,
+<<<<<<< HEAD
           "start": "0700",
           "end": "1500",
+=======
+          "start": "1100",
+          "end": "2200",
+>>>>>>> master
           "day": 3
         },
         {
           "is_overnight": false,
+<<<<<<< HEAD
           "start": "1700",
           "end": "2100",
           "day": 3
@@ -103,10 +174,15 @@
           "is_overnight": false,
           "start": "0700",
           "end": "1500",
+=======
+          "start": "1100",
+          "end": "2200",
+>>>>>>> master
           "day": 4
         },
         {
           "is_overnight": false,
+<<<<<<< HEAD
           "start": "1700",
           "end": "2100",
           "day": 4
@@ -115,13 +191,23 @@
           "is_overnight": false,
           "start": "0800",
           "end": "1500",
+=======
+          "start": "1100",
+          "end": "2200",
+>>>>>>> master
           "day": 5
         },
         {
           "is_overnight": false,
+<<<<<<< HEAD
           "start": "1700",
           "end": "2100",
           "day": 5
+=======
+          "start": "1100",
+          "end": "2200",
+          "day": 6
+>>>>>>> master
         }
       ],
       "hours_type": "REGULAR",
@@ -129,7 +215,17 @@
     }
   ],
   "transactions": [
+<<<<<<< HEAD
     "pickup",
     "delivery"
   ]
+=======
+    "delivery",
+    "pickup"
+  ],
+  "messaging": {
+    "url": "https://www.yelp.com/raq/2w7pMH5RBoZPDvluSTchTw?adjust_creative=kAVWlhZ8G7ICiLuwQrkqlA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=kAVWlhZ8G7ICiLuwQrkqlA#popup%3Araq",
+    "use_case_text": "Message the Business"
+  }
+>>>>>>> master
 }

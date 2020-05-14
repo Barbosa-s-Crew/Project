@@ -5,8 +5,6 @@
     <br>
     <h1>Sign In</h1>
     <br>
-      <!-- <input type="text" name="" value="myvalue"> -->
-      <!-- search inside url not recognized -->
       {% if error %}
       {{error}}
       <form method="POST" action="{% url 'login' %}"> {% csrf_token %} <!-- {{search_test.py}} -->

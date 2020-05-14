@@ -15,7 +15,7 @@ from django.db.models import Q
 posts =  sktest.getDB()
 #--------------------------------------Helper Functions -----------------------------
 
-#request.session['active_user'] = usersCustom.userC([''])
+
 def check_user(request):
 	try:
 		if not request.session['is_authenticated']:
@@ -131,28 +131,30 @@ def search_results(request):
 	}
 
 	if request.method == "POST":
-		#sktest.
 		name = request.POST['myvalue']
-		#context['name'] = name
-		#print(name)
-	#list = (YelpFusion.search_yelp(request.POST['myvalue'])).split(" ")
+		
 	context['search_results_db'] = restaurant_module.get_restaurant_using_keyword(request.POST['myvalue'])
 	print(context['search_results_db'])
-	context['search_results'] = YelpFusion.search_yelp(term = request.POST['myvalue'], location = request.POST['locationValue'], radius = request.POST['myRadius'], price= request.POST['myPrice'])
+
+	try:
+		radius = request.POST['myRadius']
+		price = request.POST['myPrice']
+	except :
+		radius = "1000"
+		price = "1, 2, 3, 4"
+
+	
+	context['search_results'] = YelpFusion.search_yelp(term = request.POST['myvalue'], location = request.POST['locationValue'], radius = radius, price= price)
 
 	return render(request, 'dumpApp/search_results.html', context)
 
-#ADDED (Mitch)
+
 def get_query_results(query=None):
-#def search(request)
 	queryset = []
 	#creating a list out of all the query phrases
 	#so queries is a list
 	queries = query.split("")
 	for q in queries:
-		#???????????????????????????????????????
-		#where does BlogPost come from?
-		#???????????????????????????????????????
 		posts = BlogPost.objects.filter(
 				Q(title__icontains=q) |
 				Q(body__icontains=q)
@@ -161,7 +163,7 @@ def get_query_results(query=None):
 			queryset.append(post)
 
 	return list(set(queryset))
-#ADDED (Mitch)
+
 
 def contact(request):
 	check_user(request)
@@ -186,23 +188,12 @@ def login(request):
 		request.session['cell'] = user.cell
 		request.session['payment_option'] = user.payment_option
 		request.session['photo'] = user.photoURL
-		#request.session['gender'] = user.gender
 		request.session['preferences'] = user.other_info
 		request.session['is_authenticated'] = user.is_authenticated
 		print("Before creating order_list")
-		#request.session['shopping_cart'] = order_module.order_list(user.ID, 0, 0)
 		order_object = order_module.order_list(user.ID, 2, 0)
 		print("After creating order_list")
 
-		# Sample items to put into the cart
-		# orderitem_object = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Souce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
-		# print("1")
-		# orderitem_object2 = order_module.order_item(7,9,25, 'Asparagus Shrimp with Oyster Sauce', 18, 1,'https://industryeats.com/wp-content/uploads/2017/03/stir-fried-asparagus-mushroom.jpg')
-		# print("2")
-		# order_object.add_order(orderitem_object)
-		# print("3")
-		# order_object.add_order(orderitem_object2)
-		# print("4")
 
 		request.session['shopping_cart'] = order_object.convert_to_dict_list()
 
@@ -302,12 +293,9 @@ def restaurants(request):
 	#the dictionary context is the database query
 	context = {}
 	context['user_authenticated'] = request.session['is_authenticated']
-	# 	'name': "Narek Zamanyan",
-	# 	'user_authenticated': request.session['is_authenticated']
-	# }
+	
 
 	if request.method == "POST":
-	# 	#sktest.
 
 		print(request.POST['Yelp'])
 		if request.POST['Yelp'] == "True":
@@ -315,9 +303,6 @@ def restaurants(request):
 			context['everything'] = restaurant
 
 			schedule = {}
-			#context['formatted_schedule']
-			#for i in range(5):
-			#if i == 0:
 			schedule['Monday'] = restaurant['hours'][0]['open'][0]['start'][:2] + ":" + restaurant['hours'][0]['open'][0]['start'][2:]
 			schedule['Monday'] = schedule['Monday'] + ' - '
 			schedule['Monday'] = schedule['Monday'] + restaurant['hours'][0]['open'][0]['end'][:2] + ":" + restaurant['hours'][0]['open'][0]['end'][2:]
@@ -347,16 +332,12 @@ def restaurants(request):
 
 			context['schedule'] = schedule
 		else:
-			#print(request.POST['id'])
 
 			restaurant = restaurant_module.get_restaurant_using_ID(request.POST['id'])
 			context['restaurants'] = restaurant[0]
 
 			restaurant_location = restaurant_module.get_location_using_location_id(restaurant[0]['Location_id'])
-			#print("here"+restaurant_location[0]['Location_Street_1'])
 			context['rest_address'] = restaurant_location[0]
-
-			#print(restaurant[0]['Location_ID'])
 
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items
@@ -378,7 +359,6 @@ def item(request):
 			return redirect('login')
 		if request.POST['origin'] == "item":
 			quantity = request.POST['item_quantity']
-			#request.session['current_item'] = ast.literal_eval(request.POST['string'])
 			request.session['current_item']['item_quantity'] = quantity
 
 
@@ -434,7 +414,6 @@ def checkout(request):
 	}
 	order_object = order_module.order_list(request.session['ID'], 0, 0)
 	order_object.create_from_dict_list(request.session['shopping_cart'])
-	#order_object.submitOrder()
 	request.session['shopping_cart'] = order_object.convert_to_dict_list()
 	context['shopping_cart_subtotal']=order_object.get_order_subtotal()
 	context['shopping_cart_tax']=order_object.get_order_subtotal()*0.1

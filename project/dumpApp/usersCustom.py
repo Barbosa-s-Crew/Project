@@ -98,8 +98,6 @@ class userC:
 				self.other_info = that_dict.get("preferences")
 				self.photoURL = that_dict.get("photo")
 				self.gender = that_dict.get("gender")
-				#self.Location_ID = that_dict.get("locationID")
-				#self.payment_option = that_dict.get("paymentOption")
 				query = "UPDATE Users SET User_name = \""+str(self.username)+"\",User_Email = \""+str(self.email)+"\",User_Password = \""+str(self.password)+"\",User_Cell = \""+str(self.cell)+"\",user_image = \""+str(self.photoURL)+"\", user_gender =\""+str(self.gender)+"\", Other_Information = \""+str(self.other_info)+"\" WHERE User_Email= \""+str(oldEmail)+"\";"
 				cursor.execute(query)
 				conn.commit()
@@ -169,19 +167,3 @@ def create_user(email = '', password = '',username='',cellPhoneNum=''):		#will r
 		cursor.close()
 		conn.close()
 		return result
-
-
-
-#create_user(email = 'GGG', password = '123')	#this one probably doesn't work anymore.
-
-#u=authenticate_user(username='abc',password= '123')
-#create_user('jikemsa@gmail.com','jikemsaPassword','Hunter Swanson','(408)507-0461')
-#u=authenticate_user("jikemsa@gmail.com","jikemsaPassword")
-#a=u.get_dictionary()
-#print(u.password)
-#a.update({"username":"Hunter Swanson"})
-#print(a)
-#u.save_preferences(a)
-#u=authenticate_user('jikemsa@gmail.com','jikemsaPassword')
-#a=u.get_dictionary()
-#print(a)

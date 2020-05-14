@@ -1,8 +1,6 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
     <h1>Login</h1>
-      <!-- <input type="text" name="" value="myvalue"> -->
-      <!-- search inside url not recognized -->
       <form method="POST" action="{% url 'home' %}"> {% csrf_token %} <!-- {{search_test.py}} -->
           <input type="text" class="form-control" name="username" id="username" placeholder="Username">
           <input type="password" class="form-control" name="password" id="password" placeholder="Password">

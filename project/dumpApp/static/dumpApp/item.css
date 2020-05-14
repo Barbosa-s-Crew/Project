@@ -11,24 +11,7 @@
   background: white;
   opacity: 0.8;
 }
-/*
-.top-left_item {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-}*/
 
-/*.top-right_item {
-  position: absolute;
-  top: 8px;
-  right: 16px;
-}
-
-.bottom-right_item {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-}*/
 
 .centered_item {
   position: absolute;
