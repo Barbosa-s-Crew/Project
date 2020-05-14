@@ -6,13 +6,16 @@
 
 
 
-   <img src="{{photo}}" style="width:300px; height:300px">
-<!-- <p>order_history = {{order_history}}</p> -->
 
-  <form action="{% url 'register' %}">
+   <img src="{{photo}}" style="width:300px; height:300px">
+
+
+ <!--  <h6>aa{{reviews}}</h6> -->
+  <!-- <form action="{% url 'register' %}"> -->
   <div class="container_register"> {% csrf_token %}
     <h1>{{username}}'s Profile</h1>
     <hr>
+
 
 
     <label for="email"><b>Email: {{email}}</b></label>
@@ -28,14 +31,19 @@
     <!-- <input type="text" placeholder="{{phone}}" name="cell" value="{{phone}}" required> -->
 <br>
 <br>
-     <label for="preferences"><b>Preferences: {{preferences}}</b></label>
+     <label for="preferences">
+      <b>Preferences: {{preferences}}</b>
+     </label>
      <br>
      <br>
      <!-- <textarea rows="4" cols="60">{{preferences}}</textarea> -->
      <br>
      <br>
+  <!-- <input type="submit" value="Update Profile"> -->
 
+<!-- </form> -->
     <!-- <input type="text" placeholder="{{preferences}}" name="preferences" required style="height:200px;"> -->
+
 
 <h3>Your Recent Orders</h3>
 <table>
@@ -43,74 +51,261 @@
     <th>Quantity</th>
     <th>Item</th> 
     <th>Image</th>
+    <th>Order ID</th>
+    <th>From</th>
     <th>Price</th>
     <th>Review</th>
   </tr>
   {% for order in order_history %}
   <tr>
+   <!--  <h5>{{order}}</h5> -->
     <td>{{order.Item_Quantity}}</td>
     <td>{{order.Item_name}}</td>
     <td><img src="{{order.Item_image}}" border=3 height=100 width=100></td>
+    <td>{{order.Order_ID}}</td>
+    <td>{{order.Restaurant_name}}</td>
     <td>{{order.Item_cost}}</td>
-    <td> 
+    <td>
+      <button class="open-button" onclick="openForm(this.name)" name="myForm_{{order.Order_ID}}">Open Form</button>
+
+      <div class="form-popup" id="myForm_{{order.Order_ID}}">
+          <form method="POST" action="{% url 'profile' %}" >
+      {% csrf_token %}
+
+          <!-- <label for="review"><b>Review</b></label> -->
+          <input type="hidden" id="Restaurant_ID" name="Restaurant_ID" value="{{order.Restaurant_ID}}">
+          <input type="hidden" id="Order_ID" name="Order_ID" value="{{order.Order_ID}}">
+          <input type="hidden" id="User_ID" name="User_ID" value="{{order.User_ID}}">
+          <input type="hidden" id="Review_Rating" name="Review_Rating" value="4">
+
+          <input type="text" rows="5" cols="50" style="width: 600; height: 100;" placeholder="Enter Review" name="review_text" required>
+
+      <div class="rating">
+          <input type="radio" name="star" id="star{{order.Order_ID}}_1" value="5">
+          <label for="star{{order.Order_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{order.Order_ID}}_2" value="4">
+          <label for="star{{order.Order_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{order.Order_ID}}_3" value="3">
+          <label for="star{{order.Order_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{order.Order_ID}}_4" value="2">
+          <label for="star{{order.Order_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{order.Order_ID}}_5" value="1">
+          <label for="star{{order.Order_ID}}_5"></label>
+
+      </div>
+
+          
+           <input onclick="set_rating(this.id)" type="submit" value="Add Review" class="btn" id="{{order.Order_ID}}">
+         <button type="button" class="btn-reviews cancel" name="myForm_{{order.Order_ID}}" onclick="closeForm(this.name)">Close</button> 
 
 
-  <button class="open-button" onclick="openForm()">Open Form</button>
-
-      <div class="form-popup" id="myForm">
-        <form action="" class="form-container">
-
-          <label for="review"><b>Review</b></label>
-          <input type="text" placeholder="Enter Review" name="review" required>
-
-          <button type="submit" class="btn-revew">Add Review</button>
-          <button type="button" class="btn-reviews cancel" onclick="closeForm()">Close</button>
         </form>
       </div>
+    </td>
+  </tr>
+
+  <script type="text/javascript">
+    //alert(input[5].value);  //review_rating
+    // alert(input[6].value); //review text
+    // alert(input[7].value); //star_1 
+    // document.getElementsByTagName("input")[9].checked = true;
+    function set_rating(id) {
+      alert(id); 
+      // alert(document.getElementById("star" + id + "_1").checked);
+      // alert(document.getElementById("star" + id + "_2").checked);
+      // alert(document.getElementById("star" + id + "_3").checked);
+      // alert(document.getElementById("star" + id + "_4").checked);
+      // alert(document.getElementById("star" + id + "_5").checked);
+
+
+      //var star_1 = document.getElementById("Review_Rating").value;
+      //alert("kldj");
+      //alert(document.getElementById("Order_ID").value);
+    }
+
+
+  </script>
+
+  {% endfor %}
+</table>
+
 
 
 <script type="text/javascript">
-  function openForm() {
-    document.getElementById("myForm").style.display = "block";
+  function openForm(myForm) {
+    document.getElementById(myForm).style.display = "block";
   }
-  function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+  function closeForm(myForm) {
+    document.getElementById(myForm).style.display = "none";
   }
 </script>
-
-    </td>
-  </tr>
-  {% endfor %}
-
-</table>
 
 <h3>Your Recent Reviews</h3>
 <table>
   <tr> 
     <th>Restaurant Name</th>
-    <th>Rating</th>
     <th>Review</th>
+     <th>Rating</th>
+     <th>Rating #</th>
+     <th>Review_ID</th>
   </tr>
-  {% for order in order_history %}
+  {% for review in reviews %}
+
   <tr>
-    <td>Restaurant Name</td>
-    <td>Rating</td>
-    <td>Review text</td>
+    <td>{{review.Restaurant_Name}}</td>
+    <td>{{review.Review_Text}}</td>
+    <td>
+
+
+      <form>
+      {% if review.Review_Rating == 1 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5" checked>
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 2 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4" checked>
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 3 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3" checked>
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 4 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2" checked>
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 5 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1" checked>
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+      </div>
+      {% endif %}
+      </form>
+    </td>
+    <td>{{review.Review_Rating}}</td>
+    <td>{{ review.Review_ID }}</td>
+
   </tr>
+
+  <!-- created to make the JavaScript work for the star rating  -->
+  <input type="hidden" id="current_review_id" value="{{review.Review_ID}}">
+  
+
+ <!--  <script type="text/javascript">
+    var current_review_id = document.getElementById("current_review_id").value;
+    document.getElementById("current_review_id").value = 0;
+    // alert("1");
+    // var elements = document.getElementsByTagName("input");
+    // alert("2");
+    alert(current_review_id);
+     //window.alert(document.getElementById("current_review_id").value);
+     //alert(document.getElementById("current_review_id").value);
+    //alert("elements.length = " + elements.length)
+    for(var i = 0; i < elements.length; i++) {
+       //alert("inside for i = " + i);
+       //alert(elements.name)
+       //alert(elements[i].id);
+    }
+  </script> -->
+  
   {% endfor %}
+  <input type="hidden" id="counter" value="{{ forloop.counter }}">
 
 </table>
 
 
-    <!-- <input type="submit" value="Update Profile"> -->
+
+<h5>{{reviews}}</h5>
+
   </div>
-</form>
+ <br>
+ <br>
+ <br>
+<!-- 
 
+ {% for review in reviews %}
+<input type="hidden" id="current_review_id" value="{{review.Review_ID}}">
 
+<script type="text/javascript">
 
-<!-- <p>{{order_history}}</p>
+  
+  var current_review_id = document.getElementById("current_review_id").value;
+
+  //alert(current_review_id);
+
+  if(document.getElementById("Review_Rating_" + current_review_id).value == 1) {
+    document.getElementById("star" + current_review_id + "_5").checked = true;
+  }
+  else if(document.getElementById("Review_Rating_" + current_review_id).value == 2) {
+    document.getElementById("star" + current_review_id + "_4").checked = true;
+  }
+  else if(document.getElementById("Review_Rating_" + current_review_id).value == 3) {
+    document.getElementById("star" + current_review_id + "_3").checked = true;
+  }
+  else if(document.getElementById("Review_Rating_" + current_review_id).value == 4) {
+    document.getElementById("star" + current_review_id + "_2").checked = true;
+  }
+  else if(document.getElementById("Review_Rating_" + current_review_id).value == 5) {
+    document.getElementById("star" + current_review_id + "_1").checked = true;
+  }
+
+    //window.alert(document.getElementById("current_review_id").value);
+
+</script>
+{% endfor %}
  -->
-
- 
 
 {% endblock content %}

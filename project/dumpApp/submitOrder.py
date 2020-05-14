@@ -237,7 +237,7 @@ def getOrderHistory(user_ID):
 			print(err)
 	else: 
 		cursor = conn.cursor(dictionary = True)
-		query = "SELECT O.User_ID, OI.Item_Quantity, I.Item_name, I.Item_image, I.Item_cost, R.Restaurant_ID, I.Item_ID, M.Menu_ID "
+		query = "SELECT O.Order_ID, O.User_ID, OI.Item_Quantity, I.Item_name, I.Item_image, I.Item_cost, R.Restaurant_ID, R.Restaurant_name, I.Item_ID, M.Menu_ID "
 		query += "FROM Orders O INNER JOIN Order_items OI ON O.Order_ID=OI.Order_ID "
 		query += "INNER JOIN Item I ON I.Item_ID=OI.Item_ID "
 		query += "INNER JOIN Menu M ON I.Menu_ID=M.Menu_ID "

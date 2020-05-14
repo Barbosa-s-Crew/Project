@@ -262,6 +262,25 @@ def profile(request):
 		return redirect("login")
 
 	order_history = order_module.getOrderHistory(request.session['ID'])
+
+	if request.method == "POST":
+		context = {
+			'user_authenticated': request.session['is_authenticated'],
+			'email': request.session['email'],
+			'phone': request.session['cell'],
+			'username': request.session['username'],
+			'payment_option': request.session['payment_option'],
+			'photo': request.session['photo'],
+			'preferences': request.session['preferences'],
+			'order_history': order_history,
+		}
+
+		review_ID = review_module.writeReview(request.POST['Restaurant_ID'], request.POST['Order_ID'], request.POST['User_ID'], request.POST['star'], request.POST['review_text'])
+
+		context['reviews'] = review_module.getReview(request.session['ID'])
+
+		return render(request, 'dumpApp/profile.html', context)
+	
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
 		'email': request.session['email'],
@@ -272,6 +291,9 @@ def profile(request):
 		'preferences': request.session['preferences'],
 		'order_history': order_history,
 	}
+	context['reviews'] = review_module.getReview(request.session['ID'])
+
+
 	return render(request, 'dumpApp/profile.html', context)
 
 def restaurants(request):
@@ -338,6 +360,12 @@ def restaurants(request):
 
 			items = restaurant_module.get_menu_items_using_restaurant_ID(request.POST['id'])
 			context['rest_items'] = items
+
+
+
+			#get the reviews
+
+			context['reviews'] = review_module.get_reviews_by_restaurant_ID(request.POST['id'])
 
 	return render(request, 'dumpApp/restaurants.html', context)
 

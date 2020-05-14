@@ -137,6 +137,49 @@
       </div>
       </div>
 
-    {% endif %}
 
+      <h3>Recent Reviews</h3>
+<table>
+  <tr> 
+    <th>Restaurant Name</th>
+    <th>Review</th>
+    <th>Rating</th>
+  </tr>
+  {% for review in reviews %}
+  <tr>
+    <td>{{review.Restaurant_Name}}</td>
+    <td>{{review.Review_Text}}</td>
+    <td>
+      
+
+      <div class="rating">
+        
+          <input type="radio" name="star1" id="star1">
+          <label for="star1"></label>
+          <input type="radio" name="star2" id="star2">
+          <label for="star1"></label>
+          <input type="radio" name="star3" id="star3">
+          <label for="star1"></label>
+          <input type="radio" name="star4" id="star4">
+          <label for="star1"></label>
+          <input type="radio" name="star5" id="star5">
+          <label for="star1"></label>
+
+      </div>
+     
+
+    </td>
+    
+  </tr>
+  {% endfor %}
+  <br>
+
+</table>
+
+
+
+    {% endif %}
+<br>
+<br>
+<br>
 {% endblock content %}
