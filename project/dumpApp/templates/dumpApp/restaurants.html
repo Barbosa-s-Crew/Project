@@ -1,6 +1,9 @@
 {% extends "dumpApp/base.html" %}
 {% block content %}
-
+<br>
+<br>
+<br>
+<!-- <h5>{{rest_items}}</h5> -->
     {% if everything %}
       <h2><a href="{{ everything.url }}">{{ everything.name }}</a></h2>
       <h3 style="color: green">Address</h3>
@@ -62,23 +65,179 @@
       <div class="horizontal-scroll-list-wrapper horizontal-scroll-squares" style="background-image: url('https://previews.123rf.com/images/robertsrob/robertsrob1401/robertsrob140100038/24873028-the-light-grey-wood-texture-with-natural-patterns-background.jpg')">
        
         {% for items in rest_items %}
-          <div class="container-horizontal-scroll-box">
-            <a href="#">
+        <div class="container-horizontal-scroll-box">
+
+
+
+<!-- ************************************************************** -->
+
+<form method="POST" action="{% url 'item' %}"> {% csrf_token %}
+     <img class="horizontal-scroll-image" src="{{items.item_image}}">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <button><h4 class="horizontal-scroll-text">{{items.Item_name}}</h4></button>
+        <h3 class="horizontal-scroll-text">${{items.Item_cost|floatformat:2}}</h3>
+       <!--  <p class="horizontal-scroll-text">{{items.item_notes}}</p> -->
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+        
+        <p class="horizontal-scroll-text">{{price|floatformat:2}}</p>  
+
+      
+        <input type="hidden" name="description" value="{{description}}">
+        <input type="hidden" name="caption" value="{{items.Item_name}}">
+        <input type="hidden" name="price" value="{{items.Item_cost|floatformat:2}}">
+        <input type="hidden" name="image" value="{{items.item_image}}">
+        <input type="hidden" name="item_ID" value="{{items.Item_ID}}">
+        <input type="hidden" name="menu_ID" value="{{items.Menu_ID}}">
+        <input type="hidden" name="restaurant_ID" value="{{items.restaurant_id}}">
+        <input type="hidden" name="dic" value="{{dic}}">
+        <input type="hidden" name="origin" value="dashboard">
+
+
+    </form>
+
+<!-- ************************************************************** -->
+
+
+
+            <!-- <a href="#">
                 <img class="horizontal-scroll-image" src="{{items.item_image}}">
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <h3 class="horizontal-scroll-text">{{items.Item_name}}</h3>
-              <h3 class="horizontal-scroll-text">${{items.Item_cost|floatformat:2}}</h3>
-              <p class="horizontal-scroll-text">{{items.item_notes}}</p>
-            </a>
-          </div>
+             
+ 
+            </a> -->
+          </div> 
+
+
+
+
+
+
+
+
+
+
+
+
         {% endfor %}
       </div>
       </div>
 
-    {% endif %}
 
+      <h3>Recent Reviews</h3>
+<table>
+  <tr> 
+    <th>Restaurant Name</th>
+    <th>Review</th>
+    <th>Rating</th>
+  </tr>
+  {% for review in reviews %}
+  <tr>
+    <td>{{review.Restaurant_Name}}</td>
+    <td>{{review.Review_Text}}</td>
+    <td>
+      
+
+      <form>
+      {% if review.Review_Rating == 1 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5" checked>
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 2 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4" checked>
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 3 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3" checked>
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 4 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1">
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2" checked>
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+
+      </div>
+      {% elif review.Review_Rating == 5 %}
+      <div class="rating">
+        
+          <input type="radio" name="star" id="star{{review.Review_ID}}_1" checked>
+          <label for="star{{review.Review_ID}}_1"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_2">
+          <label for="star{{review.Review_ID}}_2"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_3">
+          <label for="star{{review.Review_ID}}_3"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_4">
+          <label for="star{{review.Review_ID}}_4"></label>
+          <input type="radio" name="star" id="star{{review.Review_ID}}_5">
+          <label for="star{{review.Review_ID}}_5"></label>
+      </div>
+      {% endif %}
+      </form>
+     
+
+    </td>
+    
+  </tr>
+  {% endfor %}
+  <br>
+
+</table>
+<!-- 
+<h6>{{reviews}}</h6> -->
+
+
+    {% endif %}
+<br>
+<br>
+<br>
 {% endblock content %}

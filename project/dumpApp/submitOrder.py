@@ -175,10 +175,10 @@ class order_list:
 		subtotal=0
 		for item in self.olist:
 			subtotal += float(item.item_price) * float(item.item_quantity)
-		return float(subtotal)
+		return round(float(subtotal), 2)
 
 	def get_order_total(self):
-		return self.get_order_subtotal()*1.1
+		return round(self.get_order_subtotal()*1.1, 2)
 
 		
 def getOrder(order_ID):
@@ -235,13 +235,13 @@ def getOrderHistory(user_ID):
 			print(err)
 	else: 
 		cursor = conn.cursor(dictionary = True)
-		query = "SELECT O.User_ID, OI.Item_Quantity, I.Item_name, I.Item_image, I.Item_cost, R.Restaurant_ID, I.Item_ID, M.Menu_ID "
+		query = "SELECT O.Order_ID, O.User_ID, OI.Item_Quantity, I.Item_name, I.Item_image, I.Item_cost, R.Restaurant_ID, R.Restaurant_name, I.Item_ID, M.Menu_ID "
 		query += "FROM Orders O INNER JOIN Order_items OI ON O.Order_ID=OI.Order_ID "
 		query += "INNER JOIN Item I ON I.Item_ID=OI.Item_ID "
 		query += "INNER JOIN Menu M ON I.Menu_ID=M.Menu_ID "
 		query += "INNER JOIN Restaurant R ON M.Restaurant_ID=R.Restaurant_id "
 		query += "WHERE O.User_ID= " + str(user_ID) + " "
-		query += "GROUP BY O.Order_ID "
+		query += "GROUP BY O.Order_ID DESC "
 		query += "LIMIT 5;"
 		cursor.execute(query)
 		fetched = cursor.fetchall()
