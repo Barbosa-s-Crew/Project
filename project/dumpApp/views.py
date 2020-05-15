@@ -8,6 +8,7 @@ from . import deals as dealsmodule
 from . import restaurant as restaurant_module
 from . import submitOrder as order_module
 from . import writeReview as review_module
+from . import update_profile as update_profile_module
 import ast
 
 from django.db.models import Q
@@ -193,6 +194,9 @@ def login(request):
 		request.session['photo'] = user.photoURL
 		request.session['preferences'] = user.other_info
 		request.session['is_authenticated'] = user.is_authenticated
+		# ??? should we do this ???
+		request.session['password'] = password
+
 		print("Before creating order_list")
 		order_object = order_module.order_list(user.ID, 2, 0)
 		print("After creating order_list")
@@ -262,6 +266,7 @@ def profile(request):
 			'user_authenticated': request.session['is_authenticated'],
 			'email': request.session['email'],
 			'phone': request.session['cell'],
+			#'password': request.session['password'],
 			'username': request.session['username'],
 			'payment_option': request.session['payment_option'],
 			'photo': request.session['photo'],
@@ -269,16 +274,32 @@ def profile(request):
 			'order_history': order_history,
 		}
 
-		review_ID = review_module.writeReview(request.POST['Restaurant_ID'], request.POST['Order_ID'], request.POST['User_ID'], request.POST['star'], request.POST['review_text'])
+		if request.POST['form_name'] == 'review':
+			review_ID = review_module.writeReview(request.POST['Restaurant_ID'], request.POST['Order_ID'], request.POST['User_ID'], request.POST['star'], request.POST['review_text'])
 
-		context['reviews'] = review_module.getReview(request.session['ID'])
+			context['reviews'] = review_module.getReview(request.session['ID'])
 
-		return render(request, 'dumpApp/profile.html', context)
+			return render(request, 'dumpApp/profile.html', context)
+		
+
+		elif request.POST['form_name'] == 'profile':
+			email = request.POST['email']
+			username = request.POST['username']
+			phone = request.POST['phone']
+			update_profile_module.update_profile(request.session['ID'], email, username, phone)
+			
+
+			# don't have the password
+			user = usersCustom.authenticate_user(username, request.session['password'])
+			request.session['username'] = user.username
+			equest.session['email'] = user.email
+			request.session['cell'] = user.cell
 	
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
 		'email': request.session['email'],
 		'phone': request.session['cell'],
+		#'password': request.session['password'],
 		'username': request.session['username'],
 		'payment_option': request.session['payment_option'],
 		'photo': request.session['photo'],

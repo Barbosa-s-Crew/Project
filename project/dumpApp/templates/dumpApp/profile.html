@@ -12,28 +12,38 @@
   <!-- <form action="{% url 'register' %}"> -->
   <div class="container_register"> {% csrf_token %}
     <h1>{{username}}'s Profile</h1>
+
+
+
+<!-- **************************************************** -->
+
+
+     <form method="POST" action="{% url 'profile' %}"> {% csrf_token %}
+  <div class="container_register"> 
     <hr>
 
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="{{email}}" name="email" id="email" value="{{email}}">
 
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="{{username}}" name="username" value="{{username}}">
 
-    <label for="email"><b>Email: {{email}}</b></label>
-<br>
-<br>
-    <label for="username"><b>Username: {{username}}</b></label>
- <br>
- <br>
-    <label for="cell"><b>Phone {{phone}}</b></label>
-<br>
-<br>
-     <label for="preferences">
-      <b>Preferences: {{preferences}}</b>
-     </label>
-     <br>
-     <br>
-     <br>
-     <br>
-  <!-- <input type="submit" value="Update Profile"> -->
+    <label for="cell"><b>Phone Number</b></label>
+    <input type="text" placeholder="{{phone}}" name="phone" value="{{phone}}">
+<!-- 
 
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password"> -->
+
+    <input type="hidden" name="form_name" value="profile">
+    <hr>
+ 
+
+    <input type="submit" class="btn" value="Update Profile">
+  </div>
+</form>
+
+<!-- **************************************************** -->
 
 
 
@@ -43,7 +53,7 @@
     <th>Quantity</th>
     <th>Item</th> 
     <th>Image</th>
-    <th>Order ID</th>
+    <!-- <th>Order ID</th> -->
     <th>From</th>
     <th>Price</th>
     <th>Review</th>
@@ -54,7 +64,7 @@
     <td>{{order.Item_Quantity}}</td>
     <td>{{order.Item_name}}</td>
     <td><img src="{{order.Item_image}}" border=3 height=100 width=100></td>
-    <td>{{order.Order_ID}}</td>
+    <!-- <td>{{order.Order_ID}}</td> -->
     <td>{{order.Restaurant_name}}</td>
     <td>{{order.Item_cost}}</td>
     <td>
@@ -88,6 +98,8 @@
 
           
            <input onclick="set_rating(this.id)" type="submit" value="Add Review" class="btn" id="{{order.Order_ID}}">
+
+           <input type="hidden" name="form_name" value="review">
          <button type="button" class="btn-reviews cancel" name="myForm_{{order.Order_ID}}" onclick="closeForm(this.name)">Close</button> 
 
 
@@ -102,7 +114,7 @@
     // alert(input[7].value); //star_1 
     // document.getElementsByTagName("input")[9].checked = true;
     function set_rating(id) {
-      alert(id); 
+      //alert(id); 
       // alert(document.getElementById("star" + id + "_1").checked);
       // alert(document.getElementById("star" + id + "_2").checked);
       // alert(document.getElementById("star" + id + "_3").checked);
@@ -138,8 +150,8 @@
     <th>Restaurant Name</th>
     <th>Review</th>
      <th>Rating</th>
-     <th>Rating #</th>
-     <th>Review_ID</th>
+     <!-- <th>Rating #</th> -->
+     <!-- <th>Review_ID</th> -->
   </tr>
   {% for review in reviews %}
 
@@ -227,8 +239,8 @@
       {% endif %}
       </form>
     </td>
-    <td>{{review.Review_Rating}}</td>
-    <td>{{ review.Review_ID }}</td>
+    <!-- <td>{{review.Review_Rating}}</td> -->
+    <!-- <td>{{ review.Review_ID }}</td> -->
 
   </tr>
 

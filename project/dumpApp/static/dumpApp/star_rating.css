@@ -1,8 +1,8 @@
 .rating {
 	position: relative;
 	top: 6%;
-	left: -22%;
-	transform: translate(0%, 0%);
+	left: -57%;
+	transform: translate(0%,0%);
 	display: flex;
 
 
@@ -50,54 +50,3 @@
 
 
 
-
-
-/*
-
-.container_register th .rating {
-	position: relative;
-	top: 6%;
-	left: 6%;
-	transform: translate(20%, 0%);
-	display: flex;
-	flex-direction: row-reverse;
-}
-
-.container_register th .rating input {
-	display: none;
-}
-
-.container_register th .rating label {
-	display: block;
-	cursor: pointer;
-	width: 22;
-}
-.container_register th .rating label:before{
-	content: '\f005';
-	font-family: fontAwesome;
-	position: relative;
-	display: block;
-	font-size: 22px;
-	color: #101010;
-}
-
-.container_register th .rating label:after{
-	content: '\f005';
-	font-family: fontAwesome;
-	position: absolute;
-	display: block;
-	font-size: 22px;
-	color: #1f9cff;
-	top: 0;
-	opacity: 0;
-	transition: .5s;
-	text-shadow: 0 2px 5px rgba(0,0,0,.5);
-}
-
-
-.container_register th .rating label:hover:after,
-.container_register th .rating label:hover ~ label:after,
-.container_register th .rating input:checked ~ label:after{
-	opacity: 1;
-}
-*/
