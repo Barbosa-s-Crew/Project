@@ -1,5 +1,5 @@
 from django.test import SimpleTestCase
-from dumpApp import DBSetup
+from . import DBSetup
 from dumpApp import restaurant
 import datetime
 #python manage.py test dumpapp.testRestaurant

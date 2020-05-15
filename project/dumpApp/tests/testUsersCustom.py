@@ -1,5 +1,5 @@
 from django.test import SimpleTestCase
-from dumpApp import DBSetup
+from . import DBSetup
 from dumpApp import usersCustom
 import mysql.connector
 from mysql.connector import errorcode
