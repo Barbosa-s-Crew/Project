@@ -11,6 +11,8 @@ from . import writeReview as review_module
 from . import update_profile as update_profile_module
 import ast
 
+from django.contrib.auth.hashers import check_password, make_password
+
 from django.db.models import Q
 
 posts =  sktest.getDB()
@@ -188,6 +190,7 @@ def login(request):
 		user = usersCustom.authenticate_user(username, password)
 		request.session['ID'] = user.ID
 		request.session['username'] = user.username
+		request.session['password'] = password
 		request.session['email'] = user.email
 		request.session['cell'] = user.cell
 		request.session['payment_option'] = user.payment_option
@@ -286,15 +289,15 @@ def profile(request):
 			email = request.POST['email']
 			username = request.POST['username']
 			phone = request.POST['phone']
-			update_profile_module.update_profile(request.session['ID'], email, username, phone)
-			
+
+
 
 			# don't have the password
-			user = usersCustom.authenticate_user(username, request.session['password'])
-			request.session['username'] = user.username
-			equest.session['email'] = user.email
-			request.session['cell'] = user.cell
-	
+			#user = usersCustom.authenticate_user(username, make_password(request.session['password']))
+			request.session['username'] = username
+			request.session['email'] = email
+			request.session['cell'] = phone
+
 	context = {
 		'user_authenticated': request.session['is_authenticated'],
 		'email': request.session['email'],
